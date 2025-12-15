@@ -39,8 +39,8 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
   return (
     <div className="w-full max-w-4xl mx-auto p-4 flex flex-col items-center justify-center min-h-[80vh]">
       <div className="text-center mb-10">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#4b6f44] mb-3">Gods & Glyphs</h1>
-        <p className="text-gray-600 text-lg">Explore the deities of the Maya and Mexica pantheons.</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#4b6f44] mb-3">Mexico History</h1>
+        <p className="text-gray-600 text-lg">Explore the rich history, deities, and cultures of Mexico.</p>
       </div>
 
       <div className="w-full flex justify-center">
@@ -59,7 +59,7 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-gray-800 mb-2">{item.title}</h3>
               <p className="text-gray-600 mb-4 text-lg">{item.description}</p>
-              
+
               <div className="inline-flex items-center gap-1.5 bg-white/60 px-3 py-1.5 rounded-md text-sm font-semibold text-gray-700">
                 <Trophy size={16} />
                 {item.progress}
