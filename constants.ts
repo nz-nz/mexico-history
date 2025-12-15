@@ -96,42 +96,42 @@ export const MAYA_MATCHING_PAIRS: MatchItem[] = [
   { 
     id: 'ma1', name: 'Ixchel', matchId: 'm_pair1', type: 'term',
     // Goddess I from Dresden Codex
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Ixchel_Dresden.jpg'
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/IXCHEL.png'
   },
   { id: 'd_ma1', name: 'Diosa de la Luna', matchId: 'm_pair1', type: 'definition' },
   
   { 
     id: 'ma2', name: 'Ahau Kin', matchId: 'm_pair2', type: 'term',
     // Kinich Ahau (God G)
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/05/God_G_Kinich_Ahau_2.jpg'
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/AHAU_KIN.png'
   },
   { id: 'd_ma2', name: 'Dios del Sol', matchId: 'm_pair2', type: 'definition' },
   
   { 
     id: 'ma3', name: 'Chaac', matchId: 'm_pair3', type: 'term',
     // Chaac from Dresden Codex (Verified)
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/ChacDresden.jpg'
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/CHAAC.png'
   },
   { id: 'd_ma3', name: 'Dios de la Lluvia', matchId: 'm_pair3', type: 'definition' },
 
   { 
     id: 'ma4', name: 'Ek Chuah', matchId: 'm_pair4', type: 'term',
     // God M
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Maya_Hieroglyphs_Fig_05.jpg'
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/EK_CHUAH.png'
   },
   { id: 'd_ma4', name: 'Dios del Comercio / Cacao', matchId: 'm_pair4', type: 'definition' },
 
   { 
     id: 'ma5', name: 'Buluc Chabtan', matchId: 'm_pair5', type: 'term',
     // God F
-    imageUrl: 'https://pueblosoriginarios.com/meso/maya/maya/imagenes/xbuluc.jpg.pagespeed.ic.0GbPvTXglJ.webp'
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/BULUC_CHABTAN.png'
   },
   { id: 'd_ma5', name: 'Dios de la Guerra', matchId: 'm_pair5', type: 'definition' },
   
   { 
     id: 'ma6', name: 'Ah Mun / Yum Kaax', matchId: 'm_pair6', type: 'term',
     // God E
-    imageUrl: 'https://pueblosoriginarios.com/meso/maya/maya/imagenes/xyum.jpg.pagespeed.ic.XxBioUcZdD.webp'
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/AH_MUN_YUM_KAAX.png'
   },
   { id: 'd_ma6', name: 'Dios del Maíz', matchId: 'm_pair6', type: 'definition' },
 ];
@@ -141,50 +141,57 @@ export const MAYA_MATCHING_PAIRS: MatchItem[] = [
 export const MEXICA_MATCHING_PAIRS: MatchItem[] = [
   { 
     id: 'me1', name: 'Huitzilopochtli', matchId: 'x_pair1', type: 'term',
-    // Codex Borbonicus (User verified)
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Huitzilopochtli_V.png'
+    // Rediscovered: Huitzilopochtli (Aztec God of Sun and War)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/HUITZILOPOCHTLI.png'
   },
   { id: 'd_me1', name: 'Dios de la Guerra', matchId: 'x_pair1', type: 'definition' },
   
   { 
     id: 'me2', name: 'Tláloc', matchId: 'x_pair2', type: 'term',
-    // Codex Rios (Very stable)
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Tlaloc_Codex_Rios.jpg'
+    // Rediscovered: Tlaloc (Aztec God of Rain)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/TLALOC.png'
   },
   { id: 'd_me2', name: 'Dios de la Lluvia', matchId: 'x_pair2', type: 'definition' },
   
   { 
     id: 'me3', name: 'Coatlicue', matchId: 'x_pair3', type: 'term',
-    // Statue
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Coatlicue_front.jpg'
+    // Rediscovered: Coatlicue (Aztec Goddess of Life and Death)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/COATLICUE.png'
   },
   { id: 'd_me3', name: 'Diosa de la Fertilidad', matchId: 'x_pair3', type: 'definition' },
 
   { 
     id: 'me4', name: 'Quetzalcóatl', matchId: 'x_pair4', type: 'term',
-    // Codex Borbonicus
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c2/Quetzalcoatl_1.jpg'
+    // Rediscovered: Quetzalcoatl (Aztec God of Wind and Wisdom)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/QUETZALCOATL.png'
   },
   { id: 'd_me4', name: 'Serpiente Emplumada / Viento', matchId: 'x_pair4', type: 'definition' },
 
   { 
     id: 'me5', name: 'Tonatiuh', matchId: 'x_pair5', type: 'term',
-    // Codex Borgia
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Tonatiuh_Borgia.jpg'
+    // Rediscovered: Tonatiuh (Aztec Sun God)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/TONATIUH.png'
   },
   { id: 'd_me5', name: 'Dios del Sol', matchId: 'x_pair5', type: 'definition' },
 
   { 
     id: 'me6', name: 'Xólotl', matchId: 'x_pair6', type: 'term',
-    // Codex Borbonicus (Twin of Quetzalcoatl)
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Xolotl_1.jpg'
+    // Rediscovered: Xolotl (Aztec God of Fire and Lightning)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/XOLOTL.png'
   },
   { id: 'd_me6', name: 'Dios Perro / Ocaso', matchId: 'x_pair6', type: 'definition' },
   
   { 
     id: 'me7', name: 'Chalchiuhtlicue', matchId: 'x_pair7', type: 'term',
-    // Codex Borbonicus
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Chalchiuhtlicue_1.jpg'
+    // Rediscovered: Chalchiuhtlicue (Aztec Goddess of Water)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/CHALCHIUHTLICUE.png'
   },
   { id: 'd_me7', name: 'Diosa de los Lagos', matchId: 'x_pair7', type: 'definition' },
+  
+  { 
+    id: 'me8', name: 'Centéotl', matchId: 'x_pair8', type: 'term',
+    // Rediscovered: Centeotl (Aztec God of Maize)
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/CENTEOTL.png'
+  },
+  { id: 'd_me8', name: 'Dios del Maíz', matchId: 'x_pair8', type: 'definition' },
 ];
