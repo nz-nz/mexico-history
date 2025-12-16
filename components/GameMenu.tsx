@@ -9,30 +9,33 @@ interface GameMenuProps {
 const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
   const [stats, setStats] = useState({
     mayaSolved: false,
-    mexicaSolved: false
+    mexicaSolved: false,
+    constitutionSolved: false
   });
 
   useEffect(() => {
     // Load progress from localStorage
     const savedMaya = localStorage.getItem('meso_app_matching_maya_solved') === 'true';
     const savedMexica = localStorage.getItem('meso_app_matching_mexica_solved') === 'true';
+    const savedConstitution = localStorage.getItem('meso_app_matching_constitution_solved') === 'true';
 
     setStats({
       mayaSolved: savedMaya,
-      mexicaSolved: savedMexica
+      mexicaSolved: savedMexica,
+      constitutionSolved: savedConstitution
     });
   }, []);
 
-  const matchingProgressCount = (stats.mayaSolved ? 1 : 0) + (stats.mexicaSolved ? 1 : 0);
+  const matchingProgressCount = (stats.mayaSolved ? 1 : 0) + (stats.mexicaSolved ? 1 : 0) + (stats.constitutionSolved ? 1 : 0);
 
   const menuItems = [
     {
       mode: GameMode.MATCHING,
-      title: 'Gods & Glyphs',
-      description: 'Match deities and definitions.',
+      title: 'History Match',
+      description: 'Match deities, definitions, and articles.',
       icon: <Layers size={32} />,
       color: 'bg-orange-100 text-orange-600 hover:border-orange-300',
-      progress: `${matchingProgressCount}/2 Decks Solved`
+      progress: `${matchingProgressCount}/3 Decks Solved`
     }
   ];
 

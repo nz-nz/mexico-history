@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { MAYA_MATCHING_PAIRS, MEXICA_MATCHING_PAIRS } from '../constants';
+import { MAYA_MATCHING_PAIRS, MEXICA_MATCHING_PAIRS, CONSTITUTION_MATCHING_PAIRS } from '../constants';
 import { MatchItem } from '../types';
 import { motion } from 'framer-motion';
 import { RefreshCcw, Medal, ArrowLeft } from 'lucide-react';
 
-type DeckType = 'MAYA' | 'MEXICA' | null;
+type DeckType = 'MAYA' | 'MEXICA' | 'CONSTITUTION' | null;
 
 const MatchingGame: React.FC = () => {
   const [deckType, setDeckType] = useState<DeckType>(null);
@@ -17,6 +17,7 @@ const MatchingGame: React.FC = () => {
   // Solved states
   const [mayaSolved, setMayaSolved] = useState(false);
   const [mexicaSolved, setMexicaSolved] = useState(false);
+  const [constitutionSolved, setConstitutionSolved] = useState(false);
 
   useEffect(() => {
     // Check initial progress
@@ -26,13 +27,21 @@ const MatchingGame: React.FC = () => {
     if (localStorage.getItem('meso_app_matching_mexica_solved') === 'true') {
       setMexicaSolved(true);
     }
+    if (localStorage.getItem('meso_app_matching_constitution_solved') === 'true') {
+      setConstitutionSolved(true);
+    }
   }, []);
 
   const initializeGame = (type: DeckType) => {
     if (!type) return;
 
     setDeckType(type);
-    const sourceData = type === 'MAYA' ? MAYA_MATCHING_PAIRS : MEXICA_MATCHING_PAIRS;
+    let sourceData;
+    switch (type) {
+      case 'MAYA': sourceData = MAYA_MATCHING_PAIRS; break;
+      case 'MEXICA': sourceData = MEXICA_MATCHING_PAIRS; break;
+      case 'CONSTITUTION': sourceData = CONSTITUTION_MATCHING_PAIRS; break;
+    }
 
     // Shuffle the matching pairs
     const shuffled = [...sourceData].sort(() => Math.random() - 0.5);
@@ -62,7 +71,8 @@ const MatchingGame: React.FC = () => {
         setIsChecking(false);
 
         // Check win condition immediately after a match
-        const totalPairs = deckType === 'MAYA' ? MAYA_MATCHING_PAIRS.length / 2 : MEXICA_MATCHING_PAIRS.length / 2;
+        const sourceData = deckType === 'MAYA' ? MAYA_MATCHING_PAIRS : (deckType === 'MEXICA' ? MEXICA_MATCHING_PAIRS : CONSTITUTION_MATCHING_PAIRS);
+        const totalPairs = sourceData.length / 2;
         if (matchedPairs.length + 1 === totalPairs) {
           if (deckType === 'MAYA') {
             localStorage.setItem('meso_app_matching_maya_solved', 'true');
@@ -70,6 +80,9 @@ const MatchingGame: React.FC = () => {
           } else if (deckType === 'MEXICA') {
             localStorage.setItem('meso_app_matching_mexica_solved', 'true');
             setMexicaSolved(true);
+          } else if (deckType === 'CONSTITUTION') {
+            localStorage.setItem('meso_app_matching_constitution_solved', 'true');
+            setConstitutionSolved(true);
           }
         }
 
@@ -89,9 +102,9 @@ const MatchingGame: React.FC = () => {
   if (!deckType) {
     return (
       <div className="w-full max-w-4xl mx-auto p-6 flex flex-col items-center">
-        <h2 className="text-3xl font-bold text-[#4b6f44] mb-8">Choose a Pantheon</h2>
+        <h2 className="text-3xl font-bold text-[#4b6f44] mb-8">Choose a Collection</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
           <button
             onClick={() => initializeGame('MAYA')}
             className="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-[#a3cf6d] hover:-translate-y-1 transition-all group"
@@ -99,7 +112,7 @@ const MatchingGame: React.FC = () => {
             <div className="w-20 h-20 rounded-full bg-[#d4e157] flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
               🌿
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">Maya Gods</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Maya Culture</h3>
             <p className="text-gray-500 text-center mb-4">Deities of the rainforest, astronomy, and maize.</p>
             {mayaSolved && <span className="flex items-center gap-1 text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full"><Medal size={16} /> Completed</span>}
           </button>
@@ -111,9 +124,21 @@ const MatchingGame: React.FC = () => {
             <div className="w-20 h-20 rounded-full bg-orange-200 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
               ☀️
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">Mexica (Aztec) Gods</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Mexica Culture</h3>
             <p className="text-gray-500 text-center mb-4">Deities of war, sun, and the great Tenochtitlán.</p>
             {mexicaSolved && <span className="flex items-center gap-1 text-orange-600 font-bold bg-orange-50 px-3 py-1 rounded-full"><Medal size={16} /> Completed</span>}
+          </button>
+
+          <button
+            onClick={() => initializeGame('CONSTITUTION')}
+            className="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-[#a3cf6d] hover:-translate-y-1 transition-all group"
+          >
+            <div className="w-20 h-20 rounded-full bg-[#E8F5E9] flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
+              📜
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 text-center">Constitución Política de los Estados Unidos Mexicanos</h3>
+            <p className="text-gray-500 text-center mb-4">Artículos fundamentales y sus garantías.</p>
+            {constitutionSolved && <span className="flex items-center gap-1 text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full"><Medal size={16} /> Completed</span>}
           </button>
         </div>
       </div>
@@ -131,13 +156,49 @@ const MatchingGame: React.FC = () => {
     borderSelected: 'border-[#33691E]',
     borderMatched: 'border-green-600',
     ring: 'ring-[#558B2F]'
-  } : {
+  } : deckType === 'MEXICA' ? {
     bg: 'bg-[#FFE0B2]', // Light Orange matching reference
     textTitle: 'text-[#BF360C]', // Dark Rust
     textSubtitle: 'text-white',
     borderSelected: 'border-[#BF360C]',
     borderMatched: 'border-orange-600',
     ring: 'ring-[#BF360C]'
+  } : {
+    // Constitution Theme
+    bg: 'bg-[#FFF9C4]', // Cream/Light Yellow base
+    textTitle: 'text-[#1B5E20]', // Dark Green base
+    textSubtitle: 'text-gray-700',
+    borderSelected: 'border-[#1B5E20]',
+    borderMatched: 'border-green-800',
+    ring: 'ring-[#1B5E20]'
+  };
+
+  const getCardStyle = (card: MatchItem) => {
+    // Special case for Constitution deck differentiation
+    if (deckType === 'CONSTITUTION') {
+      if (card.type === 'term') {
+        // Articles: Green background, White text
+        return {
+          bg: 'bg-[#2E7D32]',
+          text: 'text-white',
+          border: 'border-[#1B5E20]'
+        };
+      } else {
+        // Definitions: Cream background, Dark Green text
+        return {
+          bg: 'bg-[#FFF9C4]',
+          text: 'text-[#1B5E20]',
+          border: 'border-[#FBC02D]'
+        };
+      }
+    }
+
+    // Default fallback for other decks (or if we wanted to differentiate them too later)
+    return {
+      bg: theme.bg,
+      text: theme.textTitle,
+      border: 'border-transparent' // or use theme border if needed
+    };
   };
 
   return (
@@ -151,7 +212,7 @@ const MatchingGame: React.FC = () => {
         </button>
         <div className="text-center">
           <h2 className="text-2xl font-bold text-[#4b6f44]">
-            {deckType === 'MAYA' ? 'Maya Pantheon' : 'Mexica Pantheon'}
+            {deckType === 'MAYA' ? 'Maya Collection' : (deckType === 'MEXICA' ? 'Mexica Collection' : 'Constitución Política de los Estados Unidos Mexicanos')}
           </h2>
         </div>
         <div className="w-24"></div> {/* Spacer for centering */}
@@ -163,10 +224,12 @@ const MatchingGame: React.FC = () => {
           const isMatched = matchedPairs.includes(card.matchId);
           const hasImage = card.type === 'term' && card.imageUrl && !imageErrors.has(card.id);
 
+          const cardStyle = getCardStyle(card);
+          // Base classes
           let cardClasses = `
-            relative rounded-lg shadow-md flex flex-col items-center text-center font-medium transition-all duration-300 overflow-hidden cursor-pointer
-            aspect-[3/4]
-            ${theme.bg}
+            relative rounded-lg shadow-md flex flex-col items-center justify-center text-center font-medium transition-all duration-300 overflow-hidden cursor-pointer
+            aspect-[3/4] p-2
+            ${cardStyle.bg}
           `;
 
           if (isSelected) cardClasses += ` ring-4 ${theme.ring} scale-105 z-10 shadow-xl`;
@@ -184,8 +247,8 @@ const MatchingGame: React.FC = () => {
             >
               {hasImage ? (
                 <>
-                  {/* Image Area - Taking up most of the card, transparent mix blend for "printed" look */}
-                  <div className="w-full h-[75%] p-2 flex items-end justify-center">
+                  {/* Image Area */}
+                  <div className="w-full h-[70%] p-1 flex items-end justify-center">
                     <img
                       src={card.imageUrl}
                       alt={card.name}
@@ -194,24 +257,18 @@ const MatchingGame: React.FC = () => {
                       className="max-w-full max-h-full object-contain drop-shadow-sm"
                     />
                   </div>
-                  {/* Text Area - Bottom */}
-                  <div className="w-full h-[25%] flex flex-col justify-start items-center pb-2 leading-none">
-                    <span className={`text-2xl md:text-3xl font-black uppercase ${theme.textTitle} tracking-tight`}>
+                  {/* Text Area for Image Card */}
+                  <div className="w-full h-[30%] flex items-center justify-center leading-tight overflow-hidden">
+                    <span className={`text-sm md:text-xl font-black uppercase ${theme.textTitle} tracking-tight line-clamp-3`}>
                       {card.name}
                     </span>
-                    {/* We add the role (Dios de...) as subtitle if possible, logic below implies we need the match description */}
-                    {/* Note: In this data structure, the 'term' card only has the Name. The 'definition' card has the Role.
-                            However, the user wants the Role displayed on the Image card too (like the screenshot).
-                            We can find the matching role from the definition card in the full deck? 
-                            For simplicity/performance in this view, we'll keep just the name or hardcode common roles if available in data.
-                        */}
                   </div>
                 </>
               ) : (
-                // Definition Card Layout
-                <div className="w-full h-full flex flex-col items-center justify-center p-4">
-                  <div className="w-full h-full flex items-center justify-center border-2 border-white/50 rounded-lg p-2">
-                    <span className={`text-lg md:text-xl font-bold ${theme.textTitle} text-center`}>
+                // Text Only Card (Definition or Article)
+                <div className="w-full h-full flex flex-col items-center justify-center p-1 md:p-3 overflow-y-auto scrollbar-hide">
+                  <div className={`w-full h-full flex items-center justify-center border-2 ${cardStyle.border} border-opacity-50 rounded-lg p-2`}>
+                    <span className={`text-sm md:text-lg lg:text-xl font-bold ${cardStyle.text} text-center break-words`}>
                       {card.name}
                     </span>
                   </div>
@@ -230,9 +287,9 @@ const MatchingGame: React.FC = () => {
       {isGameComplete && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl animate-bounce-in border-4 border-[#a3cf6d]">
-            <Medal size={64} className={`mx-auto mb-4 ${deckType === 'MAYA' ? 'text-green-500' : 'text-orange-500'}`} />
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">Pantheon Mastered!</h3>
-            <p className="text-gray-600 mb-6">You have matched all the {deckType === 'MAYA' ? 'Maya' : 'Mexica'} gods.</p>
+            <Medal size={64} className={`mx-auto mb-4 ${deckType === 'MAYA' ? 'text-green-500' : (deckType === 'MEXICA' ? 'text-orange-500' : 'text-green-700')}`} />
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Collection Mastered!</h3>
+            <p className="text-gray-600 mb-6">You have matched all the {deckType === 'MAYA' ? 'Maya' : (deckType === 'MEXICA' ? 'Mexica' : 'Constitution')} pairs.</p>
             <div className="flex flex-col gap-3">
               <button
                 onClick={() => initializeGame(deckType)}
