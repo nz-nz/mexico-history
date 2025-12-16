@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GameMode } from '../types';
-import { Layers, Trophy } from 'lucide-react';
+import { Layers, Trophy, Map, Crosshair } from 'lucide-react';
 
 interface GameMenuProps {
   onSelectMode: (mode: GameMode) => void;
@@ -44,6 +44,14 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
       icon: <Layers size={32} className="rotate-90" />, // Visual variation
       color: 'bg-green-100 text-green-600 hover:border-green-300',
       progress: 'New!' // Or actual progress if tracked
+    },
+    {
+      mode: GameMode.MAP,
+      title: 'Map Explorer',
+      description: 'Find archaeological sites on the map.',
+      icon: <Crosshair size={32} />,
+      color: 'bg-blue-100 text-blue-600 hover:border-blue-300',
+      progress: 'New!'
     }
   ];
 

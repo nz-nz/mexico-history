@@ -224,3 +224,121 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/TOLTECA.png'
   }
 ];
+
+// Map Game Data
+import { MapLocation } from './types';
+
+export const MAP_LOCATIONS: MapLocation[] = [
+  {
+    "id": "huatabampo",
+    "name": "Huatabampo",
+    "region": "Sonora",
+    "x": 31,
+    "y": 31
+  },
+  {
+    "id": "nogalar",
+    "name": "San Antonio Nogalar",
+    "region": "Tamaulipas",
+    "x": 56,
+    "y": 49
+  },
+  {
+    "id": "chalchihuites",
+    "name": "Chalchihuites",
+    "region": "Zacatecas",
+    "x": 47,
+    "y": 52
+  },
+  {
+    "id": "villa_reyes",
+    "name": "Villa de Reyes",
+    "region": "San Luis Potosí",
+    "x": 54,
+    "y": 56
+  },
+  {
+    "id": "teotihuacan",
+    "name": "Teotihuacán",
+    "region": "Estado de México",
+    "x": 54,
+    "y": 64
+  },
+  {
+    "id": "el_sope",
+    "name": "El Sope",
+    "region": "CDMX (Chapultepec)",
+    "x": 56,
+    "y": 66
+  },
+  {
+    "id": "xochicalco",
+    "name": "Xochicalco",
+    "region": "Morelos",
+    "x": 56,
+    "y": 68
+  },
+  {
+    "id": "cacaxtla",
+    "name": "Cacaxtla",
+    "region": "Tlaxcala",
+    "x": 59,
+    "y": 65
+  },
+  {
+    "id": "cholula",
+    "name": "Cholula",
+    "region": "Puebla",
+    "x": 59,
+    "y": 68
+  },
+  {
+    "id": "el_tajin",
+    "name": "El Tajín",
+    "region": "Veracruz",
+    "x": 59,
+    "y": 59
+  },
+  {
+    "id": "monte_alban",
+    "name": "Monte Albán y Mitla",
+    "region": "Oaxaca",
+    "x": 63,
+    "y": 73
+  },
+  {
+    "id": "la_venta",
+    "name": "La Venta",
+    "region": "Tabasco",
+    "x": 72,
+    "y": 69
+  },
+  {
+    "id": "palenque",
+    "name": "Palenque",
+    "region": "Chiapas",
+    "x": 74,
+    "y": 74
+  },
+  {
+    "id": "tonina",
+    "name": "Toniná",
+    "region": "Chiapas",
+    "x": 73,
+    "y": 76
+  },
+  {
+    "id": "calakmul",
+    "name": "Calakmul",
+    "region": "Campeche",
+    "x": 78,
+    "y": 66
+  },
+  {
+    "id": "chichen_itza",
+    "name": "Chichen Itzá",
+    "region": "Yucatán",
+    "x": 81,
+    "y": 58
+  }
+];
