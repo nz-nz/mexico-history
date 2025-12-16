@@ -2,8 +2,7 @@ export enum GameMode {
   MENU = 'MENU',
   MATCHING = 'MATCHING',
   TIMELINE = 'TIMELINE',
-  MAP = 'MAP',
-  CALIBRATION = 'CALIBRATION'
+  MAP = 'MAP'
 }
 
 
@@ -36,7 +35,7 @@ export interface MapLocation {
   id: string;
   name: string;
   region: string; // State or Region name
-  x: number; // Percentage 0-100
-  y: number; // Percentage 0-100
+  lat: number;
+  lng: number;
   imageUrl?: string; // Optional image of the site
 }

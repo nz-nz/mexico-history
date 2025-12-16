@@ -17,8 +17,6 @@ const App: React.FC = () => {
         return <TimelineGame />;
       case GameMode.MAP:
         return <MapGame onBack={() => setGameMode(GameMode.MENU)} />;
-      case GameMode.CALIBRATION:
-        return <MapGame onBack={() => setGameMode(GameMode.MENU)} calibrationMode={true} />;
       default:
         return <GameMenu onSelectMode={setGameMode} />;
     }
@@ -27,7 +25,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f3f4f6] flex flex-col">
       {/* Header (only show back button if not in menu, MapGame has its own header) */}
-      {gameMode !== GameMode.MENU && gameMode !== GameMode.MAP && gameMode !== GameMode.CALIBRATION && (
+      {gameMode !== GameMode.MENU && gameMode !== GameMode.MAP && (
         <header className="bg-white shadow-sm p-4 sticky top-0 z-50">
           <div className="max-w-4xl mx-auto flex items-center">
             <button

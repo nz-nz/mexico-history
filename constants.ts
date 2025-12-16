@@ -229,116 +229,20 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 import { MapLocation } from './types';
 
 export const MAP_LOCATIONS: MapLocation[] = [
-  {
-    "id": "huatabampo",
-    "name": "Huatabampo",
-    "region": "Sonora",
-    "x": 31,
-    "y": 31
-  },
-  {
-    "id": "nogalar",
-    "name": "San Antonio Nogalar",
-    "region": "Tamaulipas",
-    "x": 56,
-    "y": 49
-  },
-  {
-    "id": "chalchihuites",
-    "name": "Chalchihuites",
-    "region": "Zacatecas",
-    "x": 47,
-    "y": 52
-  },
-  {
-    "id": "villa_reyes",
-    "name": "Villa de Reyes",
-    "region": "San Luis Potosí",
-    "x": 54,
-    "y": 56
-  },
-  {
-    "id": "teotihuacan",
-    "name": "Teotihuacán",
-    "region": "Estado de México",
-    "x": 54,
-    "y": 64
-  },
-  {
-    "id": "el_sope",
-    "name": "El Sope",
-    "region": "CDMX (Chapultepec)",
-    "x": 56,
-    "y": 66
-  },
-  {
-    "id": "xochicalco",
-    "name": "Xochicalco",
-    "region": "Morelos",
-    "x": 56,
-    "y": 68
-  },
-  {
-    "id": "cacaxtla",
-    "name": "Cacaxtla",
-    "region": "Tlaxcala",
-    "x": 59,
-    "y": 65
-  },
-  {
-    "id": "cholula",
-    "name": "Cholula",
-    "region": "Puebla",
-    "x": 59,
-    "y": 68
-  },
-  {
-    "id": "el_tajin",
-    "name": "El Tajín",
-    "region": "Veracruz",
-    "x": 59,
-    "y": 59
-  },
-  {
-    "id": "monte_alban",
-    "name": "Monte Albán y Mitla",
-    "region": "Oaxaca",
-    "x": 63,
-    "y": 73
-  },
-  {
-    "id": "la_venta",
-    "name": "La Venta",
-    "region": "Tabasco",
-    "x": 72,
-    "y": 69
-  },
-  {
-    "id": "palenque",
-    "name": "Palenque",
-    "region": "Chiapas",
-    "x": 74,
-    "y": 74
-  },
-  {
-    "id": "tonina",
-    "name": "Toniná",
-    "region": "Chiapas",
-    "x": 73,
-    "y": 76
-  },
-  {
-    "id": "calakmul",
-    "name": "Calakmul",
-    "region": "Campeche",
-    "x": 78,
-    "y": 66
-  },
-  {
-    "id": "chichen_itza",
-    "name": "Chichen Itzá",
-    "region": "Yucatán",
-    "x": 81,
-    "y": 58
-  }
+  { id: 'huatabampo', name: 'Huatabampo', region: 'Sonora', lat: 26.8269, lng: -109.6419 },
+  { id: 'nogalar', name: 'San Antonio Nogalar', region: 'Tamaulipas', lat: 23.1667, lng: -98.5333 },
+  { id: 'chalchihuites', name: 'Chalchihuites', region: 'Zacatecas', lat: 23.4736, lng: -103.8825 },
+  { id: 'villa_reyes', name: 'Villa de Reyes', region: 'San Luis Potosí', lat: 21.8025, lng: -100.9303 },
+  { id: 'teotihuacan', name: 'Teotihuacán', region: 'Estado de México', lat: 19.6925, lng: -98.8439 },
+  { id: 'el_sope', name: 'El Sope', region: 'CDMX (Chapultepec)', lat: 19.4204, lng: -99.1963 },
+  { id: 'xochicalco', name: 'Xochicalco', region: 'Morelos', lat: 18.8039, lng: -99.2961 },
+  { id: 'cacaxtla', name: 'Cacaxtla', region: 'Tlaxcala', lat: 19.2467, lng: -98.3411 },
+  { id: 'cholula', name: 'Cholula', region: 'Puebla', lat: 19.0575, lng: -98.3031 },
+  { id: 'el_tajin', name: 'El Tajín', region: 'Veracruz', lat: 20.4468, lng: -97.3780 },
+  { id: 'monte_alban', name: 'Monte Albán y Mitla', region: 'Oaxaca', lat: 17.0438, lng: -96.7679 },
+  { id: 'la_venta', name: 'La Venta', region: 'Tabasco', lat: 18.1030, lng: -94.0375 },
+  { id: 'palenque', name: 'Palenque', region: 'Chiapas', lat: 17.4847, lng: -92.0460 },
+  { id: 'tonina', name: 'Toniná', region: 'Chiapas', lat: 16.9009, lng: -92.0108 },
+  { id: 'calakmul', name: 'Calakmul', region: 'Campeche', lat: 18.1056, lng: -89.8106 },
+  { id: 'chichen_itza', name: 'Chichen Itzá', region: 'Yucatán', lat: 20.6843, lng: -88.5678 }
 ];
