@@ -36,6 +36,14 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
       icon: <Layers size={32} />,
       color: 'bg-orange-100 text-orange-600 hover:border-orange-300',
       progress: `${matchingProgressCount}/3 Decks Solved`
+    },
+    {
+      mode: GameMode.TIMELINE,
+      title: 'Timeline Sort',
+      description: 'Drag cultures to their correct time periods.',
+      icon: <Layers size={32} className="rotate-90" />, // Visual variation
+      color: 'bg-green-100 text-green-600 hover:border-green-300',
+      progress: 'New!' // Or actual progress if tracked
     }
   ];
 
@@ -46,14 +54,14 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
         <p className="text-gray-600 text-lg">Explore the rich history, deities, and cultures of Mexico.</p>
       </div>
 
-      <div className="w-full flex justify-center">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl px-4">
         {menuItems.map((item) => (
           <button
             key={item.mode}
             onClick={() => onSelectMode(item.mode)}
             className={`
-              relative flex items-start p-8 rounded-2xl shadow-md border-2 border-transparent transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left
-              ${item.color} bg-white group w-full max-w-xl
+              relative flex items-start p-6 rounded-2xl shadow-md border-2 border-transparent transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left
+              ${item.color} bg-white group w-full
             `}
           >
             <div className={`p-4 rounded-xl mr-6 ${item.color.split(' ')[0]} bg-white/50`}>

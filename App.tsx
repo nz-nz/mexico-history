@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GameMode } from './types';
 import GameMenu from './components/GameMenu';
 import MatchingGame from './components/MatchingGame';
+import TimelineGame from './components/TimelineGame';
 import { Home } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -11,6 +12,8 @@ const App: React.FC = () => {
     switch (gameMode) {
       case GameMode.MATCHING:
         return <MatchingGame />;
+      case GameMode.TIMELINE:
+        return <TimelineGame />;
       default:
         return <GameMenu onSelectMode={setGameMode} />;
     }

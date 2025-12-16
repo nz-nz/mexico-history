@@ -144,3 +144,83 @@ export const CONSTITUTION_MATCHING_PAIRS: MatchItem[] = [
   { id: 'c37', name: 'Artículo 37', matchId: 'c_pair11', type: 'term' },
   { id: 'd_c37', name: 'Pérdida de la nacionalidad', matchId: 'c_pair11', type: 'definition' },
 ];
+
+// Timeline Game Data
+import { TimelineItem, TimelinePeriod } from './types';
+
+export const TIMELINE_PERIODS: TimelinePeriod[] = [
+  { 
+    id: 'PRECLASICO', 
+    name: 'Preclásico', 
+    dateRange: '2500 AC - 200 DC',
+    color: 'bg-green-100 border-green-300 text-green-800'
+  },
+  { 
+    id: 'CLASICO', 
+    name: 'Clásico', 
+    dateRange: '200 DC - 900 DC',
+    color: 'bg-teal-100 border-teal-300 text-teal-800'
+  },
+  { 
+    id: 'POSCLASICO', 
+    name: 'Posclásico', 
+    dateRange: '900 DC - 1521',
+    color: 'bg-emerald-100 border-emerald-300 text-emerald-800'
+  }
+];
+
+export const TIMELINE_ITEMS: TimelineItem[] = [
+  // PRECLÁSICO
+  { 
+    id: 'olmeca', 
+    name: 'Olmeca', 
+    periodId: 'PRECLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/OLMECA.png'
+  },
+  { 
+    id: 'cuicuilco', 
+    name: 'Cuicuilco', 
+    periodId: 'PRECLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/CUICUILCO.png'
+  },
+  
+  // CLÁSICO
+  { 
+    id: 'maya', 
+    name: 'Maya', 
+    periodId: 'CLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/MAYA.png'
+  }, 
+  { 
+    id: 'teotihuacana', 
+    name: 'Teotihuacana', 
+    periodId: 'CLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/TEOTIHUACANA.png'
+  },
+  { 
+    id: 'zapoteca', 
+    name: 'Zapoteca', 
+    periodId: 'CLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/ZAPOTECA.png'
+  },
+
+  // POSCLÁSICO
+  { 
+    id: 'mexica', 
+    name: 'Mexica (Azteca)', 
+    periodId: 'POSCLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/MEXICA_AZTECA.png'
+  },
+  { 
+    id: 'tarasca', 
+    name: 'Tarasca (Purépecha)', 
+    periodId: 'POSCLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/TARASCA_PUREPECHA.png'
+  },
+  { 
+    id: 'tolteca', 
+    name: 'Tolteca', 
+    periodId: 'POSCLASICO',
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/civilizations/TOLTECA.png'
+  }
+];
