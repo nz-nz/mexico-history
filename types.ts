@@ -2,7 +2,8 @@ export enum GameMode {
   MENU = 'MENU',
   MATCHING = 'MATCHING',
   TIMELINE = 'TIMELINE',
-  MAP = 'MAP'
+  MAP = 'MAP',
+  QUIZ = 'QUIZ'
 }
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GameMode } from '../types';
-import { Layers, Trophy, Map, Crosshair } from 'lucide-react';
+import { Layers, Trophy, Map, Crosshair, HelpCircle } from 'lucide-react';
 
 interface GameMenuProps {
   onSelectMode: (mode: GameMode) => void;
@@ -8,42 +8,52 @@ interface GameMenuProps {
 
 const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
   const [stats, setStats] = useState({
-    mayaSolved: false,
-    mexicaSolved: false,
-    constitutionSolved: false
+    matchingCount: 0,
+    timelineCount: 0
   });
 
   useEffect(() => {
-    // Load progress from localStorage
-    const savedMaya = localStorage.getItem('meso_app_matching_maya_solved') === 'true';
-    const savedMexica = localStorage.getItem('meso_app_matching_mexica_solved') === 'true';
-    const savedConstitution = localStorage.getItem('meso_app_matching_constitution_solved') === 'true';
-
-    setStats({
-      mayaSolved: savedMaya,
-      mexicaSolved: savedMexica,
-      constitutionSolved: savedConstitution
+    // Count matching decks solved
+    const matchingDecks = ['maya', 'mexica', 'constitution', 'artistas', 'actores', 'deportistas', 'destacados', 'arte_popular', 'escritores', 'cine_facts', 'cervantes'];
+    let matchingCount = 0;
+    matchingDecks.forEach(deck => {
+      if (localStorage.getItem(`meso_app_matching_${deck}_solved`) === 'true') {
+        matchingCount++;
+      }
     });
-  }, []);
 
-  const matchingProgressCount = (stats.mayaSolved ? 1 : 0) + (stats.mexicaSolved ? 1 : 0) + (stats.constitutionSolved ? 1 : 0);
+    // Count timeline decks solved
+    let timelineCount = 0;
+    if (localStorage.getItem('meso_app_timeline_civilizations_solved') === 'true') timelineCount++;
+    if (localStorage.getItem('meso_app_timeline_writers_solved') === 'true') timelineCount++;
+
+    setStats({ matchingCount, timelineCount });
+  }, []);
 
   const menuItems = [
     {
       mode: GameMode.MATCHING,
       title: 'History Match',
-      description: 'Match deities, definitions, and articles.',
+      description: 'Match famous people, deities, and facts.',
       icon: <Layers size={32} />,
       color: 'bg-orange-100 text-orange-600 hover:border-orange-300',
-      progress: `${matchingProgressCount}/3 Decks Solved`
+      progress: `${stats.matchingCount}/11 Decks Solved`
     },
     {
       mode: GameMode.TIMELINE,
       title: 'Timeline Sort',
-      description: 'Drag cultures to their correct time periods.',
-      icon: <Layers size={32} className="rotate-90" />, // Visual variation
+      description: 'Sort civilizations and writers by era.',
+      icon: <Layers size={32} className="rotate-90" />,
       color: 'bg-green-100 text-green-600 hover:border-green-300',
-      progress: 'New!' // Or actual progress if tracked
+      progress: `${stats.timelineCount}/2 Timelines Solved`
+    },
+    {
+      mode: GameMode.QUIZ,
+      title: 'Trivia Quiz',
+      description: 'Test your knowledge of Mexican history!',
+      icon: <HelpCircle size={32} />,
+      color: 'bg-purple-100 text-purple-600 hover:border-purple-300',
+      progress: '18 Questions'
     },
     {
       mode: GameMode.MAP,
