@@ -128,20 +128,20 @@ const TimelineGame: React.FC = () => {
   if (!deckType) {
     return (
       <div className="w-full max-w-4xl mx-auto p-6 flex flex-col items-center">
-        <h2 className="text-3xl font-bold text-[#4b6f44] mb-8">Choose a Timeline</h2>
+        <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-8">Choose a Timeline</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
           <button
             onClick={() => initializeGame('CIVILIZATIONS')}
-            className="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-green-400 hover:-translate-y-1 transition-all group"
+            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-green-400 hover:-translate-y-1 transition-all group"
           >
-            <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
+            <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
               🏛️
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">Civilizaciones</h3>
-            <p className="text-gray-500 text-center mb-4">Preclásico, Clásico, Posclásico</p>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Civilizaciones</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Preclásico, Clásico, Posclásico</p>
             {civSolved && (
-              <span className="flex items-center gap-1 text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full">
+              <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-bold bg-green-50 dark:bg-green-900/30 px-3 py-1 rounded-full">
                 <Medal size={16} /> Completed
               </span>
             )}
@@ -149,15 +149,15 @@ const TimelineGame: React.FC = () => {
 
           <button
             onClick={() => initializeGame('WRITERS')}
-            className="flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border-2 border-transparent hover:border-amber-400 hover:-translate-y-1 transition-all group"
+            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
           >
-            <div className="w-20 h-20 rounded-full bg-amber-100 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
+            <div className="w-20 h-20 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
               📚
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">Escritores</h3>
-            <p className="text-gray-500 text-center mb-4">Nueva España, Revolución, Actualidad</p>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Escritores</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Nueva España, Revolución, Actualidad</p>
             {writersSolved && (
-              <span className="flex items-center gap-1 text-amber-600 font-bold bg-amber-50 px-3 py-1 rounded-full">
+              <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/30 px-3 py-1 rounded-full">
                 <Medal size={16} /> Completed
               </span>
             )}
@@ -174,13 +174,13 @@ const TimelineGame: React.FC = () => {
       <div className="w-full flex justify-between items-center mb-6">
         <button
           onClick={() => setDeckType(null)}
-          className="flex items-center gap-2 text-gray-500 hover:text-[#4b6f44] font-medium"
+          className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#4b6f44] dark:hover:text-[#a3cf6d] font-medium"
         >
           <ArrowLeft size={20} /> Change Timeline
         </button>
         <div className="text-center flex-1">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#4b6f44] mb-2">{title}</h2>
-          <p className="text-gray-600">Drag or tap items to place them in the correct period.</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-2">{title}</h2>
+          <p className="text-gray-600 dark:text-gray-400">Drag or tap items to place them in the correct period.</p>
         </div>
         <div className="w-24"></div>
       </div>
@@ -210,11 +210,11 @@ const TimelineGame: React.FC = () => {
                 <motion.div
                   key={item.id}
                   layoutId={item.id}
-                  className="bg-white p-3 rounded-lg shadow-sm border border-black/10 flex items-center justify-between"
+                  className="bg-white dark:bg-[#16213e] p-3 rounded-lg shadow-sm border border-black/10 dark:border-gray-600 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-2">
                     {'emoji' in item && <span className="text-lg">{item.emoji}</span>}
-                    <span className="font-bold text-gray-800">{item.name}</span>
+                    <span className="font-bold text-gray-800 dark:text-gray-100">{item.name}</span>
                   </div>
                   <Trophy size={16} className="text-yellow-500" />
                 </motion.div>
@@ -237,8 +237,8 @@ const TimelineGame: React.FC = () => {
 
       {/* Unsorted Items Pool */}
       {!completed && (
-        <div className="w-full bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-          <h3 className="text-lg font-bold text-gray-700 mb-4 flex items-center gap-2">
+        <div className="w-full bg-white dark:bg-[#16213e] rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <h3 className="text-lg font-bold text-gray-700 dark:text-gray-200 mb-4 flex items-center gap-2">
             <HelpCircle size={20} />
             Items to Sort
           </h3>
@@ -260,12 +260,12 @@ const TimelineGame: React.FC = () => {
                 transition={{ duration: 0.4 }}
                 className={`
                   cursor-pointer active:cursor-grabbing px-4 py-3 rounded-xl shadow-md border-2 
-                  ${feedback?.itemId === item.id && feedback.status === 'incorrect' ? '!bg-red-100 !border-red-500 text-red-800' : 'bg-white border-gray-200 hover:border-[#4b6f44]'}
-                  ${selectedId === item.id ? 'ring-4 ring-[#4b6f44] scale-110 !border-[#4b6f44] z-20' : ''}
+                  ${feedback?.itemId === item.id && feedback.status === 'incorrect' ? '!bg-red-100 !border-red-500 text-red-800' : 'bg-white dark:bg-[#1e2d4a] border-gray-200 dark:border-gray-600 hover:border-[#4b6f44] dark:hover:border-[#a3cf6d]'}
+                  ${selectedId === item.id ? 'ring-4 ring-[#4b6f44] dark:ring-[#a3cf6d] scale-110 !border-[#4b6f44] z-20' : ''}
                   flex items-center gap-2 transition-all select-none z-10
                 `}
               >
-                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lg overflow-hidden shrink-0">
+                <div className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-lg overflow-hidden shrink-0">
                   {'imageUrl' in item && item.imageUrl ? (
                     <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
                   ) : 'emoji' in item ? (
@@ -274,7 +274,7 @@ const TimelineGame: React.FC = () => {
                     <span>🗿</span>
                   )}
                 </div>
-                <span className="font-bold text-gray-800">{item.name}</span>
+                <span className="font-bold text-gray-800 dark:text-gray-100">{item.name}</span>
               </motion.div>
             ))}
           </div>
@@ -286,11 +286,11 @@ const TimelineGame: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-[#a3cf6d]"
+          className="bg-white dark:bg-[#16213e] rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-[#a3cf6d]"
         >
           <Trophy size={64} className="mx-auto mb-4 text-yellow-500" />
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Timeline Mastered!</h3>
-          <p className="text-gray-600 mb-6">You sorted all the {title.toLowerCase()} correctly!</p>
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Timeline Mastered!</h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">You sorted all the {title.toLowerCase()} correctly!</p>
           <div className="flex flex-col gap-3">
             <button
               onClick={() => initializeGame(deckType)}
@@ -300,7 +300,7 @@ const TimelineGame: React.FC = () => {
             </button>
             <button
               onClick={() => setDeckType(null)}
-              className="text-gray-500 font-medium hover:text-gray-800"
+              className="text-gray-500 dark:text-gray-400 font-medium hover:text-gray-800 dark:hover:text-gray-200"
             >
               Return to Selection
             </button>

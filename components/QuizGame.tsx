@@ -148,7 +148,7 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
 type QuizCategory = 'ALL' | 'cine' | 'deportes' | 'premios' | 'cultura' | 'literatura';
 
 const CATEGORY_CONFIG: Record<QuizCategory, { title: string; emoji: string; bgColor: string }> = {
-  ALL: { title: 'Todas las Categorías', emoji: '🎯', bgColor: 'bg-gradient-to-r from-purple-100 to-pink-100' },
+  ALL: { title: 'Todas las Categorías', emoji: '🎯', bgColor: 'bg-purple-100' },
   cine: { title: 'Cine Mexicano', emoji: '🎬', bgColor: 'bg-red-100' },
   deportes: { title: 'Deportes', emoji: '⚽', bgColor: 'bg-green-100' },
   premios: { title: 'Premios y Ciencia', emoji: '🏆', bgColor: 'bg-yellow-100' },
@@ -241,15 +241,15 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
           <div className="w-full mb-6">
             <button
               onClick={onBack}
-              className="flex items-center gap-2 text-gray-500 hover:text-[#4b6f44] font-medium"
+              className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#4b6f44] dark:hover:text-[#a3cf6d] font-medium"
             >
               <ArrowLeft size={20} /> Back to Menu
             </button>
           </div>
         )}
 
-        <h2 className="text-3xl font-bold text-[#4b6f44] mb-8">Quiz: Datos Históricos</h2>
-        <p className="text-gray-600 mb-8 text-center">Test your knowledge of Mexican history, culture, and famous figures!</p>
+        <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-8">Quiz: Datos Históricos</h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-8 text-center">Test your knowledge of Mexican history, culture, and famous figures!</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
           {(Object.keys(CATEGORY_CONFIG) as QuizCategory[]).map(cat => {
@@ -260,12 +260,12 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
               <button
                 key={cat}
                 onClick={() => initializeQuiz(cat)}
-                className={`flex flex-col items-center p-6 ${config.bgColor} rounded-2xl shadow-lg border-2 border-transparent hover:border-[#4b6f44] hover:-translate-y-1 transition-all group`}
+                className={`flex flex-col items-center p-6 ${config.bgColor} dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-[#4b6f44] dark:hover:border-[#a3cf6d] hover:-translate-y-1 transition-all group`}
               >
                 <span className="text-4xl mb-3 group-hover:scale-110 transition-transform">{config.emoji}</span>
-                <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">{config.title}</h3>
+                <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 text-center">{config.title}</h3>
                 {highScore !== undefined && (
-                  <span className="flex items-center gap-1 text-[#4b6f44] font-bold text-sm">
+                  <span className="flex items-center gap-1 text-[#4b6f44] dark:text-[#a3cf6d] font-bold text-sm">
                     <Medal size={14} /> Best: {highScore}%
                   </span>
                 )}
@@ -287,18 +287,18 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white rounded-3xl p-8 text-center shadow-2xl border-4 border-[#a3cf6d] w-full"
+          className="bg-white dark:bg-[#16213e] rounded-3xl p-8 text-center shadow-2xl border-4 border-[#a3cf6d] w-full"
         >
           <Trophy size={64} className="mx-auto mb-4 text-yellow-500" />
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">Quiz Complete!</h3>
-          <p className="text-gray-600 mb-4">
-            You scored <span className="font-bold text-[#4b6f44]">{score}</span> out of {questions.length}
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Quiz Complete!</h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            You scored <span className="font-bold text-[#4b6f44] dark:text-[#a3cf6d]">{score}</span> out of {questions.length}
           </p>
-          <div className="text-4xl font-black text-[#4b6f44] mb-4">
+          <div className="text-4xl font-black text-[#4b6f44] dark:text-[#a3cf6d] mb-4">
             {percentage}%
           </div>
           {isHighScore && (
-            <div className="flex items-center justify-center gap-2 text-yellow-600 font-bold mb-4">
+            <div className="flex items-center justify-center gap-2 text-yellow-600 dark:text-yellow-400 font-bold mb-4">
               <Medal size={20} /> New High Score!
             </div>
           )}
@@ -311,7 +311,7 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
             </button>
             <button
               onClick={() => setCategory(null)}
-              className="text-gray-500 font-medium hover:text-gray-800"
+              className="text-gray-500 dark:text-gray-400 font-medium hover:text-gray-800 dark:hover:text-gray-200"
             >
               Choose Different Category
             </button>
@@ -330,24 +330,24 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
       <div className="flex justify-between items-center mb-6">
         <button
           onClick={() => setCategory(null)}
-          className="flex items-center gap-2 text-gray-500 hover:text-[#4b6f44] font-medium"
+          className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#4b6f44] dark:hover:text-[#a3cf6d] font-medium"
         >
           <ArrowLeft size={20} /> Exit Quiz
         </button>
         <div className="text-center">
-          <span className="text-lg font-bold text-[#4b6f44]">
+          <span className="text-lg font-bold text-[#4b6f44] dark:text-[#a3cf6d]">
             {config.emoji} {config.title}
           </span>
         </div>
         <div className="text-right">
-          <span className="text-gray-600 font-medium">
+          <span className="text-gray-600 dark:text-gray-400 font-medium">
             {currentIndex + 1} / {questions.length}
           </span>
         </div>
       </div>
 
       {/* Progress bar */}
-      <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
+      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-6">
         <div
           className="bg-[#4b6f44] h-2 rounded-full transition-all duration-300"
           style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
@@ -356,8 +356,8 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
 
       {/* Score */}
       <div className="text-center mb-4">
-        <span className="text-sm text-gray-500">Score: </span>
-        <span className="font-bold text-[#4b6f44]">{score}</span>
+        <span className="text-sm text-gray-500 dark:text-gray-400">Score: </span>
+        <span className="font-bold text-[#4b6f44] dark:text-[#a3cf6d]">{score}</span>
       </div>
 
       {/* Question */}
@@ -365,9 +365,9 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
         key={currentQuestion.id}
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        className={`${config.bgColor} rounded-2xl p-6 mb-6`}
+        className={`${config.bgColor} dark:bg-[#1e2d4a] rounded-2xl p-6 mb-6`}
       >
-        <h3 className="text-xl font-bold text-gray-800 text-center">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 text-center">
           {currentQuestion.question}
         </h3>
       </motion.div>
@@ -379,14 +379,14 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
 
           if (showResult) {
             if (index === currentQuestion.correctAnswer) {
-              buttonClass += "bg-green-100 border-green-500 text-green-800";
+              buttonClass += "bg-green-100 dark:bg-green-900/40 border-green-500 text-green-800 dark:text-green-200";
             } else if (index === selectedAnswer && index !== currentQuestion.correctAnswer) {
-              buttonClass += "bg-red-100 border-red-500 text-red-800";
+              buttonClass += "bg-red-100 dark:bg-red-900/40 border-red-500 text-red-800 dark:text-red-200";
             } else {
-              buttonClass += "bg-gray-100 border-gray-200 text-gray-500";
+              buttonClass += "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400";
             }
           } else {
-            buttonClass += "bg-white border-gray-200 hover:border-[#4b6f44] hover:bg-gray-50";
+            buttonClass += "bg-white dark:bg-[#16213e] border-gray-200 dark:border-gray-600 hover:border-[#4b6f44] dark:hover:border-[#a3cf6d] hover:bg-gray-50 dark:hover:bg-[#1e2d4a] text-gray-800 dark:text-gray-100";
           }
 
           return (

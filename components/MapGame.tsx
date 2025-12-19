@@ -84,25 +84,25 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="w-full flex flex-col h-screen bg-slate-50 relative">
+    <div className="w-full flex flex-col h-screen bg-slate-50 dark:bg-[#1a1a2e] relative">
       {/* Header */}
-      <div className="bg-white/90 backdrop-blur-md shadow-sm p-4 sticky top-0 z-[1000]">
+      <div className="bg-white/90 dark:bg-[#16213e]/90 backdrop-blur-md shadow-sm p-4 sticky top-0 z-[1000]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <button
             onClick={onBack}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600"
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
           >
             <ArrowLeft size={24} />
           </button>
 
           <div className="flex gap-6 items-center">
             <div className="text-center">
-              <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Score</span>
-              <p className="font-bold text-xl text-amber-600">{score}</p>
+              <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Score</span>
+              <p className="font-bold text-xl text-amber-600 dark:text-amber-400">{score}</p>
             </div>
             <div className="text-center">
-              <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Found</span>
-              <p className="font-bold text-xl text-green-600">{foundLocations.length}/{locations.length}</p>
+              <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Found</span>
+              <p className="font-bold text-xl text-green-600 dark:text-green-400">{foundLocations.length}/{locations.length}</p>
             </div>
           </div>
         </div>
@@ -114,10 +114,10 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
         {/* Instruction Overlay (Floating) */}
         {!gameOver && (
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[500] w-full max-w-md px-4">
-            <div className="bg-white/95 backdrop-blur shadow-xl rounded-xl p-4 text-center border-2 border-amber-100">
-              <p className="text-gray-500 mb-1 uppercase tracking-wide font-bold text-xs">Find Location</p>
-              <h2 className="text-2xl font-extrabold text-amber-900 leading-tight">{currentTarget?.name}</h2>
-              <p className="text-amber-700 font-medium text-sm">{currentTarget?.region}</p>
+            <div className="bg-white/95 dark:bg-[#16213e]/95 backdrop-blur shadow-xl rounded-xl p-4 text-center border-2 border-amber-100 dark:border-amber-900">
+              <p className="text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide font-bold text-xs">Find Location</p>
+              <h2 className="text-2xl font-extrabold text-amber-900 dark:text-amber-400 leading-tight">{currentTarget?.name}</h2>
+              <p className="text-amber-700 dark:text-amber-500 font-medium text-sm">{currentTarget?.region}</p>
             </div>
           </div>
         )}
@@ -136,22 +136,22 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
 
         {/* Game Over Screen */}
         {gameOver && (
-          <div className="absolute inset-0 z-[2000] bg-white/80 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md text-center border-4 border-amber-100">
-              <div className="inline-flex p-4 bg-amber-100 rounded-full mb-6">
-                <Trophy size={64} className="text-amber-600" />
+          <div className="absolute inset-0 z-[2000] bg-white/80 dark:bg-[#1a1a2e]/80 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-[#16213e] rounded-2xl shadow-2xl p-8 max-w-md text-center border-4 border-amber-100 dark:border-amber-900">
+              <div className="inline-flex p-4 bg-amber-100 dark:bg-amber-900/40 rounded-full mb-6">
+                <Trophy size={64} className="text-amber-600 dark:text-amber-400" />
               </div>
-              <h2 className="text-4xl font-bold text-gray-800 mb-2">Map Master!</h2>
-              <p className="text-gray-600 text-lg mb-8">You successfully explored all archaeological sites in Mexico.</p>
+              <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">Map Master!</h2>
+              <p className="text-gray-600 dark:text-gray-400 text-lg mb-8">You successfully explored all archaeological sites in Mexico.</p>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-500">Total Score</p>
-                  <p className="text-2xl font-bold text-amber-600">{score}</p>
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Total Score</p>
+                  <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">{score}</p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-500">Mistakes</p>
-                  <p className="text-2xl font-bold text-red-500">{mistakes}</p>
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Mistakes</p>
+                  <p className="text-2xl font-bold text-red-500 dark:text-red-400">{mistakes}</p>
                 </div>
               </div>
 
