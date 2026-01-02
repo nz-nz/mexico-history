@@ -28,6 +28,7 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
     let timelineCount = 0;
     if (localStorage.getItem('meso_app_timeline_civilizations_solved') === 'true') timelineCount++;
     if (localStorage.getItem('meso_app_timeline_writers_solved') === 'true') timelineCount++;
+    if (localStorage.getItem('meso_app_timeline_presidents_solved') === 'true') timelineCount++;
 
     setStats({ matchingCount, timelineCount });
   }, []);
@@ -44,10 +45,10 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
     {
       mode: GameMode.TIMELINE,
       title: 'Timeline Sort',
-      description: 'Sort civilizations and writers by era.',
+      description: 'Sort civilizations, writers, and presidents by era.',
       icon: <Layers size={32} className="rotate-90" />,
       color: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 hover:border-green-300 dark:hover:border-green-600',
-      progress: `${stats.timelineCount}/2 Timelines Solved`
+      progress: `${stats.timelineCount}/3 Timelines Solved`
     },
     {
       mode: GameMode.QUIZ,

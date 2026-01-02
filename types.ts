@@ -40,3 +40,37 @@ export interface MapLocation {
   lng: number;
   imageUrl?: string; // Optional image of the site
 }
+
+export type PresidentPeriodId = 'INDEPENDENCIA_IMPERIO' | 'PORFIRIATO_REVOLUCION' | 'MODERNO';
+
+export interface PresidentTimelineItem {
+  id: string;
+  name: string;
+  periodId: PresidentPeriodId;
+  emoji: string;
+  description?: string; // Short description of event
+  events?: string[]; // List of specific events
+}
+
+export interface PresidentTimelinePeriod {
+  id: PresidentPeriodId;
+  name: string;
+  dateRange: string;
+  color: string;
+}
+
+export type WriterPeriodId = 'NUEVA_ESPANA' | 'REVOLUCION' | 'ACTUALIDAD';
+
+export interface WriterTimelineItem {
+  id: string;
+  name: string;
+  periodId: WriterPeriodId;
+  emoji: string;
+}
+
+export interface WriterTimelinePeriod {
+  id: WriterPeriodId;
+  name: string;
+  dateRange: string;
+  color: string;
+}
