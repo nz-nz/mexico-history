@@ -781,3 +781,154 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     ]
   },
 ];
+
+export const MAP_TREATIES_AND_PLANS: MapLocation[] = [
+  // TRATADOS
+  { 
+    id: 'cordoba', 
+    name: 'Tratado de Córdoba', 
+    region: 'Córdoba, Veracruz', 
+    lat: 18.8944, 
+    lng: -96.9353, 
+    category: 'TREATY',
+    associatedPeople: "Agustín de Iturbide y Juan O'Donojú",
+    date: '24 ago 1821',
+    description: 'Documento que acuerda la Independencia de México; compuesto por 17 artículos; es una extensión al Plan de Iguala.'
+  },
+  { 
+    id: 'guadalupe_hidalgo', 
+    name: 'Tratado de Guadalupe Hidalgo', 
+    region: 'Villa de Guadalupe, CDMX', 
+    lat: 19.4847, 
+    lng: -99.1177, 
+    category: 'TREATY',
+    associatedPeople: 'Gobiernos de México y EE.UU.',
+    date: '02 feb 1848',
+    description: 'Puso fin a la guerra con EE.UU.; México cedió la mitad de su territorio (California, Arizona, Nuevo México, Texas, etc.).'
+  },
+  { 
+    id: 'tlatelolco', 
+    name: 'Tratado de Tlatelolco', 
+    region: 'Tlatelolco, CDMX', 
+    lat: 19.4515, 
+    lng: -99.1354, 
+    category: 'TREATY',
+    associatedPeople: 'Alfonso García Robles y Gustavo Díaz Ordaz',
+    date: '14 feb 1967',
+    description: 'Acuerdo para la no proliferación de armas nucleares en América Latina; logro de la diplomacia mexicana.'
+  },
+  { 
+    id: 'tlcan', 
+    name: 'TLCAN (NAFTA)', 
+    region: 'Ciudad de México', 
+    lat: 19.4326, 
+    lng: -99.1332, 
+    category: 'TREATY',
+    associatedPeople: 'Carlos Salinas de Gortari',
+    date: '17 dic 1992',
+    description: 'Tratado de Libre Comercio entre México, EE.UU. y Canadá; entró en vigor el 1 de enero de 1994.'
+  },
+
+  // PLANES
+  { 
+    id: 'iguala', 
+    name: 'Plan de Iguala', 
+    region: 'Iguala, Guerrero', 
+    lat: 18.3444, 
+    lng: -99.5391, 
+    category: 'PLAN',
+    associatedPeople: 'Agustín de Iturbide',
+    date: '24 feb 1821',
+    description: 'Declaró a la Nueva España país soberano; sus principios fueron: Religión, Independencia y Unión; creó el Ejército Trigarante.'
+  },
+  { 
+    id: 'casa_mata', 
+    name: 'Plan de Casa Mata', 
+    region: 'Hacienda Casamata, Veracruz', 
+    lat: 19.1738, 
+    lng: -96.1342, 
+    category: 'PLAN',
+    associatedPeople: 'Gral. Santa Anna',
+    date: '01 feb 1823',
+    description: 'Su objetivo fue desconocer a Iturbide como emperador, anular el imperio y reinstalar el congreso.'
+  },
+  { 
+    id: 'ayutla', 
+    name: 'Plan de Ayutla', 
+    region: 'Ayutla de los Libres, Guerrero', 
+    lat: 16.9631, 
+    lng: -99.0944, 
+    category: 'PLAN',
+    associatedPeople: 'Adrian Florencio Villarreal',
+    date: '01 mar 1854',
+    description: 'Proclamado para dar fin a la dictadura de Antonio López de Santa Anna.'
+  },
+  { 
+    id: 'noria', 
+    name: 'Plan de la Noria', 
+    region: 'La Noria, Oaxaca', 
+    lat: 17.0500, 
+    lng: -96.7100, 
+    category: 'PLAN',
+    associatedPeople: 'Porfirio Díaz',
+    date: '08 nov 1871',
+    description: 'Buscaba evitar la reelección de Benito Juárez; sus consignas fueron libertad electoral y "menos gobierno".'
+  },
+  { 
+    id: 'tuxtepec', 
+    name: 'Plan de Tuxtepec', 
+    region: 'Tuxtepec, Oaxaca', 
+    lat: 18.0833, 
+    lng: -96.1167, 
+    category: 'PLAN',
+    associatedPeople: 'Porfirio Díaz',
+    date: '10 ene 1876',
+    description: 'Elaborado para destituir a Sebastián Lerdo de Tejada y evitar su reelección.'
+  },
+  { 
+    id: 'san_luis', 
+    name: 'Plan de San Luis', 
+    region: 'San Luis Potosí, SLP', 
+    lat: 22.1565, 
+    lng: -100.9855, 
+    category: 'PLAN',
+    associatedPeople: 'Francisco I. Madero',
+    date: '05 oct 1910',
+    description: 'Llamado a las armas para derrocar el Porfiriato; lema: "Sufragio efectivo, no reelección".'
+  },
+  { 
+    id: 'ayala', 
+    name: 'Plan de Ayala', 
+    region: 'Ayala, Morelos', 
+    lat: 18.7667, 
+    lng: -98.9833, 
+    category: 'PLAN',
+    associatedPeople: 'Emiliano Zapata',
+    date: '28 nov 1911',
+    description: 'Desconocía a Madero; buscaba devolver la tierra a los campesinos; lema: "Reforma, Libertad, Justicia y Ley".'
+  },
+  { 
+    id: 'guadalupe', 
+    name: 'Plan de Guadalupe', 
+    region: 'Hacienda de Guadalupe, Coahuila', 
+    lat: 25.5611, 
+    lng: -101.0014, 
+    category: 'PLAN',
+    associatedPeople: 'Venustiano Carranza',
+    date: '26 mar 1913',
+    description: 'Proclamado para derrocar el gobierno ilegal de Victoriano Huerta tras la traición a Madero.'
+  },
+
+  // DOCUMENTO HISTÓRICO ADICIONAL
+  { 
+    id: 'sentimientos', 
+    name: 'Sentimientos de la Nación', 
+    region: 'Chilpancingo, Guerrero', 
+    lat: 17.5513, 
+    lng: -99.5005, 
+    category: 'DOCUMENT',
+    associatedPeople: 'José María Morelos y Pavón',
+    date: '14 sep 1813',
+    description: 'Fue la primera expresión pública del deseo de independencia y la división de poderes.'
+  }
+];

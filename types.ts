@@ -39,6 +39,10 @@ export interface MapLocation {
   lat: number;
   lng: number;
   imageUrl?: string; // Optional image of the site
+  category?: 'TREATY' | 'PLAN' | 'DOCUMENT'; 
+  associatedPeople?: string;
+  date?: string; // e.g. "24 ago 1821"
+  description?: string; // e.g. "Documento que acuerda la Independencia..."
 }
 
 export type PresidentPeriodId = 'INDEPENDENCIA_IMPERIO' | 'PORFIRIATO_REVOLUCION' | 'MODERNO';

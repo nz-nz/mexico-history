@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Trophy } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { MAP_LOCATIONS } from '../constants';
+import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS } from '../constants';
 import { MapLocation } from '../types';
 
 // Fix for default Leaflet markers in React
@@ -39,7 +39,27 @@ const MapInvalidator: React.FC = () => {
   return null;
 };
 
+type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | null;
+
+const parseSpanishDate = (dateStr?: string) => {
+  if (!dateStr) return 0;
+  const months: { [key: string]: number } = {
+    'ene': 0, 'feb': 1, 'mar': 2, 'abr': 3, 'may': 4, 'jun': 5,
+    'jul': 6, 'ago': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dic': 11
+  };
+  const parts = dateStr.toLowerCase().split(' ');
+  // Expecting "24 ago 1821" -> [24, ago, 1821]
+  if (parts.length < 3) return 0;
+
+  const day = parseInt(parts[0]);
+  const month = months[parts[1].substring(0, 3)] || 0;
+  const year = parseInt(parts[2]);
+
+  return new Date(year, month, day).getTime();
+};
+
 const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
+  const [mapMode, setMapMode] = useState<MapMode>(null);
   const [locations, setLocations] = useState<MapLocation[]>([]);
   const [currentTarget, setCurrentTarget] = useState<MapLocation | null>(null);
   const [foundLocations, setFoundLocations] = useState<string[]>([]);
@@ -47,13 +67,22 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
   const [mistakes, setMistakes] = useState(0);
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const [gameOver, setGameOver] = useState(false);
+  const [showReference, setShowReference] = useState(false);
 
-  useEffect(() => {
-    // Game Mode: Shuffle and initialize
-    const shuffled = [...MAP_LOCATIONS].sort(() => Math.random() - 0.5);
+  const initializeGame = (mode: MapMode) => {
+    if (!mode) return;
+    setMapMode(mode);
+    setScore(0);
+    setMistakes(0);
+    setFoundLocations([]);
+    setFeedback(null);
+    setGameOver(false);
+
+    const sourceData = mode === 'ARCHAEOLOGICAL' ? MAP_LOCATIONS : MAP_TREATIES_AND_PLANS;
+    const shuffled = [...sourceData].sort(() => Math.random() - 0.5);
     setLocations(shuffled);
     setCurrentTarget(shuffled[0]);
-  }, []);
+  };
 
   const handleMarkerClick = (location: MapLocation) => {
     if (gameOver || !currentTarget || foundLocations.includes(location.id)) return;
@@ -83,19 +112,80 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
     }
   };
 
+  const currentTitle = mapMode === 'ARCHAEOLOGICAL' ? 'Sitios Arqueológicos' : 'Tratados y Planes';
+
+  // Helper to get sorted locations for reference guide only
+  const getSortedLocationsForReference = () => {
+    if (mapMode === 'TREATIES') {
+      return [...locations].sort((a, b) => {
+        const dateA = parseSpanishDate(a.date);
+        const dateB = parseSpanishDate(b.date);
+        return dateA - dateB;
+      });
+    }
+    // For Archaeological, default to alphabetical
+    return [...locations].sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  // Mode Selection Screen
+  if (!mapMode) {
+    return (
+      <div className="w-full max-w-4xl mx-auto p-6 flex flex-col items-center min-h-screen">
+        <div className="w-full flex justify-start mb-4">
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-amber-600 font-medium"
+          >
+            <ArrowLeft size={20} /> Back to Menu
+          </button>
+        </div>
+
+        <h2 className="text-3xl font-bold text-amber-700 dark:text-amber-500 mb-8">Choose a Map Challenge</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+          <button
+            onClick={() => initializeGame('ARCHAEOLOGICAL')}
+            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
+          >
+            <div className="w-24 h-24 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
+              <MapIcon size={48} className="text-amber-600 dark:text-amber-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Sitios Arqueológicos</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Find Chichén Itzá, Teotihuacán, and other ancient ruins.</p>
+          </button>
+
+          <button
+            onClick={() => initializeGame('TREATIES')}
+            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-blue-400 hover:-translate-y-1 transition-all group"
+          >
+            <div className="w-24 h-24 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
+              <FileText size={48} className="text-blue-600 dark:text-blue-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Tratados y Planes</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Locate where the Plan de Iguala, Tratado de Córdoba, and others were signed.</p>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full flex flex-col h-screen bg-slate-50 dark:bg-[#1a1a2e] relative">
       {/* Header */}
       <div className="bg-white/90 dark:bg-[#16213e]/90 backdrop-blur-md shadow-sm p-4 sticky top-0 z-[1000]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <button
-            onClick={onBack}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
-          >
-            <ArrowLeft size={24} />
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setMapMode(null)}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-300"
+              title="Change Map"
+            >
+              <ArrowLeft size={24} />
+            </button>
+            <h2 className="text-xl font-bold text-amber-700 dark:text-amber-500 hidden md:block">{currentTitle}</h2>
+          </div>
 
-          <div className="flex gap-6 items-center">
+          <div className="flex gap-4 md:gap-6 items-center">
             <div className="text-center">
               <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Score</span>
               <p className="font-bold text-xl text-amber-600 dark:text-amber-400">{score}</p>
@@ -103,6 +193,16 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
             <div className="text-center">
               <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold">Found</span>
               <p className="font-bold text-xl text-green-600 dark:text-green-400">{foundLocations.length}/{locations.length}</p>
+            </div>
+
+            <div className="ml-2 border-l pl-4 border-gray-300 dark:border-gray-700">
+              <button
+                onClick={() => setShowReference(true)}
+                className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+                title="View Reference Guide"
+              >
+                <BookOpen size={24} />
+              </button>
             </div>
           </div>
         </div>
@@ -118,6 +218,11 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
               <p className="text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide font-bold text-xs">Find Location</p>
               <h2 className="text-2xl font-extrabold text-amber-900 dark:text-amber-400 leading-tight">{currentTarget?.name}</h2>
               <p className="text-amber-700 dark:text-amber-500 font-medium text-sm">{currentTarget?.region}</p>
+              {currentTarget?.category && (
+                <span className="inline-block mt-2 px-2 py-0.5 rounded textxs font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                  {currentTarget.category}
+                </span>
+              )}
             </div>
           </div>
         )}
@@ -125,7 +230,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
         {/* Feedback Overlay */}
         {feedback && (
           <div className={`
-            absolute top-32 left-1/2 transform -translate-x-1/2 z-[1000]
+            absolute top-48 left-1/2 transform -translate-x-1/2 z-[1000]
             flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl animate-in fade-in zoom-in duration-200
             ${feedback.type === 'success' ? 'bg-green-100 text-green-800 border-2 border-green-200' : 'bg-red-100 text-red-800 border-2 border-red-200'}
           `}>
@@ -142,7 +247,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                 <Trophy size={64} className="text-amber-600 dark:text-amber-400" />
               </div>
               <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">Map Master!</h2>
-              <p className="text-gray-600 dark:text-gray-400 text-lg mb-8">You successfully explored all archaeological sites in Mexico.</p>
+              <p className="text-gray-600 dark:text-gray-400 text-lg mb-8">You successfully located all items in {currentTitle}.</p>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
@@ -155,12 +260,20 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                 </div>
               </div>
 
-              <button
-                onClick={onBack}
-                className="w-full py-3 bg-amber-600 text-white rounded-xl font-bold text-lg hover:bg-amber-700 transition-colors shadow-lg hover:shadow-xl translate-y-0 hover:-translate-y-1 duration-200"
-              >
-                Return to Menu
-              </button>
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={() => initializeGame(mapMode)}
+                  className="w-full py-3 bg-amber-600 text-white rounded-xl font-bold text-lg hover:bg-amber-700 transition-colors shadow-lg"
+                >
+                  <RefreshCcw size={20} className="inline mr-2" /> Play Again
+                </button>
+                <button
+                  onClick={() => setMapMode(null)}
+                  className="text-gray-500 dark:text-gray-400 font-medium hover:text-gray-800 dark:hover:text-gray-200"
+                >
+                  Choose Different Map
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -192,6 +305,9 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                   <div className="text-center">
                     <strong className="block text-amber-900">{loc.name}</strong>
                     <span className="text-xs text-gray-600">{loc.region}</span>
+                    {loc.associatedPeople && (
+                      <div className="text-xs text-gray-500 mt-1 italic">{loc.associatedPeople}</div>
+                    )}
                   </div>
                 </Popup>
               )}
@@ -200,6 +316,89 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
 
         </MapContainer>
       </div>
+
+      {/* Reference Modal */}
+      {showReference && (
+        <div className="fixed inset-0 z-[3000] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#1a1a2e] w-full max-w-3xl max-h-[80vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-[#16213e]">
+              <h3 className="text-xl font-bold flex items-center gap-2 text-gray-800 dark:text-white">
+                <BookOpen size={20} className="text-indigo-500" />
+                Guía de Referencia: {currentTitle}
+              </h3>
+              <button
+                onClick={() => setShowReference(false)}
+                className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-500 dark:text-gray-400"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="grid grid-cols-1 gap-4">
+                {getSortedLocationsForReference().map((loc) => (
+                  <div key={loc.id} className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#16213e]/50 border border-gray-100 dark:border-gray-700/50">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-bold text-lg text-gray-800 dark:text-gray-200">{loc.name}</h4>
+                        {loc.category && (
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                            {loc.category}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        <MapIcon size={14} />
+                        {loc.region}
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs opacity-70">({loc.lat.toFixed(4)}, {loc.lng.toFixed(4)})</span>
+                          <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${loc.lat},${loc.lng}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                            title="View on Google Maps"
+                          >
+                            <ExternalLink size={12} />
+                          </a>
+                        </div>
+                      </div>
+
+                      {loc.associatedPeople && (
+                        <div className="text-sm text-gray-600 dark:text-gray-300 italic border-l-2 border-amber-300 pl-2 mb-2">
+                          Per: {loc.associatedPeople}
+                        </div>
+                      )}
+
+                      {loc.date && (
+                        <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          📅 {loc.date}
+                        </div>
+                      )}
+
+                      {loc.description && (
+                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {loc.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#16213e] flex justify-end">
+              <button
+                onClick={() => setShowReference(false)}
+                className="px-6 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              >
+                Close Guide
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

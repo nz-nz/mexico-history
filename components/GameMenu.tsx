@@ -61,7 +61,7 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
     {
       mode: GameMode.MAP,
       title: 'Map Explorer',
-      description: 'Find archaeological sites on the map.',
+      description: 'Find archaeological sites, treaties, and plans on the map.',
       icon: <Crosshair size={32} />,
       color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:border-blue-300 dark:hover:border-blue-600',
       progress: 'New!'
