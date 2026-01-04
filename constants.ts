@@ -679,6 +679,30 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     ]
   },
   { 
+    id: 'portes_gil', 
+    name: 'Emilio Portes Gil', 
+    periodId: 'MODERNO', 
+    emoji: '⚖️', 
+    description: '1928 – 1930',
+    events: []
+  },
+  { 
+    id: 'ortiz_rubio', 
+    name: 'Pascual Ortiz Rubio', 
+    periodId: 'MODERNO', 
+    emoji: '🤕', 
+    description: '1930 – 1932',
+    events: []
+  },
+  { 
+    id: 'abelardo_rodriguez', 
+    name: 'Abelardo L. Rodríguez', 
+    periodId: 'MODERNO', 
+    emoji: '💼', 
+    description: '1932 – 1934',
+    events: []
+  },
+  { 
     id: 'cardenas', 
     name: 'Lázaro Cárdenas', 
     periodId: 'MODERNO', 
@@ -700,6 +724,14 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
       '10 de octubre de 1942: Inauguró el monumento de la Diana Cazadora.',
       '20 de octubre de 1943: El Himno Nacional se hizo oficial.'
     ]
+  },
+  { 
+    id: 'aleman_valdes', 
+    name: 'Miguel Alemán Valdés', 
+    periodId: 'MODERNO', 
+    emoji: '🏙️', 
+    description: '1946 – 1952',
+    events: []
   },
   { 
     id: 'ruiz_cortines', 
@@ -735,6 +767,14 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     ]
   },
   { 
+    id: 'echeverria', 
+    name: 'Luis Echeverría Álvarez', 
+    periodId: 'MODERNO', 
+    emoji: '🗣️', 
+    description: '1970 – 1976',
+    events: []
+  },
+  { 
     id: 'lopez_portillo', 
     name: 'José López Portillo', 
     periodId: 'MODERNO', 
@@ -766,6 +806,30 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
       '17 de diciembre de 1992: Firma del Tratado de Libre Comercio (TLCAN).',
       '1 de enero de 1994: Inicio del Movimiento Zapatista (EZLN).'
     ]
+  },
+  { 
+    id: 'zedillo', 
+    name: 'Ernesto Zedillo Ponce de León', 
+    periodId: 'MODERNO', 
+    emoji: '📉', 
+    description: '1994 – 2000',
+    events: []
+  },
+  { 
+    id: 'fox', 
+    name: 'Vicente Fox Quesada', 
+    periodId: 'MODERNO', 
+    emoji: '🤠', 
+    description: '2000 – 2006',
+    events: []
+  },
+  { 
+    id: 'calderon', 
+    name: 'Felipe Calderón Hinojosa', 
+    periodId: 'MODERNO', 
+    emoji: '🪖', 
+    description: '2006 – 2012',
+    events: []
   },
   { 
     id: 'pena_nieto', 
