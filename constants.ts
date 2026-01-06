@@ -362,6 +362,30 @@ export const CERVANTES_MATCHING_PAIRS: MatchItem[] = [
   { id: 'd_cerv6', name: 'Premio Cervantes, novelista', matchId: 'cerv_pair6', type: 'definition' },
 ];
 
+// Universidades (Universities)
+export const UNIVERSIDADES_MATCHING_PAIRS: MatchItem[] = [
+  { id: 'uni1', name: '🏛️ UNAM', matchId: 'uni_pair1', type: 'term' },
+  { id: 'd_uni1', name: 'Porfirio Díaz (1910) - "Por mi raza hablará el espíritu"', matchId: 'uni_pair1', type: 'definition' },
+
+  { id: 'uni2', name: '🦁 UdeG', matchId: 'uni_pair2', type: 'term' },
+  { id: 'd_uni2', name: 'Plutarco Elías Calles (1925) - "Piensa y Trabaja"', matchId: 'uni_pair2', type: 'definition' },
+
+  { id: 'uni3', name: '🐯 UANL', matchId: 'uni_pair3', type: 'term' },
+  { id: 'd_uni3', name: 'Abelardo L. Rodríguez (1933) - "Alere Flammam Veritatis"', matchId: 'uni_pair3', type: 'definition' },
+
+  { id: 'uni4', name: '⚙️ IPN', matchId: 'uni_pair4', type: 'term' },
+  { id: 'd_uni4', name: 'Lázaro Cárdenas (1936) - "La técnica al servicio de la patria"', matchId: 'uni_pair4', type: 'definition' },
+
+  { id: 'uni5', name: '🐺 BUAP', matchId: 'uni_pair5', type: 'term' },
+  { id: 'd_uni5', name: 'Lázaro Cárdenas (1937) - "Pensar bien, para vivir mejor"', matchId: 'uni_pair5', type: 'definition' },
+
+  { id: 'uni6', name: '📜 Colmex', matchId: 'uni_pair6', type: 'term' },
+  { id: 'd_uni6', name: 'Lázaro Cárdenas (1940) - Investigación y Humanidades', matchId: 'uni_pair6', type: 'definition' },
+
+  { id: 'uni7', name: '🐆 UAM', matchId: 'uni_pair7', type: 'term' },
+  { id: 'd_uni7', name: 'Luis Echeverría (1974) - "Casa abierta al tiempo"', matchId: 'uni_pair7', type: 'definition' },
+];
+
 // Timeline Game Data
 import { TimelineItem, TimelinePeriod, WriterTimelineItem, WriterTimelinePeriod, PresidentTimelineItem, PresidentTimelinePeriod } from './types';
 

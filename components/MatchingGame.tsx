@@ -10,7 +10,8 @@ import {
   ARTE_POPULAR_MATCHING_PAIRS,
   ESCRITORES_MATCHING_PAIRS,
   CINE_FACTS_MATCHING_PAIRS,
-  CERVANTES_MATCHING_PAIRS
+  CERVANTES_MATCHING_PAIRS,
+  UNIVERSIDADES_MATCHING_PAIRS
 } from '../constants';
 import { MatchItem } from '../types';
 import { motion } from 'framer-motion';
@@ -20,6 +21,7 @@ type DeckType =
   | 'MAYA' | 'MEXICA' | 'CONSTITUTION'
   | 'ARTISTAS' | 'ACTORES' | 'DEPORTISTAS' | 'DESTACADOS'
   | 'ARTE_POPULAR' | 'ESCRITORES' | 'CINE_FACTS' | 'CERVANTES'
+  | 'UNIVERSIDADES'
   | null;
 
 // Deck configuration for easy management
@@ -142,6 +144,16 @@ const DECK_CONFIG: Record<Exclude<DeckType, null>, {
     bgColor: 'bg-amber-100',
     hoverBorder: 'hover:border-amber-400',
     category: 'LITERATURE'
+  },
+  UNIVERSIDADES: {
+    data: UNIVERSIDADES_MATCHING_PAIRS,
+    title: 'Universidades',
+    shortTitle: 'Universidades',
+    emoji: '🎓',
+    description: 'Presidentes, años y lemas',
+    bgColor: 'bg-slate-200',
+    hoverBorder: 'hover:border-slate-400',
+    category: 'CULTURE'
   }
 };
 
