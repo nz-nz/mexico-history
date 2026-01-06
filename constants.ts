@@ -709,6 +709,7 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     emoji: '🛢️', 
     description: '1934 – 1940',
     events: [
+      '1 de enero de 1936: Creación del Instituto Politécnico Nacional (IPN) para impulsar el desarrollo tecnológico.',
       '18 de marzo de 1938: Expropió el petróleo.',
       'Evento: Otorgó asilo político al comunista ruso León Trotsky.'
     ]
