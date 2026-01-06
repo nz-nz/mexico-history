@@ -621,6 +621,7 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
       '10 de enero de 1876: Plan de Tuxtepec.',
       '13 de marzo de 1878: Primer enlace telefónico en el país.',
       '16 de septiembre de 1910: Inauguración del Ángel de la Independencia.',
+      '22 de septiembre de 1910: Creación de la Universidad Nacional Autónoma de México (UNAM). Lema: "Por mi raza hablará el espíritu".',
       '25 de mayo de 1911: Fin del Porfiriato (renuncia al poder).'
     ]
   },
@@ -674,6 +675,7 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     description: '1924 – 1928 (Jefe Máximo 1928-1934)',
     events: [
       '1925: Creó el Banco de México.',
+      '12 de octubre de 1925: Creación de la Universidad de Guadalajara (UdeG). Lema: "Piensa y Trabaja".',
       '1929: Fundó el Partido Nacional Revolucionario (PNR).',
       'Evento: Expedición de la "Ley Calles" y Guerra Cristera (1926-1929).'
     ]
@@ -700,7 +702,9 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     periodId: 'MODERNO', 
     emoji: '💼', 
     description: '1932 – 1934',
-    events: []
+    events: [
+      '25 de septiembre de 1933: Creación de la Universidad Autónoma de Nuevo León (UANL). Lema: "Alere Flammam Veritatis" (Alimenta la llama de la verdad).'
+    ]
   },
   { 
     id: 'cardenas', 
@@ -709,8 +713,10 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     emoji: '🛢️', 
     description: '1934 – 1940',
     events: [
-      '1 de enero de 1936: Creación del Instituto Politécnico Nacional (IPN) para impulsar el desarrollo tecnológico.',
+      '1 de enero de 1936: Creación del Instituto Politécnico Nacional (IPN). Lema: "La Técnica al Servicio de la Patria".',
+      '1937: Transformación de la Benemérita Universidad Autónoma de Puebla (BUAP) en universidad pública. Lema: "Pensar bien, para vivir mejor".',
       '18 de marzo de 1938: Expropió el petróleo.',
+      '16 de octubre de 1940: Creación de El Colegio de México (Colmex). (Centrado en la excelencia en investigación).',
       'Evento: Otorgó asilo político al comunista ruso León Trotsky.'
     ]
   },
@@ -773,7 +779,9 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     periodId: 'MODERNO', 
     emoji: '🗣️', 
     description: '1970 – 1976',
-    events: []
+    events: [
+      '1 de enero de 1974: Creación de la Universidad Autónoma Metropolitana (UAM). Lema: "Casa abierta al tiempo" (In Calli Ixcahuicopa).'
+    ]
   },
   { 
     id: 'lopez_portillo', 
