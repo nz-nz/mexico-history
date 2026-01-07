@@ -252,6 +252,39 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
           </div>
         </div>
 
+        {/* SRS Reference */}
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#16213e] dark:to-[#1a2744] p-6 rounded-2xl border border-gray-200 dark:border-gray-700 mb-10">
+          <h3 className="text-gray-700 dark:text-gray-200 font-bold text-lg mb-4 flex items-center gap-2">
+            📚 ¿Qué es el Sistema SRS?
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            <strong>Repetición Espaciada (SRS)</strong> es una técnica científica que optimiza tu memoria a largo plazo.
+            Las tarjetas que dominas aparecen menos, y las difíciles se repiten más seguido.
+          </p>
+          <div className="grid grid-cols-5 gap-2 text-xs text-center">
+            <div className="bg-red-100 dark:bg-red-900/30 rounded p-2">
+              <div className="font-bold text-red-600 dark:text-red-300">Caja 1</div>
+              <div className="text-red-500">1 día</div>
+            </div>
+            <div className="bg-orange-100 dark:bg-orange-900/30 rounded p-2">
+              <div className="font-bold text-orange-600 dark:text-orange-300">Caja 2</div>
+              <div className="text-orange-500">3 días</div>
+            </div>
+            <div className="bg-yellow-100 dark:bg-yellow-900/30 rounded p-2">
+              <div className="font-bold text-yellow-600 dark:text-yellow-300">Caja 3</div>
+              <div className="text-yellow-500">7 días</div>
+            </div>
+            <div className="bg-green-100 dark:bg-green-900/30 rounded p-2">
+              <div className="font-bold text-green-600 dark:text-green-300">Caja 4</div>
+              <div className="text-green-500">14 días</div>
+            </div>
+            <div className="bg-[#4b6f44]/20 dark:bg-[#4b6f44]/30 rounded p-2">
+              <div className="font-bold text-[#4b6f44] dark:text-[#a3cf6d]">Caja 5</div>
+              <div className="text-[#4b6f44] dark:text-[#a3cf6d]">30 días</div>
+            </div>
+          </div>
+        </div>
+
         {/* Modules Toggle */}
         <div className="text-center">
           <button
