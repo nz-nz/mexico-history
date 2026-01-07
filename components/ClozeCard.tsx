@@ -89,7 +89,7 @@ const ClozeCard: React.FC<ClozeCardProps> = ({ card, isFlipped, onFlip }) => {
   };
 
   return (
-    <div className="w-full max-w-lg h-96 perspective-1000 cursor-pointer" onClick={onFlip}>
+    <div className="w-full max-w-lg h-96 perspective-1000 cursor-pointer overflow-hidden" onClick={onFlip}>
       <motion.div
         className="relative w-full h-full text-center transition-all duration-500 transform-style-3d"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -98,8 +98,8 @@ const ClozeCard: React.FC<ClozeCardProps> = ({ card, isFlipped, onFlip }) => {
       >
         {/* Front - Cloze with inputs */}
         <div
-          className="absolute w-full h-full bg-white dark:bg-[#16213e] rounded-2xl shadow-xl flex flex-col items-center justify-center p-8 border-2 border-gray-100 dark:border-gray-700 backface-hidden"
-          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+          className="absolute w-full h-full bg-white dark:bg-[#16213e] rounded-2xl shadow-xl flex flex-col items-center justify-center p-6 border-2 border-gray-100 dark:border-gray-700 overflow-hidden"
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', zIndex: isFlipped ? 0 : 10 }}
         >
           <span className="text-gray-400 dark:text-gray-500 uppercase text-xs font-bold tracking-widest mb-4">
             Completa la frase
@@ -114,11 +114,12 @@ const ClozeCard: React.FC<ClozeCardProps> = ({ card, isFlipped, onFlip }) => {
 
         {/* Back - Revealed Answer */}
         <div
-          className="absolute w-full h-full bg-white dark:bg-[#16213e] rounded-2xl shadow-xl flex flex-col items-center justify-center p-8 border-2 border-[#4b6f44] dark:border-[#a3cf6d]"
+          className="absolute w-full h-full bg-white dark:bg-[#16213e] rounded-2xl shadow-xl flex flex-col items-center justify-center p-6 border-2 border-[#4b6f44] dark:border-[#a3cf6d] overflow-hidden"
           style={{
             transform: 'rotateY(180deg)',
             backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden'
+            WebkitBackfaceVisibility: 'hidden',
+            zIndex: isFlipped ? 10 : 0
           }}
         >
           <span className="text-gray-400 dark:text-gray-500 uppercase text-xs font-bold tracking-widest mb-4">

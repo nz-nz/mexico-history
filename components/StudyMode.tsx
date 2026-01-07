@@ -14,11 +14,18 @@ interface StudyModeProps {
 const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
   const { srsState, getDueCards, submitResult } = useSRS();
 
+  // State for session
   const [selectedModule, setSelectedModule] = useState<Module | null>(null);
   const [sessionCards, setSessionCards] = useState<SRSCard[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [sessionStats, setSessionStats] = useState({ correct: 0, incorrect: 0 });
+
+  // Dashboard State
+  const [showDashboard, setShowDashboard] = useState(true);
+  const [dailyPace, setDailyPace] = useState(20); // Configurable pace
+
+  // --- HELPERS ---
 
   // Compute due cards for specific module or all
   const getDueCount = (moduleId: string) => {
@@ -26,6 +33,39 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
     if (!module) return 0;
     const allCards = module.decks.flatMap(d => d.cards);
     return getDueCards(allCards).length;
+  };
+
+  const getAllDueCards = () => {
+    const allCards = ALL_MODULES.flatMap(m => m.decks.flatMap(d => d.cards));
+    return getDueCards(allCards);
+  };
+
+  const getGlobalStats = () => {
+    const stats = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, total: 0, mastered: 0 };
+    const allCards = ALL_MODULES.flatMap(m => m.decks.flatMap(d => d.cards));
+    stats.total = allCards.length;
+
+    allCards.forEach(card => {
+      const state = srsState[card.id];
+      const box = state ? state.box : 0;
+      // @ts-ignore
+      if (stats[box] !== undefined) stats[box]++;
+    });
+    // Mastered = Box 4 & 5 (Conceptually "Known" and "Permanent")
+    stats.mastered = stats[4] + stats[5];
+    return stats;
+  };
+
+  const getProjection = (stats: any) => {
+    // Simple projection: Remaining "Not Mastered" cards / Pace
+    const remaining = stats.total - stats.mastered;
+    const days = Math.ceil(remaining / dailyPace);
+    const date = new Date();
+    date.setDate(date.getDate() + days);
+    return {
+      days,
+      date: date.toLocaleDateString('es-MX', { month: 'long', day: 'numeric', year: 'numeric' })
+    };
   };
 
   const startSession = (mod: Module) => {
@@ -46,10 +86,10 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
       // take first 10 new cards (never seen).
       const newCards = allCards.filter(c => !srsState[c.id]);
       if (newCards.length > 0) {
-        setSessionCards(newCards.slice(0, 10));
+        setSessionCards(newCards.slice(0, 10)); // Learn 10 new
       } else {
         // All cards seen and nothing due? Just review random 10.
-        const shuffled = [...allCards].sort(() => Math.random() - 0.5).slice(0, 10);
+        const shuffled = [...allCards].sort(() => Math.random() - 0.5).slice(0, 10); // Review random
         setSessionCards(shuffled);
       }
     } else {
@@ -60,33 +100,187 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
     setCurrentIndex(0);
     setSessionStats({ correct: 0, incorrect: 0 });
     setIsFlipped(false);
+    setShowDashboard(false); // Hide dashboard when starting
   };
 
-  const currentCard = sessionCards[currentIndex];
+  // Start "Smart Session" (All Modules)
+  const startCoachSession = () => {
+    const due = getAllDueCards();
+    // Shuffle helper
+    const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 
-  const handleRating = (correct: boolean) => {
-    if (!currentCard) return;
+    // If nothing due, grab a mix of new cards from any module
+    if (due.length === 0) {
+      const allCards = ALL_MODULES.flatMap(m => m.decks.flatMap(d => d.cards));
+      const newCards = allCards.filter(c => !srsState[c.id]);
+      setSessionCards(shuffle(newCards).slice(0, 20));
+    } else {
+      setSessionCards(shuffle(due).slice(0, 20));
+    }
 
-    submitResult(currentCard.id, correct);
+    // Create a "Dummy" module object for the context of this unified session
+    setSelectedModule({
+      id: 'coach_session',
+      title: 'Sesión del Coach',
+      description: 'Mezcla Inteligente',
+      decks: [],
+      icon: '🎓'
+    });
+    setCurrentIndex(0);
+    setSessionStats({ correct: 0, incorrect: 0 });
+    setIsFlipped(false);
+    setShowDashboard(false);
+  };
+
+  const handleRating = (isCorrect: boolean) => {
+    const card = sessionCards[currentIndex];
+    submitResult(card.id, isCorrect);
+
     setSessionStats(prev => ({
-      correct: prev.correct + (correct ? 1 : 0),
-      incorrect: prev.incorrect + (correct ? 0 : 1)
+      ...prev,
+      [isCorrect ? 'correct' : 'incorrect']: prev[isCorrect ? 'correct' : 'incorrect'] + 1
     }));
 
-    // Next card
-    setIsFlipped(false);
-    setTimeout(() => {
+    if (currentIndex < sessionCards.length) {
       setCurrentIndex(prev => prev + 1);
-    }, 200);
+      setIsFlipped(false);
+    }
   };
 
-  // 1. Module Selection Screen
+  // Get current card for rendering
+  const currentCard = sessionCards[currentIndex];
+
+  // --- RENDERERS ---
+
+  // 0. Dashboard View (New Entry Point)
+  if (showDashboard && !selectedModule) {
+    const globalStats = getGlobalStats();
+    const allDue = getAllDueCards().length;
+    const projection = getProjection(globalStats);
+    const percentMastered = Math.round((globalStats.mastered / globalStats.total) * 100);
+
+    return (
+      <div className="w-full max-w-5xl mx-auto p-4 md:p-8 animate-in fade-in duration-500">
+        {/* Header / Greeting */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+          <div className="flex items-center gap-4">
+            <div className="bg-[#4b6f44] text-white p-4 rounded-full shadow-lg">
+              <BookOpen size={40} />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">Hola, Estudiante</h1>
+              <p className="text-gray-500 dark:text-gray-400">Tu camino a la naturalización continúa.</p>
+            </div>
+          </div>
+
+          {/* Main Action Call */}
+          <button
+            onClick={startCoachSession}
+            className="bg-gradient-to-r from-[#4b6f44] to-[#6a9e5b] text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center gap-3 w-full md:w-auto justify-center"
+          >
+            <div className="text-left">
+              <div className="text-xs uppercase font-bold text-green-100 mb-1">Tu Meta de Hoy</div>
+              <div className="text-2xl font-bold">Entrenar ({allDue > 0 ? allDue : '20'} Tarjetas)</div>
+            </div>
+            <ArrowLeft className="rotate-180" size={24} />
+          </button>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          {/* Mastery Card */}
+          <div className="bg-white dark:bg-[#16213e] p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
+            <h3 className="text-gray-500 uppercase text-xs font-bold mb-4">Progreso Total</h3>
+            <div className="flex items-end gap-2 mb-2">
+              <span className="text-5xl font-bold text-[#4b6f44] dark:text-[#a3cf6d]">{percentMastered}%</span>
+              <span className="text-sm text-gray-400 mb-2">Dominado</span>
+            </div>
+            <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+              <div style={{ width: `${percentMastered}%` }} className="bg-[#4b6f44] h-full" />
+            </div>
+            <p className="text-xs text-gray-400 mt-4">
+              {globalStats.mastered} de {globalStats.total} conceptos memorizados.
+            </p>
+          </div>
+
+          {/* Timeline Card */}
+          <div className="bg-white dark:bg-[#16213e] p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
+            <h3 className="text-gray-500 uppercase text-xs font-bold mb-4">Proyección de Meta</h3>
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-3xl font-bold text-gray-800 dark:text-gray-100">{projection.days} días</span>
+              <div className="text-right">
+                <div className="text-xs text-gray-400">Fecha Estimada</div>
+                <div className="font-bold text-[#4b6f44]">{projection.date}</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 dark:bg-gray-800 p-2 rounded-lg">
+              <span>Ritmo:</span>
+              <input
+                type="number"
+                value={dailyPace}
+                onChange={(e) => setDailyPace(Number(e.target.value))}
+                className="w-12 bg-white dark:bg-gray-700 border rounded px-1 font-bold text-center"
+              />
+              <span>tarjetas / día</span>
+            </div>
+            <p className="text-xs text-gray-400 mt-4">
+              Basado en tu ritmo actual de estudio.
+            </p>
+          </div>
+
+          {/* Distribution Card */}
+          <div className="bg-white dark:bg-[#16213e] p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
+            <h3 className="text-gray-500 uppercase text-xs font-bold mb-4">Distribución SRS</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-gray-400"></div> Nuevas</span>
+                <span className="font-bold">{globalStats[0]}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-red-400"></div> Difíciles (Caja 1)</span>
+                <span className="font-bold text-red-500">{globalStats[1]}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-yellow-400"></div> En Proceso (Cajas 2-3)</span>
+                <span className="font-bold text-yellow-500">{globalStats[2] + globalStats[3]}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#4b6f44]"></div> Maestras (Cajas 4-5)</span>
+                <span className="font-bold text-[#4b6f44]">{globalStats[4] + globalStats[5]}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Modules Toggle */}
+        <div className="text-center">
+          <button
+            onClick={() => setShowDashboard(false)}
+            className="text-gray-500 hover:text-[#4b6f44] dark:text-gray-400 dark:hover:text-[#a3cf6d] font-bold flex items-center gap-2 mx-auto transition-colors"
+          >
+            <BookOpen size={20} />
+            Explorar Módulos Individuales
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // 1. Module Selection Screen (Grid)
   if (!selectedModule) {
     return (
-      <div className="w-full max-w-4xl mx-auto p-6">
-        <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-6 flex items-center gap-2">
-          <BookOpen /> Módulos de Estudio
-        </h2>
+      <div className="w-full max-w-4xl mx-auto p-6 animate-in slide-in-from-bottom-5 duration-500">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] flex items-center gap-2">
+            <BookOpen /> Módulos de Estudio
+          </h2>
+          <button
+            onClick={() => setShowDashboard(true)}
+            className="text-gray-500 hover:text-[#4b6f44] font-bold text-sm"
+          >
+            Volver al Coach
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {ALL_MODULES.map(mod => {
@@ -173,10 +367,13 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
           </div>
 
           <button
-            onClick={() => setSelectedModule(null)}
+            onClick={() => {
+              setSelectedModule(null);
+              setShowDashboard(true);
+            }}
             className="bg-[#4b6f44] text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-[#3a5735] transition-colors"
           >
-            Volver a Módulos
+            Volver al Dashboard
           </button>
         </div>
       </div>
@@ -189,7 +386,10 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
       {/* Header */}
       <div className="w-full flex justify-between items-center mb-8">
         <button
-          onClick={() => setSelectedModule(null)}
+          onClick={() => {
+            setSelectedModule(null);
+            setShowDashboard(true);
+          }}
           className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
         >
           <ArrowLeft />
