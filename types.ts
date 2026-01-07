@@ -3,10 +3,9 @@ export enum GameMode {
   MATCHING = 'MATCHING',
   TIMELINE = 'TIMELINE',
   MAP = 'MAP',
-  QUIZ = 'QUIZ'
+  QUIZ = 'QUIZ',
+  STUDY = 'STUDY'
 }
-
-
 
 export interface MatchItem {
   id: string;
@@ -77,4 +76,52 @@ export interface WriterTimelinePeriod {
   name: string;
   dateRange: string;
   color: string;
+}
+
+// ==========================================
+// SRS & STUDY MODE TYPES
+// ==========================================
+
+export type CardType = 'standard' | 'cloze' | 'image_occlusion' | 'ordering';
+
+export interface SRSCard {
+  id: string;
+  type: CardType;
+  question: string;         // For standard/cloze: The visible text/question
+  answer: string;           // For standard: Back of card. For cloze: The answer key.
+  
+  // Specific fields for different types
+  imageUrl?: string;        // For Image Occlusion or Standard with visuals
+  options?: string[];       // For Ordering (shuffled list) or Multiple Choice
+  clozeText?: string;       // For Cloze: "The anthem was written by {{c1::Bocanegra}}"
+  occlusionLabels?: {       // For Image Occlusion
+    id: string;
+    x: number;
+    y: number;
+    label: string;
+    hidden: boolean; 
+  }[];
+}
+
+export interface SRSState {
+  cardId: string;
+  box: number;              // 1-5 (Leitner)
+  nextReviewDate: number;   // Timestamp
+  interval: number;         // Days until next review
+  easeFactor: number;       // For SM-2 (optional, default 2.5)
+}
+
+export interface Deck {
+  id: string;
+  title: string;
+  description: string;
+  cards: SRSCard[];
+}
+
+export interface Module {
+  id: string;
+  title: string;
+  description: string;
+  decks: Deck[];
+  icon: string; // Emoji
 }

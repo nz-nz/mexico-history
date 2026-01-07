@@ -5,6 +5,7 @@ import MatchingGame from './components/MatchingGame';
 import TimelineGame from './components/TimelineGame';
 import MapGame from './components/MapGame';
 import QuizGame from './components/QuizGame';
+import StudyMode from './components/StudyMode';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Home } from 'lucide-react';
 
@@ -21,6 +22,8 @@ const App: React.FC = () => {
         return <MapGame onBack={() => setGameMode(GameMode.MENU)} />;
       case GameMode.QUIZ:
         return <QuizGame onBack={() => setGameMode(GameMode.MENU)} />;
+      case GameMode.STUDY:
+        return <StudyMode onBack={() => setGameMode(GameMode.MENU)} />;
       default:
         return <GameMenu onSelectMode={setGameMode} />;
     }

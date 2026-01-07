@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GameMode } from '../types';
-import { Layers, Trophy, Map, Crosshair, HelpCircle, Sun, Moon } from 'lucide-react';
+import { Layers, Trophy, Map, Crosshair, HelpCircle, Sun, Moon, BookOpen } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface GameMenuProps {
@@ -34,6 +34,14 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
   }, []);
 
   const menuItems = [
+    {
+      mode: GameMode.STUDY,
+      title: 'Curso de Estudio',
+      description: 'Domina los 7 Módulos para la naturalización.',
+      icon: <BookOpen size={32} />,
+      color: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:border-red-300 dark:hover:border-red-600',
+      progress: 'Recomendado'
+    },
     {
       mode: GameMode.MATCHING,
       title: 'History Match',
