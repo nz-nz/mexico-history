@@ -1029,3 +1029,98 @@ export const MAP_TREATIES_AND_PLANS: MapLocation[] = [
     description: 'Fue la primera expresión pública del deseo de independencia y la división de poderes.'
   }
 ];
+
+// =====================================================
+// RELIEF FEATURES - GEOGRAPHY OF MEXICO
+// =====================================================
+
+export const MAP_RELIEF_FEATURES: MapLocation[] = [
+  // LAS SIERRAS MADRE
+  { 
+    id: 'sierra_madre_occidental', 
+    name: 'Sierra Madre Occidental', 
+    region: 'Costa oeste de México', 
+    lat: 25.0, 
+    lng: -106.5, 
+    category: 'SIERRA',
+    description: 'Cadena montañosa que corre paralela a la costa del Pacífico desde la frontera con EE.UU. hasta Jalisco.'
+  },
+  { 
+    id: 'sierra_madre_oriental', 
+    name: 'Sierra Madre Oriental', 
+    region: 'Costa este de México', 
+    lat: 24.5, 
+    lng: -99.5, 
+    category: 'SIERRA',
+    description: 'Cadena montañosa que corre paralela al Golfo de México desde el noreste hasta el centro del país.'
+  },
+
+  // OTRAS SIERRAS
+  { 
+    id: 'sierra_madre_del_sur', 
+    name: 'Sierra Madre del Sur', 
+    region: 'Costa sur del Pacífico', 
+    lat: 17.0, 
+    lng: -99.5, 
+    category: 'SIERRA',
+    description: 'Cadena montañosa a lo largo de la costa sur del Pacífico, desde Jalisco hasta el Istmo de Tehuantepec.'
+  },
+  { 
+    id: 'sierra_de_oaxaca', 
+    name: 'Sierra de Oaxaca', 
+    region: 'Sur-centro de México (Oaxaca)', 
+    lat: 17.0, 
+    lng: -96.5, 
+    category: 'SIERRA',
+    description: 'Sistema montañoso complejo en el estado de Oaxaca, conocido por su biodiversidad.'
+  },
+  { 
+    id: 'sierra_de_chiapas', 
+    name: 'Sierra de Chiapas', 
+    region: 'Sureste de México (Chiapas)', 
+    lat: 16.0, 
+    lng: -92.5, 
+    category: 'SIERRA',
+    description: 'Sistema montañoso en el sureste del país, se extiende hasta Guatemala.'
+  },
+  { 
+    id: 'eje_neovolcanico', 
+    name: 'Eje Neovolcánico Transversal', 
+    region: 'Franja central de México', 
+    lat: 19.2, 
+    lng: -99.0, 
+    category: 'SIERRA',
+    description: 'Cordillera volcánica que cruza el centro del país de este a oeste; incluye los volcanes más altos de México.'
+  },
+
+  // MONTAÑAS IMPORTANTES
+  { 
+    id: 'pena_bernal', 
+    name: 'Peña de Bernal', 
+    region: 'Estado de Querétaro', 
+    lat: 20.7492, 
+    lng: -99.9419, 
+    category: 'MOUNTAIN',
+    description: 'Tercer monolito más grande del mundo. Formación rocosa volcánica de 433 metros de altura.'
+  },
+  { 
+    id: 'cerro_silla', 
+    name: 'Cerro de la Silla', 
+    region: 'Monterrey, Nuevo León', 
+    lat: 25.6167, 
+    lng: -100.2333, 
+    category: 'MOUNTAIN',
+    description: 'Ícono turístico de Monterrey. Montaña emblemática visible desde toda la ciudad.'
+  },
+
+  // VALLES IMPORTANTES
+  { 
+    id: 'valle_yaqui', 
+    name: 'Valle del Yaqui', 
+    region: 'Estado de Sonora', 
+    lat: 27.4833, 
+    lng: -110.0, 
+    category: 'VALLEY',
+    description: 'Valle agrícola importante en el noroeste de México, hogar del pueblo Yaqui.'
+  }
+];

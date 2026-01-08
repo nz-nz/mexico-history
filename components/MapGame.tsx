@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink, Mountain } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS } from '../constants';
+import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS, MAP_RELIEF_FEATURES } from '../constants';
 import { MapLocation } from '../types';
 
 // Fix for default Leaflet markers in React
@@ -39,7 +39,7 @@ const MapInvalidator: React.FC = () => {
   return null;
 };
 
-type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | null;
+type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | 'RELIEF' | null;
 
 const parseSpanishDate = (dateStr?: string) => {
   if (!dateStr) return 0;
@@ -78,7 +78,11 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
     setFeedback(null);
     setGameOver(false);
 
-    const sourceData = mode === 'ARCHAEOLOGICAL' ? MAP_LOCATIONS : MAP_TREATIES_AND_PLANS;
+    const sourceData = mode === 'ARCHAEOLOGICAL'
+      ? MAP_LOCATIONS
+      : mode === 'TREATIES'
+        ? MAP_TREATIES_AND_PLANS
+        : MAP_RELIEF_FEATURES;
     const shuffled = [...sourceData].sort(() => Math.random() - 0.5);
     setLocations(shuffled);
     setCurrentTarget(shuffled[0]);
@@ -112,7 +116,11 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
     }
   };
 
-  const currentTitle = mapMode === 'ARCHAEOLOGICAL' ? 'Sitios Arqueológicos' : 'Tratados y Planes';
+  const currentTitle = mapMode === 'ARCHAEOLOGICAL'
+    ? 'Sitios Arqueológicos'
+    : mapMode === 'TREATIES'
+      ? 'Tratados y Planes'
+      : 'Relieve de México';
 
   // Helper to get sorted locations for reference guide only
   const getSortedLocationsForReference = () => {
@@ -142,10 +150,10 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
 
         <h2 className="text-3xl font-bold text-amber-700 dark:text-amber-500 mb-8">Choose a Map Challenge</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
           <button
             onClick={() => initializeGame('ARCHAEOLOGICAL')}
-            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
+            className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
           >
             <div className="w-24 h-24 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
               <MapIcon size={48} className="text-amber-600 dark:text-amber-400" />
@@ -156,13 +164,24 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
 
           <button
             onClick={() => initializeGame('TREATIES')}
-            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-blue-400 hover:-translate-y-1 transition-all group"
+            className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-blue-400 hover:-translate-y-1 transition-all group"
           >
             <div className="w-24 h-24 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
               <FileText size={48} className="text-blue-600 dark:text-blue-400" />
             </div>
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Tratados y Planes</h3>
             <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Locate where the Plan de Iguala, Tratado de Córdoba, and others were signed.</p>
+          </button>
+
+          <button
+            onClick={() => initializeGame('RELIEF')}
+            className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-green-400 hover:-translate-y-1 transition-all group"
+          >
+            <div className="w-24 h-24 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
+              <Mountain size={48} className="text-green-600 dark:text-green-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Relieve de México</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Localiza sierras, montañas y valles importantes.</p>
           </button>
         </div>
       </div>
