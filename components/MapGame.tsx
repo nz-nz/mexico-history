@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink, Mountain, Flame } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink, Mountain, Flame, Leaf } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS, MAP_RELIEF_FEATURES, MAP_VOLCANOES } from '../constants';
+import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS, MAP_RELIEF_FEATURES, MAP_VOLCANOES, MAP_NATURAL_RESERVES } from '../constants';
 import { MapLocation } from '../types';
 
 // Fix for default Leaflet markers in React
@@ -39,7 +39,7 @@ const MapInvalidator: React.FC = () => {
   return null;
 };
 
-type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | 'RELIEF' | 'VOLCANOES' | null;
+type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | 'RELIEF' | 'VOLCANOES' | 'NATURAL_RESERVES' | null;
 
 const parseSpanishDate = (dateStr?: string) => {
   if (!dateStr) return 0;
@@ -84,7 +84,9 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
         ? MAP_TREATIES_AND_PLANS
         : mode === 'VOLCANOES'
           ? MAP_VOLCANOES
-          : MAP_RELIEF_FEATURES;
+          : mode === 'NATURAL_RESERVES'
+            ? MAP_NATURAL_RESERVES
+            : MAP_RELIEF_FEATURES;
     const shuffled = [...sourceData].sort(() => Math.random() - 0.5);
     setLocations(shuffled);
     setCurrentTarget(shuffled[0]);
@@ -124,7 +126,9 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
       ? 'Tratados y Planes'
       : mapMode === 'VOLCANOES'
         ? 'Volcanes de México'
-        : 'Relieve de México';
+        : mapMode === 'NATURAL_RESERVES'
+          ? 'Reservas Naturales'
+          : 'Relieve de México';
 
   // Helper to get sorted locations for reference guide only
   const getSortedLocationsForReference = () => {
@@ -158,7 +162,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
 
         <h2 className="text-3xl font-bold text-amber-700 dark:text-amber-500 mb-8">Choose a Map Challenge</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
           <button
             onClick={() => initializeGame('ARCHAEOLOGICAL')}
             className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
@@ -201,6 +205,17 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
             </div>
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Volcanes de México</h3>
             <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Localiza el Pico de Orizaba, Popocatépetl, Iztaccíhuatl y más.</p>
+          </button>
+
+          <button
+            onClick={() => initializeGame('NATURAL_RESERVES')}
+            className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-emerald-400 hover:-translate-y-1 transition-all group"
+          >
+            <div className="w-24 h-24 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
+              <Leaf size={48} className="text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Reservas Naturales</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Descubre Cañón del Sumidero, Santuario Monarca, y más.</p>
           </button>
         </div>
       </div>
@@ -263,6 +278,11 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                 {currentTarget?.heightMeters && (
                   <span className="inline-block px-2 py-0.5 rounded text-xs font-bold bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300">
                     🏔️ {currentTarget.heightMeters.toLocaleString()} m
+                  </span>
+                )}
+                {currentTarget?.biome && (
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-bold bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300">
+                    🌿 {currentTarget.biome}
                   </span>
                 )}
                 {currentTarget?.nickname && (
@@ -405,6 +425,11 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                         {loc.heightMeters && (
                           <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
                             {loc.heightMeters.toLocaleString()} m
+                          </span>
+                        )}
+                        {loc.biome && (
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300">
+                            🌿 {loc.biome}
                           </span>
                         )}
                       </div>

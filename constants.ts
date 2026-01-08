@@ -1267,3 +1267,120 @@ export const MAP_VOLCANOES: MapLocation[] = [
     description: 'Volcán en la Sierra del Chichinautzin.'
   }
 ];
+
+// =====================================================
+// NATURAL RESERVES OF MEXICO
+// =====================================================
+
+export const MAP_NATURAL_RESERVES: MapLocation[] = [
+  // SONORA - DESERT
+  { 
+    id: 'biosfera_pinacate', 
+    name: 'Biósfera El Pinacate', 
+    region: 'Sonora', 
+    lat: 31.7719, 
+    lng: -113.5000, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Desert',
+    tags: ['UNESCO', 'Biosphere Reserve', 'Desert'],
+    description: 'Reserva de la biosfera en el desierto de Sonora, conocida por sus cráteres volcánicos y dunas.'
+  },
+  { 
+    id: 'desierto_altar', 
+    name: 'Desierto del Altar', 
+    region: 'Sonora', 
+    lat: 31.9167, 
+    lng: -113.2500, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Desert',
+    tags: ['Gran Desierto', 'Arid Zone'],
+    description: 'Parte del Gran Desierto de Altar, una de las regiones más áridas de América del Norte.'
+  },
+
+  // GOLFO DE BAJA CALIFORNIA - MARINE/COASTAL
+  { 
+    id: 'cabo_pulmo', 
+    name: 'Parque Nacional Cabo Pulmo', 
+    region: 'Golfo de Baja California', 
+    lat: 23.4333, 
+    lng: -109.4333, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Marine/Coastal',
+    tags: ['UNESCO', 'Coral Reef', 'Marine Park'],
+    description: 'Único arrecife de coral vivo en el Mar de Cortés, declarado Patrimonio de la Humanidad.'
+  },
+
+  // MICHOACÁN - FOREST/SANCTUARY
+  { 
+    id: 'los_azufres', 
+    name: 'Los Azufres', 
+    region: 'Michoacán', 
+    lat: 19.7833, 
+    lng: -100.6500, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Forest/Geothermal',
+    tags: ['Geothermal', 'Forest'],
+    description: 'Reserva natural con fuentes termales y actividad geotérmica.'
+  },
+  { 
+    id: 'santuario_monarca', 
+    name: 'Santuario de Mariposa Monarca', 
+    region: 'Michoacán - Estado de México', 
+    lat: 19.6167, 
+    lng: -100.2417, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Forest/Sanctuary',
+    tags: ['UNESCO', 'Butterfly Sanctuary', 'Biosphere Reserve'],
+    description: 'Santuario donde millones de mariposas monarca hibernan cada invierno. Patrimonio de la Humanidad.'
+  },
+
+  // GOLFO DE MÉXICO - MARINE/REEF
+  { 
+    id: 'arrecife_veracruzano', 
+    name: 'Arrecife Veracruzano', 
+    region: 'Golfo de México (Veracruz)', 
+    lat: 19.2000, 
+    lng: -95.9000, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Marine/Reef',
+    tags: ['Coral Reef', 'Marine Park'],
+    description: 'Sistema arrecifal en el Golfo de México, protege corales y biodiversidad marina.'
+  },
+
+  // GUERRERO - CAVERNS
+  { 
+    id: 'grutas_cacahuamilpa', 
+    name: 'Grutas de Cacahuamilpa', 
+    region: 'Guerrero', 
+    lat: 18.6833, 
+    lng: -99.5000, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Caverns/Subterranean',
+    tags: ['Caves', 'Geological Formation'],
+    description: 'Una de las redes de cavernas más grandes del mundo, con formaciones de estalactitas y estalagmitas.'
+  },
+
+  // CHIAPAS - JUNGLE/CANYON
+  { 
+    id: 'canon_sumidero', 
+    name: 'Cañón del Sumidero', 
+    region: 'Chiapas', 
+    lat: 16.8333, 
+    lng: -93.0833, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Jungle/Canyon',
+    tags: ['Canyon', 'National Park'],
+    description: 'Espectacular cañón con acantilados de más de 1,000 metros de altura sobre el río Grijalva.'
+  },
+  { 
+    id: 'selva_lacandona', 
+    name: 'La Selva Lacandona', 
+    region: 'Chiapas', 
+    lat: 16.7500, 
+    lng: -91.5000, 
+    category: 'NATURAL_RESERVE',
+    biome: 'Jungle/Rainforest',
+    tags: ['Rainforest', 'Biodiversity', 'Indigenous Territory'],
+    description: 'Última gran selva tropical de México, hogar de comunidades indígenas y biodiversidad excepcional.'
+  }
+];
