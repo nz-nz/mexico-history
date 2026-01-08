@@ -1384,3 +1384,240 @@ export const MAP_NATURAL_RESERVES: MapLocation[] = [
     description: 'Última gran selva tropical de México, hogar de comunidades indígenas y biodiversidad excepcional.'
   }
 ];
+
+// ==========================================
+// WATER BODIES - RÍOS, LAGOS Y MARES
+// ==========================================
+
+export interface RiverPath {
+  coordinates: [number, number][]; // Array of [lat, lng] points along the river
+  width?: number; // Visual width for rendering
+}
+
+export interface WaterBodyLocation extends MapLocation {
+  riverPath?: RiverPath;
+  aliases?: string[];
+  crossesStates?: string[];
+  outlet?: string;
+  fauna?: string[];
+  role?: string;
+}
+
+export const MAP_WATER_BODIES: WaterBodyLocation[] = [
+  // SEAS AND GULFS
+  { 
+    id: 'mar_de_cortes', 
+    name: 'Mar de Cortés', 
+    region: 'Baja California', 
+    lat: 28.5, 
+    lng: -112.0,
+    category: 'SIERRA', // Reusing category for now
+    aliases: ['Mar Bermejo', 'Golfo de California'],
+    crossesStates: ['Baja California Norte', 'Baja California Sur', 'Sinaloa', 'Sonora'],
+    fauna: ['Ballenas jorobadas', 'Lobos marinos'],
+    tags: ['Sea', 'Gulf'],
+    description: 'Está en Baja California. Lugar donde se pueden observar ballenas jorobadas y lobos marinos.'
+  },
+  { 
+    id: 'golfo_de_mexico', 
+    name: 'Golfo de México', 
+    region: 'East of Mexico', 
+    lat: 23.0, 
+    lng: -90.0,
+    tags: ['Gulf', 'Ocean'],
+    description: 'Cuerpo de agua al este de México.'
+  },
+  { 
+    id: 'oceano_pacifico', 
+    name: 'Océano Pacífico', 
+    region: 'West of Mexico', 
+    lat: 20.0, 
+    lng: -110.0,
+    tags: ['Ocean'],
+    description: 'Océano al oeste de México.'
+  },
+
+  // RIVERS - BORDER RIVERS (NORTH)
+  { 
+    id: 'rio_bravo', 
+    name: 'Río Bravo', 
+    region: 'Northern Mexico', 
+    lat: 26.0, 
+    lng: -99.0,
+    aliases: ['Río Grande'],
+    role: 'Border (North)',
+    crossesStates: ['Chihuahua', 'Coahuila', 'Nuevo Leon', 'Tamaulipas'],
+    tags: ['Longest River', 'Border River', 'North'],
+    description: 'El río más largo de México. Atraviesa los estados Chihuahua, Coahuila, Nuevo Leon, Tamaulipas.',
+    riverPath: {
+      coordinates: [
+        [31.78, -106.63], // El Paso area
+        [29.37, -100.90], // Middle section
+        [26.07, -98.30], // Lower valley
+        [25.96, -97.15]   // Mouth at Gulf
+      ],
+      width: 3
+    }
+  },
+
+  // RIVERS - NORTHWEST
+  { 
+    id: 'rio_colorado', 
+    name: 'Río Colorado', 
+    region: 'Baja California - Sonora', 
+    lat: 32.0, 
+    lng: -114.8,
+    crossesStates: ['Baja California', 'Sonora'],
+    outlet: 'Golfo de California',
+    tags: ['Major River', 'Northwest'],
+    description: 'Baña los estados: BC, Sonora (Golfo de California).',
+    riverPath: {
+      coordinates: [
+        [31.818, -114.803],  // Upper delta
+        [31.917, -114.962],  
+        [32.024, -115.107],  
+        [32.114, -115.201],  // Northwest curve
+        [32.215, -115.116],  
+        [32.250, -115.043],  
+        [32.340, -114.972],  
+        [32.480, -114.928],  // Middle section
+        [32.486, -114.827],  
+        [32.568, -114.794],  
+        [32.630, -114.800],  
+        [32.700, -114.733],  
+        [32.775, -114.662]   // Northern extent
+      ],
+      width: 3
+    }
+  },
+  { 
+    id: 'rio_sonora', 
+    name: 'Río Sonora', 
+    region: 'Sonora', 
+    lat: 29.5, 
+    lng: -110.5,
+    tags: ['Major River', 'Northwest'],
+    description: 'Río principal del estado de Sonora.'
+  },
+  { 
+    id: 'rio_conchos', 
+    name: 'Río Conchos', 
+    region: 'Chihuahua', 
+    lat: 28.5, 
+    lng: -105.5,
+    tags: ['Major River', 'North'],
+    description: 'Río importante de Chihuahua, tributario del Río Bravo.'
+  },
+
+  // RIVERS - NORTH CENTRAL
+  { 
+    id: 'rio_nazas', 
+    name: 'Río Nazas', 
+    region: 'Durango - Coahuila', 
+    lat: 25.5, 
+    lng: -103.5,
+    tags: ['Major River', 'North Central'],
+    description: 'Río importante del norte de México.'
+  },
+
+  // RIVERS - CENTRAL
+  { 
+    id: 'rio_lerma', 
+    name: 'Río Lerma', 
+    region: 'Central Mexico', 
+    lat: 19.5, 
+    lng: -101.5,
+    tags: ['Major River', 'Central'],
+    description: 'Uno de los ríos más importantes del centro de México.',
+    riverPath: {
+      coordinates: [
+        [19.28, -99.65], // Source near Mexico City
+        [19.50, -100.50], // Through Estado de México
+        [19.70, -101.20], // Michoacán
+        [20.00, -102.50]  // Toward Jalisco/Lake Chapala
+      ],
+      width: 2
+    }
+  },
+  { 
+    id: 'rio_balsas', 
+    name: 'Río Balsas', 
+    region: 'Central-South Mexico', 
+    lat: 18.0, 
+    lng: -101.0,
+    tags: ['Major River', 'Central-South'],
+    description: 'Río importante que desemboca en el Océano Pacífico.',
+    riverPath: {
+      coordinates: [
+        [18.50, -99.50], // Upper region
+        [18.20, -100.50], // Middle
+        [18.00, -101.50], // Lower
+        [17.98, -102.18]  // Mouth at Pacific
+      ],
+      width: 2
+    }
+  },
+  { 
+    id: 'rio_papaloapan', 
+    name: 'Río Papaloapan', 
+    region: 'Veracruz - Oaxaca', 
+    lat: 18.5, 
+    lng: -96.0,
+    tags: ['Major River', 'Gulf Coast'],
+    description: 'Río importante que desemboca en el Golfo de México.'
+  },
+
+  // RIVERS - SOUTH
+  { 
+    id: 'rio_grijalva', 
+    name: 'Río Grijalva', 
+    region: 'Chiapas - Tabasco', 
+    lat: 17.5, 
+    lng: -92.5,
+    tags: ['Major River', 'South'],
+    description: 'Río importante del sureste de México.'
+  },
+  { 
+    id: 'rio_usumacinta', 
+    name: 'Río Usumacinta', 
+    region: 'Southern Mexico', 
+    lat: 17.5, 
+    lng: -91.5,
+    role: 'Border (South)',
+    tags: ['Major River', 'Border River', 'South'],
+    description: 'Río limítrofe del sur de México.'
+  },
+
+  // RIVERS - BORDER RIVERS (SOUTH)
+  { 
+    id: 'rio_suchiate', 
+    name: 'Río Suchiate', 
+    region: 'Chiapas', 
+    lat: 14.7, 
+    lng: -92.2,
+    role: 'Border (South)',
+    tags: ['Border River', 'South'],
+    description: 'Río limítrofe del sur de México.'
+  },
+  { 
+    id: 'rio_hondo', 
+    name: 'Río Hondo', 
+    region: 'Quintana Roo', 
+    lat: 18.5, 
+    lng: -88.3,
+    role: 'Border (South)',
+    tags: ['Border River', 'South'],
+    description: 'Río limítrofe del sur de México.'
+  },
+
+  // LAKES
+  { 
+    id: 'lago_de_chapala', 
+    name: 'Lago de Chapala', 
+    region: 'Jalisco', 
+    lat: 20.3, 
+    lng: -103.0,
+    tags: ['Largest Lake', 'Lake'],
+    description: 'El lago más grande de México, ubicado en Jalisco.'
+  }
+];
