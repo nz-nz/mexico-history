@@ -38,10 +38,14 @@ export interface MapLocation {
   lat: number;
   lng: number;
   imageUrl?: string; // Optional image of the site
-  category?: 'TREATY' | 'PLAN' | 'DOCUMENT' | 'SIERRA' | 'MOUNTAIN' | 'VALLEY'; 
+  category?: 'TREATY' | 'PLAN' | 'DOCUMENT' | 'SIERRA' | 'MOUNTAIN' | 'VALLEY' | 'VOLCANO'; 
   associatedPeople?: string;
   date?: string; // e.g. "24 ago 1821"
   description?: string; // e.g. "Documento que acuerda la Independencia..."
+  indigenousName?: string; // e.g. "Citlaltépetl"
+  heightMeters?: number; // Height in meters
+  nickname?: string; // e.g. "Don Goyo"
+  tags?: string[]; // e.g. ["Active", "Highest Peak"]
 }
 
 export type PresidentPeriodId = 'INDEPENDENCIA_IMPERIO' | 'PORFIRIATO_REVOLUCION' | 'MODERNO';

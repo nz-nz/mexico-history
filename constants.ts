@@ -1124,3 +1124,146 @@ export const MAP_RELIEF_FEATURES: MapLocation[] = [
     description: 'Valle agrícola importante en el noroeste de México, hogar del pueblo Yaqui.'
   }
 ];
+
+// =====================================================
+// VOLCANOES OF MEXICO
+// =====================================================
+
+export const MAP_VOLCANOES: MapLocation[] = [
+  // HIGHEST PEAKS
+  { 
+    id: 'pico_orizaba', 
+    name: 'Pico de Orizaba', 
+    region: 'Puebla - Veracruz', 
+    lat: 19.0305, 
+    lng: -97.2683, 
+    category: 'VOLCANO',
+    indigenousName: 'Citlaltépetl',
+    heightMeters: 5610,
+    tags: ['Highest Peak', 'Stratovolcano'],
+    description: 'La montaña más alta de México.'
+  },
+  { 
+    id: 'popocatepetl', 
+    name: 'Popocatépetl', 
+    region: 'Puebla - Edo de México - Morelos', 
+    lat: 19.0225, 
+    lng: -98.6278, 
+    category: 'VOLCANO',
+    indigenousName: 'Popocatépetl',
+    heightMeters: 5452,
+    nickname: 'Don Goyo',
+    tags: ['Active', 'State of Mexico', 'Highest Peak'],
+    description: '"Cerro que humea" en náhuatl. Volcán activo vigilado constantemente.'
+  },
+  { 
+    id: 'iztaccihuatl', 
+    name: 'Iztaccíhuatl', 
+    region: 'Edo de México - Puebla', 
+    lat: 19.1788, 
+    lng: -98.6424, 
+    category: 'VOLCANO',
+    indigenousName: 'Iztaccíhuatl',
+    heightMeters: 5230,
+    nickname: 'La Mujer Dormida',
+    tags: ['State of Mexico', 'Highest Peak'],
+    description: 'Volcán inactivo conocido por su forma que semeja una mujer dormida.'
+  },
+  { 
+    id: 'sierra_negra', 
+    name: 'Sierra Negra', 
+    region: 'Puebla', 
+    lat: 18.9857, 
+    lng: -97.3092, 
+    category: 'VOLCANO',
+    indigenousName: 'Tliltépetl',
+    heightMeters: 4580,
+    tags: ['Highest Peak'],
+    description: 'Volcán extinto ubicado en Puebla, sitio del Gran Telescopio Milimétrico.'
+  },
+  { 
+    id: 'nevado_toluca', 
+    name: 'Nevado de Toluca', 
+    region: 'Edo de México', 
+    lat: 19.1085, 
+    lng: -99.7578, 
+    category: 'VOLCANO',
+    indigenousName: 'Xinantécatl',
+    heightMeters: 4559,
+    tags: ['State of Mexico', 'Highest Peak'],
+    description: 'Volcán con un cráter que contiene dos lagunas: el Sol y la Luna.'
+  },
+  { 
+    id: 'jocotitlan', 
+    name: 'Jocotitlán', 
+    region: 'Edo de México', 
+    lat: 19.7333, 
+    lng: -99.7583, 
+    category: 'VOLCANO',
+    indigenousName: 'Xocotépetl',
+    tags: ['State of Mexico'],
+    description: 'Volcán extinto en el Estado de México.'
+  },
+
+  // VALLEY OF MEXICO VOLCANOES
+  { 
+    id: 'teuhtli', 
+    name: 'Teuhtli', 
+    region: 'CDMX', 
+    lat: 19.2492, 
+    lng: -99.0069, 
+    category: 'VOLCANO',
+    tags: ['Valley of Mexico'],
+    description: 'Volcán extinto en Milpa Alta, al sur de la Ciudad de México.'
+  },
+  { 
+    id: 'tlaloc', 
+    name: 'Tláloc', 
+    region: 'Edo de México', 
+    lat: 19.4177, 
+    lng: -98.7139, 
+    category: 'VOLCANO',
+    tags: ['Valley of Mexico'],
+    description: 'Volcán extinto nombrado en honor al dios de la lluvia.'
+  },
+  { 
+    id: 'guadalupe_borrego', 
+    name: 'Guadalupe (De Borrego)', 
+    region: 'CDMX', 
+    lat: 19.5683, 
+    lng: -99.1347, 
+    category: 'VOLCANO',
+    tags: ['Valley of Mexico'],
+    description: 'Volcán extinto al norte de la Ciudad de México.'
+  },
+  { 
+    id: 'ajusco_xitle', 
+    name: 'Volcán del Ajusco (Xitle)', 
+    region: 'CDMX', 
+    lat: 19.2255, 
+    lng: -99.2578, 
+    category: 'VOLCANO',
+    tags: ['Valley of Mexico'],
+    description: 'El Xitle hizo erupción hace ~1,700 años, cubriendo Cuicuilco con lava.'
+  },
+  { 
+    id: 'chichinautzin', 
+    name: 'Chichinautzin', 
+    region: 'Morelos', 
+    lat: 19.0859, 
+    lng: -99.1325, 
+    category: 'VOLCANO',
+    tags: ['Valley of Mexico'],
+    description: 'Parte del corredor biológico Chichinautzin entre CDMX y Morelos.'
+  },
+  { 
+    id: 'cuautzin', 
+    name: 'Cuautzin', 
+    region: 'Morelos - CDMX', 
+    lat: 19.1167, 
+    lng: -99.0333, 
+    category: 'VOLCANO',
+    tags: ['Valley of Mexico'],
+    description: 'Volcán en la Sierra del Chichinautzin.'
+  }
+];

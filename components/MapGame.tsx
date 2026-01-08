@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink, Mountain } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink, Mountain, Flame } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS, MAP_RELIEF_FEATURES } from '../constants';
+import { MAP_LOCATIONS, MAP_TREATIES_AND_PLANS, MAP_RELIEF_FEATURES, MAP_VOLCANOES } from '../constants';
 import { MapLocation } from '../types';
 
 // Fix for default Leaflet markers in React
@@ -39,7 +39,7 @@ const MapInvalidator: React.FC = () => {
   return null;
 };
 
-type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | 'RELIEF' | null;
+type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | 'RELIEF' | 'VOLCANOES' | null;
 
 const parseSpanishDate = (dateStr?: string) => {
   if (!dateStr) return 0;
@@ -82,7 +82,9 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
       ? MAP_LOCATIONS
       : mode === 'TREATIES'
         ? MAP_TREATIES_AND_PLANS
-        : MAP_RELIEF_FEATURES;
+        : mode === 'VOLCANOES'
+          ? MAP_VOLCANOES
+          : MAP_RELIEF_FEATURES;
     const shuffled = [...sourceData].sort(() => Math.random() - 0.5);
     setLocations(shuffled);
     setCurrentTarget(shuffled[0]);
@@ -120,7 +122,9 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
     ? 'Sitios Arqueológicos'
     : mapMode === 'TREATIES'
       ? 'Tratados y Planes'
-      : 'Relieve de México';
+      : mapMode === 'VOLCANOES'
+        ? 'Volcanes de México'
+        : 'Relieve de México';
 
   // Helper to get sorted locations for reference guide only
   const getSortedLocationsForReference = () => {
@@ -131,7 +135,11 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
         return dateA - dateB;
       });
     }
-    // For Archaeological, default to alphabetical
+    // For Volcanoes, sort by height (highest first)
+    if (mapMode === 'VOLCANOES') {
+      return [...locations].sort((a, b) => (b.heightMeters || 0) - (a.heightMeters || 0));
+    }
+    // For Archaeological and Relief, default to alphabetical
     return [...locations].sort((a, b) => a.name.localeCompare(b.name));
   };
 
@@ -150,7 +158,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
 
         <h2 className="text-3xl font-bold text-amber-700 dark:text-amber-500 mb-8">Choose a Map Challenge</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
           <button
             onClick={() => initializeGame('ARCHAEOLOGICAL')}
             className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
@@ -182,6 +190,17 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
             </div>
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Relieve de México</h3>
             <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Localiza sierras, montañas y valles importantes.</p>
+          </button>
+
+          <button
+            onClick={() => initializeGame('VOLCANOES')}
+            className="flex flex-col items-center p-6 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-red-400 hover:-translate-y-1 transition-all group"
+          >
+            <div className="w-24 h-24 rounded-full bg-red-100 dark:bg-red-900/40 flex items-center justify-center mb-6 text-5xl shadow-inner group-hover:scale-110 transition-transform">
+              <Flame size={48} className="text-red-600 dark:text-red-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Volcanes de México</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Localiza el Pico de Orizaba, Popocatépetl, Iztaccíhuatl y más.</p>
           </button>
         </div>
       </div>
@@ -236,12 +255,27 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
             <div className="bg-white/95 dark:bg-[#16213e]/95 backdrop-blur shadow-xl rounded-xl p-4 text-center border-2 border-amber-100 dark:border-amber-900">
               <p className="text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wide font-bold text-xs">Find Location</p>
               <h2 className="text-2xl font-extrabold text-amber-900 dark:text-amber-400 leading-tight">{currentTarget?.name}</h2>
-              <p className="text-amber-700 dark:text-amber-500 font-medium text-sm">{currentTarget?.region}</p>
-              {currentTarget?.category && (
-                <span className="inline-block mt-2 px-2 py-0.5 rounded textxs font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
-                  {currentTarget.category}
-                </span>
+              {currentTarget?.indigenousName && currentTarget.indigenousName !== currentTarget.name && (
+                <p className="text-amber-600 dark:text-amber-300 font-medium text-sm">({currentTarget.indigenousName})</p>
               )}
+              <p className="text-amber-700 dark:text-amber-500 font-medium text-sm">{currentTarget?.region}</p>
+              <div className="flex items-center justify-center gap-2 mt-2 flex-wrap">
+                {currentTarget?.heightMeters && (
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-bold bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300">
+                    🏔️ {currentTarget.heightMeters.toLocaleString()} m
+                  </span>
+                )}
+                {currentTarget?.nickname && (
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-bold bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300">
+                    🏷️ {currentTarget.nickname}
+                  </span>
+                )}
+                {currentTarget?.category && (
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                    {currentTarget.category}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -358,14 +392,28 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                 {getSortedLocationsForReference().map((loc) => (
                   <div key={loc.id} className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#16213e]/50 border border-gray-100 dark:border-gray-700/50">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <h4 className="font-bold text-lg text-gray-800 dark:text-gray-200">{loc.name}</h4>
+                        {loc.indigenousName && loc.indigenousName !== loc.name && (
+                          <span className="text-sm text-amber-700 dark:text-amber-400 font-medium">({loc.indigenousName})</span>
+                        )}
                         {loc.category && (
                           <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
                             {loc.category}
                           </span>
                         )}
+                        {loc.heightMeters && (
+                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
+                            {loc.heightMeters.toLocaleString()} m
+                          </span>
+                        )}
                       </div>
+
+                      {loc.nickname && (
+                        <div className="text-sm text-purple-600 dark:text-purple-400 font-medium mb-1">
+                          🏷️ Apodo: "{loc.nickname}"
+                        </div>
+                      )}
 
                       <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mb-2">
                         <MapIcon size={14} />
@@ -383,6 +431,16 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                           </a>
                         </div>
                       </div>
+
+                      {loc.tags && loc.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mb-2">
+                          {loc.tags.map((tag, idx) => (
+                            <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
 
                       {loc.associatedPeople && (
                         <div className="text-sm text-gray-600 dark:text-gray-300 italic border-l-2 border-amber-300 pl-2 mb-2">
