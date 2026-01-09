@@ -644,6 +644,7 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
       '8 de noviembre de 1871: Plan de la Noria.',
       '10 de enero de 1876: Plan de Tuxtepec.',
       '13 de marzo de 1878: Primer enlace telefónico en el país.',
+      '1904: Fundación del Palacio de Bellas Artes con el arquitecto Adamo Boari para celebrar el Centenario de la Independencia. (Obra interrumpida por la Revolución, inaugurada en 1934).',
       '16 de septiembre de 1910: Inauguración del Ángel de la Independencia.',
       '22 de septiembre de 1910: Creación de la Universidad Nacional Autónoma de México (UNAM). Lema: "Por mi raza hablará el espíritu".',
       '25 de mayo de 1911: Fin del Porfiriato (renuncia al poder).'
@@ -727,7 +728,8 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     emoji: '💼', 
     description: '1932 – 1934',
     events: [
-      '25 de septiembre de 1933: Creación de la Universidad Autónoma de Nuevo León (UANL). Lema: "Alere Flammam Veritatis" (Alimenta la llama de la verdad).'
+      '25 de septiembre de 1933: Creación de la Universidad Autónoma de Nuevo León (UANL). Lema: "Alere Flammam Veritatis" (Alimenta la llama de la verdad).',
+      '29 de septiembre de 1934: Inauguró el Palacio de Bellas Artes. (Fundado en 1904 por Porfirio Díaz con el arquitecto Adamo Boari, interrumpida por la Revolución, y finalizada por el arquitecto Federico Mariscal, quien le dio el estilo Art Déco al interior).'
     ]
   },
   { 
@@ -794,7 +796,8 @@ export const PRESIDENT_TIMELINE_ITEMS: PresidentTimelineItem[] = [
     description: '1964 – 1970',
     events: [
       '14 de febrero de 1967: Firma del Tratado de Tlatelolco.',
-      '2 de octubre de 1968: Matanza de Tlatelolco.'
+      '2 de octubre de 1968: Matanza de Tlatelolco.',
+      '12 al 27 de octubre de 1968: Juegos de la XIX Olimpiada en la Ciudad de México. (Primeros Juegos Olímpicos en Latinoamérica y país de habla hispana. Marcados por récords mundiales facilitados por la altitud y la protesta del Black Power de Tommie Smith y John Carlos).'
     ]
   },
   { 
