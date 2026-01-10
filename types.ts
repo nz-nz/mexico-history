@@ -38,7 +38,7 @@ export interface MapLocation {
   lat: number;
   lng: number;
   imageUrl?: string; // Optional image of the site
-  category?: 'TREATY' | 'PLAN' | 'DOCUMENT' | 'SIERRA' | 'MOUNTAIN' | 'VALLEY' | 'VOLCANO' | 'NATURAL_RESERVE'; 
+  category?: 'TREATY' | 'PLAN' | 'DOCUMENT' | 'SIERRA' | 'MOUNTAIN' | 'VALLEY' | 'VOLCANO' | 'NATURAL_RESERVE' | 'SEA' | 'LAKE' | 'RIVER'; 
   associatedPeople?: string;
   date?: string; // e.g. "24 ago 1821"
   description?: string; // e.g. "Documento que acuerda la Independencia..."

@@ -1414,9 +1414,9 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     region: 'Baja California', 
     lat: 28.5, 
     lng: -112.0,
-    category: 'SIERRA', // Reusing category for now
+    category: 'SEA',
     aliases: ['Mar Bermejo', 'Golfo de California'],
-    crossesStates: ['Baja California Norte', 'Baja California Sur', 'Sinaloa', 'Sonora'],
+    crossesStates: ['Baja California', 'Baja California Sur', 'Sinaloa', 'Sonora'],
     fauna: ['Ballenas jorobadas', 'Lobos marinos'],
     tags: ['Sea', 'Gulf'],
     description: 'Está en Baja California. Lugar donde se pueden observar ballenas jorobadas y lobos marinos.'
@@ -1424,18 +1424,20 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
   { 
     id: 'golfo_de_mexico', 
     name: 'Golfo de México', 
-    region: 'East of Mexico', 
+    region: 'Este de México', 
     lat: 23.0, 
     lng: -90.0,
+    category: 'SEA',
     tags: ['Gulf', 'Ocean'],
     description: 'Cuerpo de agua al este de México.'
   },
   { 
     id: 'oceano_pacifico', 
     name: 'Océano Pacífico', 
-    region: 'West of Mexico', 
+    region: 'Oeste de México', 
     lat: 20.0, 
     lng: -110.0,
+    category: 'SEA',
     tags: ['Ocean'],
     description: 'Océano al oeste de México.'
   },
@@ -1444,7 +1446,7 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
   { 
     id: 'rio_bravo', 
     name: 'Río Bravo', 
-    region: 'Northern Mexico', 
+    region: 'Norte de México', 
     lat: 29.45, 
     lng: -101.05,
     tags: ['Longest River', 'Border River', 'North'],
@@ -1850,6 +1852,7 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     region: 'Jalisco', 
     lat: 20.3, 
     lng: -103.0,
+    category: 'LAKE',
     tags: ['Largest Lake', 'Lake'],
     description: 'El lago más grande de México, ubicado en Jalisco.'
   }
