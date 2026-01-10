@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, ExternalLink, Mountain, Flame, Leaf, Droplet } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Trophy, BookOpen, RefreshCcw, X, Map as MapIcon, FileText, Mountain, Flame, Leaf, Droplet, Crosshair } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -39,6 +39,22 @@ const MapInvalidator: React.FC = () => {
   return null;
 };
 
+// Component to programmatically control map view
+const MapController: React.FC<{ center: [number, number] | null; zoom: number }> = ({ center, zoom }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (center) {
+      map.flyTo(center, zoom, {
+        animate: true,
+        duration: 1.5
+      });
+    }
+  }, [center, zoom, map]);
+
+  return null;
+};
+
 type MapMode = 'ARCHAEOLOGICAL' | 'TREATIES' | 'RELIEF' | 'VOLCANOES' | 'NATURAL_RESERVES' | 'WATER_BODIES' | null;
 
 const parseSpanishDate = (dateStr?: string) => {
@@ -68,6 +84,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const [gameOver, setGameOver] = useState(false);
   const [showReference, setShowReference] = useState(false);
+  const [focusLocation, setFocusLocation] = useState<[number, number] | null>(null);
 
   const initializeGame = (mode: MapMode) => {
     if (!mode) return;
@@ -77,6 +94,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
     setFoundLocations([]);
     setFeedback(null);
     setGameOver(false);
+    setFocusLocation(null);
 
     const sourceData = mode === 'ARCHAEOLOGICAL'
       ? MAP_LOCATIONS
@@ -393,6 +411,7 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
           minZoom={3}
         >
           <MapInvalidator />
+          <MapController center={focusLocation} zoom={10} />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -466,112 +485,113 @@ const MapGame: React.FC<MapGameProps> = ({ onBack }) => {
                 {getSortedLocationsForReference().map((loc) => {
                   const waterBody = loc as WaterBodyLocation;
                   return (
-                  <div key={loc.id} className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#16213e]/50 border border-gray-100 dark:border-gray-700/50">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h4 className="font-bold text-lg text-gray-800 dark:text-gray-200">{loc.name}</h4>
-                        {waterBody.aliases && waterBody.aliases.length > 0 && (
-                          <span className="text-sm text-cyan-700 dark:text-cyan-400 font-medium">
-                            ({waterBody.aliases.join(', ')})
-                          </span>
-                        )}
-                        {loc.indigenousName && loc.indigenousName !== loc.name && (
-                          <span className="text-sm text-amber-700 dark:text-amber-400 font-medium">({loc.indigenousName})</span>
-                        )}
-                        {loc.category && (
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
-                            {loc.category}
-                          </span>
-                        )}
-                        {loc.heightMeters && (
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
-                            {loc.heightMeters.toLocaleString()} m
-                          </span>
-                        )}
-                        {loc.biome && (
-                          <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300">
-                            🌿 {loc.biome}
-                          </span>
-                        )}
-                      </div>
-
-                      {loc.nickname && (
-                        <div className="text-sm text-purple-600 dark:text-purple-400 font-medium mb-1">
-                          🏷️ Apodo: "{loc.nickname}"
-                        </div>
-                      )}
-
-                      {waterBody.role && (
-                        <div className="text-sm text-indigo-600 dark:text-indigo-400 font-medium mb-1">
-                          🏛️ Función: {waterBody.role}
-                        </div>
-                      )}
-
-                      {waterBody.crossesStates && waterBody.crossesStates.length > 0 && (
-                        <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                          🗺️ Estados: {waterBody.crossesStates.join(', ')}
-                        </div>
-                      )}
-
-                      {waterBody.outlet && (
-                        <div className="text-sm text-blue-600 dark:text-blue-400 mb-1">
-                          🌊 Desemboca en: {waterBody.outlet}
-                        </div>
-                      )}
-
-                      {waterBody.fauna && waterBody.fauna.length > 0 && (
-                        <div className="text-sm text-green-700 dark:text-green-400 mb-1">
-                          🐾 Fauna: {waterBody.fauna.join(', ')}
-                        </div>
-                      )}
-
-                      <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mb-2">
-                        <MapIcon size={14} />
-                        {loc.region}
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs opacity-70">({loc.lat.toFixed(4)}, {loc.lng.toFixed(4)})</span>
-                          <a
-                            href={`https://www.google.com/maps/search/?api=1&query=${loc.lat},${loc.lng}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-                            title="View on Google Maps"
-                          >
-                            <ExternalLink size={12} />
-                          </a>
-                        </div>
-                      </div>
-
-                      {loc.tags && loc.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-1 mb-2">
-                          {loc.tags.map((tag, idx) => (
-                            <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                              {tag}
+                    <div key={loc.id} className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#16213e]/50 border border-gray-100 dark:border-gray-700/50">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <h4 className="font-bold text-lg text-gray-800 dark:text-gray-200">{loc.name}</h4>
+                          {waterBody.aliases && waterBody.aliases.length > 0 && (
+                            <span className="text-sm text-cyan-700 dark:text-cyan-400 font-medium">
+                              ({waterBody.aliases.join(', ')})
                             </span>
-                          ))}
+                          )}
+                          {loc.indigenousName && loc.indigenousName !== loc.name && (
+                            <span className="text-sm text-amber-700 dark:text-amber-400 font-medium">({loc.indigenousName})</span>
+                          )}
+                          {loc.category && (
+                            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                              {loc.category}
+                            </span>
+                          )}
+                          {loc.heightMeters && (
+                            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
+                              {loc.heightMeters.toLocaleString()} m
+                            </span>
+                          )}
+                          {loc.biome && (
+                            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300">
+                              🌿 {loc.biome}
+                            </span>
+                          )}
                         </div>
-                      )}
 
-                      {loc.associatedPeople && (
-                        <div className="text-sm text-gray-600 dark:text-gray-300 italic border-l-2 border-amber-300 pl-2 mb-2">
-                          Per: {loc.associatedPeople}
+                        {loc.nickname && (
+                          <div className="text-sm text-purple-600 dark:text-purple-400 font-medium mb-1">
+                            🏷️ Apodo: "{loc.nickname}"
+                          </div>
+                        )}
+
+                        {waterBody.role && (
+                          <div className="text-sm text-indigo-600 dark:text-indigo-400 font-medium mb-1">
+                            🏛️ Función: {waterBody.role}
+                          </div>
+                        )}
+
+                        {waterBody.crossesStates && waterBody.crossesStates.length > 0 && (
+                          <div className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                            🗺️ Estados: {waterBody.crossesStates.join(', ')}
+                          </div>
+                        )}
+
+                        {waterBody.outlet && (
+                          <div className="text-sm text-blue-600 dark:text-blue-400 mb-1">
+                            🌊 Desemboca en: {waterBody.outlet}
+                          </div>
+                        )}
+
+                        {waterBody.fauna && waterBody.fauna.length > 0 && (
+                          <div className="text-sm text-green-700 dark:text-green-400 mb-1">
+                            🐾 Fauna: {waterBody.fauna.join(', ')}
+                          </div>
+                        )}
+
+                        <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                          <MapIcon size={14} />
+                          {loc.region}
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs opacity-70">({loc.lat.toFixed(4)}, {loc.lng.toFixed(4)})</span>
+                            <button
+                              onClick={() => {
+                                setFocusLocation([loc.lat, loc.lng]);
+                                setShowReference(false);
+                              }}
+                              className="flex items-center gap-1 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
+                              title="Ver en el mapa"
+                            >
+                              <Crosshair size={14} /> Ver en Mapa
+                            </button>
+                          </div>
                         </div>
-                      )}
 
-                      {loc.date && (
-                        <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                          📅 {loc.date}
-                        </div>
-                      )}
+                        {loc.tags && loc.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mb-2">
+                            {loc.tags.map((tag, idx) => (
+                              <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
-                      {loc.description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {loc.description}
-                        </p>
-                      )}
+                        {loc.associatedPeople && (
+                          <div className="text-sm text-gray-600 dark:text-gray-300 italic border-l-2 border-amber-300 pl-2 mb-2">
+                            Per: {loc.associatedPeople}
+                          </div>
+                        )}
+
+                        {loc.date && (
+                          <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                            📅 {loc.date}
+                          </div>
+                        )}
+
+                        {loc.description && (
+                          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            {loc.description}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
+                  );
                 })}
               </div>
             </div>
