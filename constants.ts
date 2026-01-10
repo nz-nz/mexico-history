@@ -1445,19 +1445,26 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     id: 'rio_bravo', 
     name: 'Río Bravo', 
     region: 'Northern Mexico', 
-    lat: 26.0, 
-    lng: -99.0,
+    lat: 29.45, 
+    lng: -101.05,
+    tags: ['Longest River', 'Border River', 'North'],
     aliases: ['Río Grande'],
     role: 'Border (North)',
     crossesStates: ['Chihuahua', 'Coahuila', 'Nuevo Leon', 'Tamaulipas'],
-    tags: ['Longest River', 'Border River', 'North'],
-    description: 'El río más largo de México. Atraviesa los estados Chihuahua, Coahuila, Nuevo Leon, Tamaulipas.',
+    outlet: 'Golfo de México',
+    description: 'El río más largo de México y frontera natural con EE.UU. desde Ciudad Juárez hasta el Golfo.',
     riverPath: {
       coordinates: [
-        [31.78, -106.63], // El Paso area
-        [29.37, -100.90], // Middle section
-        [26.07, -98.30], // Lower valley
-        [25.96, -97.15]   // Mouth at Gulf
+        [37.7978, -107.5384], // Nacimiento (San Juan Mountains, Colorado)
+        [33.1539, -107.1921], // Presa Elephant Butte (Nuevo México)
+        [31.7590, -106.4880], // El Paso / Ciudad Juárez (Inicio de la Frontera)
+        [29.5670, -104.4150], // Confluencia con Río Conchos (Ojinaga / Presidio)
+        [29.4502, -101.0577], // Presa La Amistad (Ciudad Acuña / Del Rio)
+        [27.4763, -99.5164], // Nuevo Laredo / Laredo
+        [26.5589, -99.1647], // Presa Falcón (Nueva Cd. Guerrero / Falcon Heights)
+        [26.0800, -98.2845], // Reynosa / McAllen (Presa Anzaldúas)
+        [25.8797, -97.5040], // Matamoros / Brownsville
+        [25.9562, -97.1452]  // Desembocadura (Golfo de México / Playa Bagdad)
       ],
       width: 3
     }
@@ -1468,27 +1475,22 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     id: 'rio_colorado', 
     name: 'Río Colorado', 
     region: 'Baja California - Sonora', 
-    lat: 32.0, 
-    lng: -114.8,
+    lat: 32.48, 
+    lng: -114.78,
     crossesStates: ['Baja California', 'Sonora'],
     outlet: 'Golfo de California',
-    tags: ['Major River', 'Northwest'],
-    description: 'Baña los estados: BC, Sonora (Golfo de California).',
+    tags: ['Major River', 'Northwest', 'Border River'],
+    description: 'Río internacional que abastece al Valle de Mexicali. Su delta es una Reserva de la Biosfera.',
     riverPath: {
       coordinates: [
-        [31.818, -114.803],  // Upper delta
-        [31.917, -114.962],  
-        [32.024, -115.107],  
-        [32.114, -115.201],  // Northwest curve
-        [32.215, -115.116],  
-        [32.250, -115.043],  
-        [32.340, -114.972],  
-        [32.480, -114.928],  // Middle section
-        [32.486, -114.827],  
-        [32.568, -114.794],  
-        [32.630, -114.800],  
-        [32.700, -114.733],  
-        [32.775, -114.662]   // Northern extent
+        [40.4722, -105.8261], // Nacimiento (La Poudre Pass - Colorado)
+        [36.9375, -111.4844], // Presa Glen Canyon (Lago Powell)
+        [36.1050, -112.0950], // El Gran Cañón (Punto medio)
+        [36.0158, -114.7378], // Presa Hoover (Lago Mead)
+        [32.7088, -114.7305], // Entrada a México / Presa Morelos
+        [32.4850, -114.7820], // San Luis Río Colorado
+        [32.0830, -115.1500], // Río Hardy (Delta)
+        [31.7500, -114.6500]  // Desembocadura (Golfo de California)
       ],
       width: 3
     }
@@ -1497,19 +1499,46 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     id: 'rio_sonora', 
     name: 'Río Sonora', 
     region: 'Sonora', 
-    lat: 29.5, 
-    lng: -110.5,
-    tags: ['Major River', 'Northwest'],
-    description: 'Río principal del estado de Sonora.'
+    lat: 29.96, 
+    lng: -110.21,
+    tags: ['Major River', 'Northwest', 'Intermittent'],
+    outlet: 'Golfo de California (Histórico)',
+    description: 'Río vital para la identidad de Sonora. Atraviesa lugares históricos como Arizpe y Ures. Su cauce bajo suele estar seco.',
+    riverPath: {
+      coordinates: [
+        [30.8500, -110.0500], // Nacimiento (Ojo de Agua de Arvayo - Cananea)
+        [30.3392, -110.1669], // Arizpe (Antigua Capital)
+        [29.9630, -110.2150], // Banámichi
+        [29.4260, -110.3880], // Ures (La Atenas de Sonora)
+        [29.1980, -110.8350], // Presa El Molinito
+        [29.0550, -110.9150], // Presa Abelardo L. Rodríguez (Hermosillo)
+        [28.9500, -111.5000], // Paso por la Costa (Cauce seco)
+        [28.8160, -111.9500]  // Desembocadura Histórica (Bahía de Kino)
+      ],
+      width: 2
+    }
   },
   { 
     id: 'rio_conchos', 
     name: 'Río Conchos', 
     region: 'Chihuahua', 
-    lat: 28.5, 
-    lng: -105.5,
+    lat: 27.67, 
+    lng: -105.16,
     tags: ['Major River', 'North'],
-    description: 'Río importante de Chihuahua, tributario del Río Bravo.'
+    outlet: 'Río Bravo',
+    description: 'El principal río de Chihuahua, nace en la Sierra Madre y es el principal tributario del Río Bravo.',
+    riverPath: {
+      coordinates: [
+        [27.9830, -107.5500], // Nacimiento (Sierra Madre Occidental)
+        [27.5447, -105.4141], // Presa La Boquilla (Lago Toronto)
+        [27.6750, -105.1650], // Ciudad de Camargo
+        [28.2350, -105.4300], // Confluencia con Río San Pedro
+        [28.9852, -105.2802], // Presa El Granero (Luis L. León)
+        [29.5058, -104.7644], // Cañón del Pegüis
+        [29.5861, -104.4236]  // Desembocadura (Unión con el Río Bravo)
+      ],
+      width: 3
+    }
   },
 
   // RIVERS - NORTH CENTRAL
@@ -1517,10 +1546,25 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     id: 'rio_nazas', 
     name: 'Río Nazas', 
     region: 'Durango - Coahuila', 
-    lat: 25.5, 
-    lng: -103.5,
-    tags: ['Major River', 'North Central'],
-    description: 'Río importante del norte de México.'
+    lat: 25.55, 
+    lng: -103.46,
+    tags: ['Major River', 'North Central', 'Endorheic'],
+    aliases: ['El Nilo del Desierto'],
+    crossesStates: ['Durango', 'Coahuila'],
+    outlet: 'Laguna de Mayrán (Endorreico)',
+    description: 'El "Nilo del Desierto", eje vital de la Comarca Lagunera. Río endorreico que desemboca en el desierto (Laguna de Mayrán).',
+    riverPath: {
+      coordinates: [
+        [25.6030, -105.0210], // Formación (Confluencia Río Sextín y Río Ramos)
+        [25.6175, -105.0088], // Presa Lázaro Cárdenas (El Palmito)
+        [25.2678, -103.7744], // Presa Francisco Zarco (Las Tórtolas)
+        [25.3290, -103.7500], // Parque Estatal Cañón de Fernández
+        [25.5530, -103.4605], // Zona Metropolitana (Puente Plateado - Límite Dgo/Coah)
+        [25.7580, -103.0850], // Paso por San Pedro de las Colonias
+        [25.8000, -102.6500]  // Desembocadura (Laguna de Mayrán)
+      ],
+      width: 2
+    }
   },
 
   // RIVERS - CENTRAL
@@ -1604,43 +1648,84 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
       width: 2
     }
   },
+
+  // RIVERS - SOUTH/SOUTHEAST
+  { 
+    id: 'rio_papaloapan', 
+    name: 'Río Papaloapan', 
+    region: 'Oaxaca - Veracruz', 
+    lat: 18.36, 
+    lng: -95.80,
+    tags: ['Major River', 'Southeast'],
+    crossesStates: ['Oaxaca', 'Veracruz'],
+    outlet: 'Golfo de México',
+    description: 'El "Río de las Mariposas", segundo río más caudaloso de México. Atraviesa ciudades históricas como Tlacotalpan.',
+    riverPath: {
+      coordinates: [
+        [18.0314, -96.1849], // Nacimiento (Confluencia Río Santo Domingo y Río Valle Nacional)
+        [18.0883, -96.1253], // San Juan Bautista Tuxtepec
+        [18.1450, -96.0820], // Santa Cruz (Límite Oaxaca/Veracruz)
+        [18.1770, -96.0335], // Otatitlán
+        [18.3667, -95.8000], // Cosamaloapan
+        [18.6130, -95.6563], // Tlacotalpan
+        [18.7714, -95.7618], // Alvarado
+        [18.7858, -95.7497]  // Desembocadura (Golfo de México)
+      ],
+      width: 3
+    }
+  },
   { 
     id: 'rio_balsas', 
     name: 'Río Balsas', 
     region: 'Central-South Mexico', 
-    lat: 18.0, 
-    lng: -101.0,
+    lat: 18.36, 
+    lng: -100.67,
     tags: ['Major River', 'Central-South'],
-    description: 'Río importante que desemboca en el Océano Pacífico.',
+    aliases: ['Río Atoyac', 'Río Mezcala'],
+    crossesStates: ['Puebla', 'Tlaxcala', 'Guerrero', 'Michoacán'],
+    outlet: 'Océano Pacífico',
+    description: 'Sistema hidrológico complejo (Atoyac-Mezcala-Balsas) que atraviesa el centro y sur de México hasta el Pacífico.',
     riverPath: {
       coordinates: [
-        [18.50, -99.50], // Upper region
-        [18.20, -100.50], // Middle
-        [18.00, -101.50], // Lower
-        [17.98, -102.18]  // Mouth at Pacific
+        [19.2250, -98.2450], // Zona de Nacimiento (Cuenca Alta - Río Atoyac/Zahuapan)
+        [18.0650, -98.9200], // Entrada a Guerrero (Confluencia con Río Mixteco)
+        [17.9369, -99.3692], // Puente Mezcala Solidaridad (Autopista del Sol)
+        [17.9530, -99.9920], // Presa El Caracol (Hidroeléctrica)
+        [18.3600, -100.6700], // Ciudad Altamirano (Tierra Caliente)
+        [18.2722, -101.8930], // Presa Infiernillo (Límite Michoacán/Guerrero)
+        [17.9860, -102.1050], // Presa La Villita (José María Morelos)
+        [17.9373, -102.1360]  // Desembocadura (Puerto Lázaro Cárdenas)
       ],
-      width: 2
+      width: 3
     }
   },
-  { 
-    id: 'rio_papaloapan', 
-    name: 'Río Papaloapan', 
-    region: 'Veracruz - Oaxaca', 
-    lat: 18.5, 
-    lng: -96.0,
-    tags: ['Major River', 'Gulf Coast'],
-    description: 'Río importante que desemboca en el Golfo de México.'
-  },
+
 
   // RIVERS - SOUTH
   { 
     id: 'rio_grijalva', 
     name: 'Río Grijalva', 
     region: 'Chiapas - Tabasco', 
-    lat: 17.5, 
-    lng: -92.5,
+    lat: 16.96, 
+    lng: -93.10,
     tags: ['Major River', 'South'],
-    description: 'Río importante del sureste de México.'
+    aliases: ['Río Grande de Chiapas', 'Río Selegua'],
+    crossesStates: ['Chiapas', 'Tabasco'],
+    outlet: 'Golfo de México',
+    description: 'Uno de los ríos más caudalosos de México, vital para la generación de energía hidroeléctrica. Atraviesa el Cañón del Sumidero.',
+    riverPath: {
+      coordinates: [
+        [15.6600, -91.9900], // Ingreso a México (Río Selegua/Río Grande de Chiapas)
+        [16.4025, -92.7766], // Presa La Angostura (Belisario Domínguez)
+        [16.7160, -93.0180], // Cañón del Sumidero (Inicio/Chiapa de Corzo)
+        [16.9630, -93.1040], // Presa Chicoasén (Manuel Moreno Torres)
+        [17.1790, -93.5990], // Presa Malpaso (Nezahualcóyotl)
+        [17.4460, -93.4560], // Presa Peñitas (Ángel Albino Corzo)
+        [17.9950, -92.9250], // Villahermosa, Tabasco
+        [18.6080, -92.6580]  // Desembocadura (Puerto de Frontera)
+      ],
+      width: 3
+    }
   },
   { 
     id: 'rio_usumacinta', 
@@ -1717,21 +1802,45 @@ export const MAP_WATER_BODIES: WaterBodyLocation[] = [
     id: 'rio_suchiate', 
     name: 'Río Suchiate', 
     region: 'Chiapas', 
-    lat: 14.7, 
-    lng: -92.2,
+    lat: 14.96, 
+    lng: -92.14,
     role: 'Border (South)',
+    crossesStates: ['Chiapas', 'San Marcos (Guatemala)'],
     tags: ['Border River', 'South'],
-    description: 'Río limítrofe del sur de México.'
+    outlet: 'Océano Pacífico',
+    description: 'Frontera natural entre México y Guatemala. Nace en el Volcán Tacaná y desemboca en el Pacífico.',
+    riverPath: {
+      coordinates: [
+        [15.1631, -91.9561], // Nacimiento (Faldas del Volcán Tacaná - Guatemala)
+        [15.0667, -92.0833], // Inicio de la Frontera (Unión Juárez)
+        [14.9625, -92.1470], // Cruce Fronterizo Talismán (Puente Talismán / El Carmen)
+        [14.6765, -92.1473], // Cruce Fronterizo Ciudad Hidalgo (Puente Rodolfo Robles)
+        [14.5315, -92.2281]  // Desembocadura (Océano Pacífico)
+      ],
+      width: 2
+    }
   },
   { 
     id: 'rio_hondo', 
     name: 'Río Hondo', 
     region: 'Quintana Roo', 
-    lat: 18.5, 
-    lng: -88.3,
+    lat: 18.50, 
+    lng: -88.39,
     role: 'Border (South)',
+    crossesStates: ['Quintana Roo', 'Belice'],
     tags: ['Border River', 'South'],
-    description: 'Río limítrofe del sur de México.'
+    outlet: 'Bahía de Chetumal (Mar Caribe)',
+    description: 'Frontera natural entre México (Quintana Roo) y Belice. Desemboca en la Bahía de Chetumal.',
+    riverPath: {
+      coordinates: [
+        [17.8950, -88.8850], // Formación (Confluencia Río Azul / Blue Creek)
+        [18.2520, -88.5510], // Zona Cañera (Javier Rojo Gómez / Pucté)
+        [18.5015, -88.3970], // Puente Internacional Chactemal (Cruce Nuevo)
+        [18.4842, -88.3985], // Subteniente López (Puente Viejo)
+        [18.4950, -88.2950]  // Desembocadura (Bahía de Chetumal)
+      ],
+      width: 2
+    }
   },
 
   // LAKES
