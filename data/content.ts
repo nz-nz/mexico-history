@@ -290,7 +290,8 @@ const deck6_1: Deck = {
   cards: [
     q('6.1.1', '¿Cuánto tiempo estuvo Porfirio Díaz en el poder?', 'Más de 30 años (1876-1911)'),
     q('6.1.2', 'Frase famosa del Porfiriato sobre el gobierno:', '"Poca política y mucha administración."'),
-    q('6.1.3', 'Infraestructura mayor construida en el Porfiriato:', 'Ferrocarriles y Palacio de Bellas Artes')
+    q('6.1.3', 'Infraestructura mayor construida en el Porfiriato:', 'Ferrocarriles y Palacio de Bellas Artes'),
+    q('6.1.4', '¿Quién ordenó la construcción del Palacio de Bellas Artes y en qué año?', 'Porfirio Díaz en 1904')
   ]
 };
 
@@ -320,7 +321,9 @@ const deck6_3: Deck = {
     q('6.3.5', '¿Qué presidente firmó el TLCAN (NAFTA)?', 'Carlos Salinas de Gortari'),
     q('6.3.6', '¿Quién es el Premio Nobel de la Paz mexicano?', 'Alfonso García Robles'),
     q('6.3.7', '¿Quién es el Premio Nobel de Literatura mexicano?', 'Octavio Paz'),
-    q('6.3.8', '¿Quién es el Premio Nobel de Química mexicano?', 'Mario Molina')
+    q('6.3.8', '¿Quién es el Premio Nobel de Química mexicano?', 'Mario Molina'),
+    q('6.3.9', '¿Quién inauguró el Palacio de Bellas Artes y en qué año?', 'Abelardo L. Rodríguez en 1934'),
+    q('6.3.10', '¿En qué año fueron los Juegos Olímpicos en México y con qué presidente?', '1968, con Gustavo Díaz Ordaz')
   ]
 };
 
