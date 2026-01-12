@@ -220,7 +220,8 @@ const deck4_2: Deck = {
     q('4.2.6', '¿Qué era la "Encomienda"?', 'Sistema de concesión de tierras y trabajo indígena a conquistadores'),
     q('4.2.7', 'Nombre del primer periódico en Nueva España:', 'La Gaceta de México (1722)'),
     q('4.2.8', 'Nombre de la primera universidad (1551):', 'Real y Pontificia Universidad de México'),
-    q('4.2.9', '¿Quién promovió las "Leyes de Indias"?', 'Fray Bartolomé de las Casas (Defensor de los indígenas)')
+    q('4.2.9', '¿Quién promovió las "Leyes de Indias"?', 'Fray Bartolomé de las Casas (Defensor de los indígenas)'),
+    q('4.2.10', 'Primera institución educativa en 1811 destinada a las ciencias y artes', 'Colegio de Minería')
   ]
 };
 
@@ -323,7 +324,8 @@ const deck6_3: Deck = {
     q('6.3.7', '¿Quién es el Premio Nobel de Literatura mexicano?', 'Octavio Paz'),
     q('6.3.8', '¿Quién es el Premio Nobel de Química mexicano?', 'Mario Molina'),
     q('6.3.9', '¿Quién inauguró el Palacio de Bellas Artes y en qué año?', 'Abelardo L. Rodríguez en 1934'),
-    q('6.3.10', '¿En qué año fueron los Juegos Olímpicos en México y con qué presidente?', '1968, con Gustavo Díaz Ordaz')
+    q('6.3.10', '¿En qué año fueron los Juegos Olímpicos en México y con qué presidente?', '1968, con Gustavo Díaz Ordaz'),
+    q('6.3.11', '¿Qué órgano público otorga las cédulas profesionales?', 'Secretaria de Educación Pública (SEP) mediante la Dirección General de Profesiones')
   ]
 };
 
