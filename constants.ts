@@ -1,115 +1,133 @@
-import { MatchItem } from './types';
+// =====================================================
+// CONSTANTS - GAME DATA & VISUAL ASSETS
+// =====================================================
+// This file contains game-specific data with visual assets (images, emojis, coordinates).
+// Content data is sourced from the centralized knowledge base (data/categories).
+// =====================================================
 
+import { 
+  MatchItem, 
+  TimelinePeriod, 
+  TimelineItem, 
+  MapLocation,
+  WriterTimelineItem,
+  WriterTimelinePeriod,
+  PresidentTimelineItem,
+  PresidentTimelinePeriod
+} from './types';
+import { Category, getByCategory, getBySubcategory, getByTags } from './data/categories';
 
+// =====================================================
+// APP SETTINGS & DEFAULTS
+// =====================================================
 
-// Extracted from Page 6 (Maya Gods)
-// Images sourced from verified Wikimedia Commons public domain files (Direct URLs)
-// Using standard stable filenames
+export const DEFAULT_SESSION_SETTINGS = {
+  maxNewCardsPerSession: 20,
+  maxReviewCardsPerSession: 100,
+  showQuotesInContext: true,
+  autoPlayAudio: false,
+  enableTimer: false,
+  timerSeconds: 30,
+};
+
+export const SRS_INTERVALS = [1, 3, 7, 14, 30]; // Days for boxes 1-5
+export const STORAGE_KEY = 'mexico_naturalization_srs_state_v2'; // Updated version for new structure
+
+// =====================================================
+// MATCHING GAME DATA - Visual pairs with images
+// =====================================================
+
+// Maya Gods - Prehispanic Period
 export const MAYA_MATCHING_PAIRS: MatchItem[] = [
   { 
     id: 'ma1', name: 'Ixchel', matchId: 'm_pair1', type: 'term',
-    // Goddess I from Dresden Codex
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/IXCHEL.png?v=1'
   },
   { id: 'd_ma1', name: 'Diosa de la Luna', matchId: 'm_pair1', type: 'definition' },
   
   { 
     id: 'ma2', name: 'Ahau Kin', matchId: 'm_pair2', type: 'term',
-    // Kinich Ahau (God G)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/AHAU_KIN.png?v=1'
   },
   { id: 'd_ma2', name: 'Dios del Sol', matchId: 'm_pair2', type: 'definition' },
   
   { 
     id: 'ma3', name: 'Chaac', matchId: 'm_pair3', type: 'term',
-    // Chaac from Dresden Codex (Verified)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/CHAAC.png?v=1'
   },
   { id: 'd_ma3', name: 'Dios de la Lluvia', matchId: 'm_pair3', type: 'definition' },
 
   { 
     id: 'ma4', name: 'Ek Chuah', matchId: 'm_pair4', type: 'term',
-    // God M
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/EK_CHUAH.png?v=1'
   },
   { id: 'd_ma4', name: 'Dios del Comercio / Cacao', matchId: 'm_pair4', type: 'definition' },
 
   { 
     id: 'ma5', name: 'Buluc Chabtan', matchId: 'm_pair5', type: 'term',
-    // God F
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/BULUC_CHABTAN.png?v=1'
   },
   { id: 'd_ma5', name: 'Dios de la Guerra', matchId: 'm_pair5', type: 'definition' },
   
   { 
     id: 'ma6', name: 'Ah Mun / Yum Kaax', matchId: 'm_pair6', type: 'term',
-    // God E
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/maya/AH_MUN_YUM_KAAX.png?v=1'
   },
   { id: 'd_ma6', name: 'Dios del Maíz', matchId: 'm_pair6', type: 'definition' },
 ];
 
-// Extracted from Page 9 (Mexica Gods)
-// Images sourced from verified Wikimedia Commons public domain files (Direct URLs)
+// Mexica (Aztec) Gods - Prehispanic Period
 export const MEXICA_MATCHING_PAIRS: MatchItem[] = [
   { 
     id: 'me1', name: 'Huitzilopochtli', matchId: 'x_pair1', type: 'term',
-    // Rediscovered: Huitzilopochtli (Aztec God of Sun and War)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/HUITZILOPOCHTLI.png?v=1'
   },
   { id: 'd_me1', name: 'Dios de la Guerra', matchId: 'x_pair1', type: 'definition' },
   
   { 
     id: 'me2', name: 'Tláloc', matchId: 'x_pair2', type: 'term',
-    // Rediscovered: Tlaloc (Aztec God of Rain)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/TLALOC.png?v=1'
   },
   { id: 'd_me2', name: 'Dios de la Lluvia', matchId: 'x_pair2', type: 'definition' },
   
   { 
     id: 'me3', name: 'Coatlicue', matchId: 'x_pair3', type: 'term',
-    // Rediscovered: Coatlicue (Aztec Goddess of Life and Death)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/COATLICUE.png?v=1'
   },
   { id: 'd_me3', name: 'Diosa de la Fertilidad', matchId: 'x_pair3', type: 'definition' },
 
   { 
     id: 'me4', name: 'Quetzalcóatl', matchId: 'x_pair4', type: 'term',
-    // Rediscovered: Quetzalcoatl (Aztec God of Wind and Wisdom)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/QUETZALCOATL.png?v=1'
   },
   { id: 'd_me4', name: 'Serpiente Emplumada / Viento', matchId: 'x_pair4', type: 'definition' },
 
   { 
     id: 'me5', name: 'Tonatiuh', matchId: 'x_pair5', type: 'term',
-    // Rediscovered: Tonatiuh (Aztec Sun God)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/TONATIUH.png?v=1'
   },
   { id: 'd_me5', name: 'Dios del Sol', matchId: 'x_pair5', type: 'definition' },
 
   { 
     id: 'me6', name: 'Xólotl', matchId: 'x_pair6', type: 'term',
-    // Rediscovered: Xolotl (Aztec God of Fire and Lightning)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/XOLOTL.png?v=1'
   },
   { id: 'd_me6', name: 'Dios Perro / Ocaso', matchId: 'x_pair6', type: 'definition' },
   
   { 
     id: 'me7', name: 'Chalchiuhtlicue', matchId: 'x_pair7', type: 'term',
-    // Rediscovered: Chalchiuhtlicue (Aztec Goddess of Water)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/CHALCHIUHTLICUE.png?v=1'
   },
   { id: 'd_me7', name: 'Diosa de los Lagos', matchId: 'x_pair7', type: 'definition' },
   
   { 
     id: 'me8', name: 'Centéotl', matchId: 'x_pair8', type: 'term',
-    // Rediscovered: Centeotl (Aztec God of Maize)
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/CENTEOTL.png?v=1'
   },
   { id: 'd_me8', name: 'Dios del Maíz', matchId: 'x_pair8', type: 'definition' },
 ];
 
-// Extracted from User Image "La Constitución"
+// Constitution Articles - Civics
 export const CONSTITUTION_MATCHING_PAIRS: MatchItem[] = [
   { id: 'c1', name: 'Artículo 1', matchId: 'c_pair1', type: 'term' },
   { id: 'd_c1', name: 'Derechos humanos, prohibida la esclavitud y discriminación', matchId: 'c_pair1', type: 'definition' },
@@ -386,8 +404,9 @@ export const UNIVERSIDADES_MATCHING_PAIRS: MatchItem[] = [
   { id: 'd_uni7', name: 'Luis Echeverría (1974) - "Casa abierta al tiempo"', matchId: 'uni_pair7', type: 'definition' },
 ];
 
-// Timeline Game Data
-import { TimelineItem, TimelinePeriod, WriterTimelineItem, WriterTimelinePeriod, PresidentTimelineItem, PresidentTimelinePeriod } from './types';
+// =====================================================
+// TIMELINE GAME DATA - Civilizations
+// =====================================================
 
 export const TIMELINE_PERIODS: TimelinePeriod[] = [
   { 
@@ -513,8 +532,9 @@ export const WRITER_TIMELINE_ITEMS: WriterTimelineItem[] = [
   { id: 'castellanos', name: 'Rosario Castellanos', periodId: 'ACTUALIDAD', emoji: '🌸' },
 ];
 
-// Map Game Data
-import { MapLocation } from './types';
+// =====================================================
+// MAP GAME DATA - Archaeological Sites
+// =====================================================
 
 export const MAP_LOCATIONS: MapLocation[] = [
   { id: 'huatabampo', name: 'Huatabampo', region: 'Sonora', lat: 26.8269, lng: -109.6419 },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SRSCard } from '../types';
+import { getDateEmoji } from '../utils/dateEmoji';
 
 interface ClozeCardProps {
   card: SRSCard;
@@ -11,6 +12,10 @@ interface ClozeCardProps {
 const ClozeCard: React.FC<ClozeCardProps> = ({ card, isFlipped, onFlip }) => {
   // State for user inputs
   const [inputs, setInputs] = useState<Record<number, string>>({});
+  
+  // Get date emoji if card has date info
+  const dateInfo = card.date || card.dateYear ? getDateEmoji(card.date, card.dateYear) : null;
+  const hasDate = dateInfo && dateInfo.emoji;
 
   // Reset inputs when card changes
   useEffect(() => {
@@ -126,9 +131,25 @@ const ClozeCard: React.FC<ClozeCardProps> = ({ card, isFlipped, onFlip }) => {
             Respuesta
           </span>
 
+          {/* Date with emoji */}
+          {hasDate && (
+            <div className="mb-3 px-3 py-1 bg-amber-100 dark:bg-amber-900/30 rounded-full text-amber-800 dark:text-amber-200">
+              <span className="text-sm font-bold">
+                {dateInfo.emoji} {card.date || card.dateYear}
+              </span>
+            </div>
+          )}
+
           <div className="text-xl md:text-2xl font-medium text-gray-800 dark:text-gray-100 leading-relaxed text-center">
             {renderClozeContent(true)}
           </div>
+
+          {/* Famous quote if available */}
+          {card.famousQuote && (
+            <div className="mt-4 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg max-w-sm">
+              <p className="text-sm italic text-gray-600 dark:text-gray-400">"{card.famousQuote}"</p>
+            </div>
+          )}
         </div>
       </motion.div>
     </div>

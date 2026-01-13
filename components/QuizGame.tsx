@@ -1,167 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, RefreshCcw, Trophy, CheckCircle, XCircle, Medal } from 'lucide-react';
+import { 
+  Category, 
+  CATEGORY_LABELS, 
+  CATEGORY_ICONS, 
+  KNOWLEDGE_BASE, 
+  getByCategory,
+  KnowledgeEntry 
+} from '../data/categories';
+import { generateQuizOptions } from '../data/content';
 
-// Quiz questions extracted from PDF context
+// Quiz question interface
 interface QuizQuestion {
   id: string;
   question: string;
   options: string[];
   correctAnswer: number;
-  category: string;
+  category: Category;
+  subcategory: string;
+  famousQuote?: string;
 }
 
-const QUIZ_QUESTIONS: QuizQuestion[] = [
-  // CINE
-  {
-    id: 'q1',
-    question: '¿Cuál es el máximo galardón del cine mexicano (el "Oscar" mexicano)?',
-    options: ['Golden Eagle', 'Ariel', 'Azteca de Oro', 'La Diosa'],
-    correctAnswer: 1,
-    category: 'cine'
-  },
-  {
-    id: 'q2',
-    question: '¿Cuál fue la primera película sonora mexicana?',
-    options: ['"Macario"', '"Así se quiere en Jalisco"', '"Santa"', '"María Candelaria"'],
-    correctAnswer: 2,
-    category: 'cine'
-  },
-  {
-    id: 'q3',
-    question: '¿Cuál fue la primera película mexicana a color?',
-    options: ['"Santa"', '"Así se quiere en Jalisco"', '"Los Olvidados"', '"El Ángel Exterminador"'],
-    correctAnswer: 1,
-    category: 'cine'
-  },
-  {
-    id: 'q4',
-    question: '¿En qué año inició la Época de Oro del cine mexicano?',
-    options: ['1925', '1935', '1945', '1955'],
-    correctAnswer: 1,
-    category: 'cine'
-  },
-  {
-    id: 'q5',
-    question: '¿En qué año inició la nueva época del cine mexicano?',
-    options: ['1980', '1985', '1990', '2000'],
-    correctAnswer: 2,
-    category: 'cine'
-  },
-  // DEPORTES
-  {
-    id: 'q6',
-    question: '¿En qué ciudad se realizaron los Juegos Olímpicos de 1968?',
-    options: ['Guadalajara', 'Monterrey', 'Ciudad de México', 'Puebla'],
-    correctAnswer: 2,
-    category: 'deportes'
-  },
-  {
-    id: 'q7',
-    question: '¿En qué años se celebraron Copas Mundiales de fútbol en México?',
-    options: ['1962 y 1978', '1970 y 1986', '1974 y 1990', '1966 y 1982'],
-    correctAnswer: 1,
-    category: 'deportes'
-  },
-  {
-    id: 'q8',
-    question: '¿Quién fue la primera mexicana en ganar oro olímpico?',
-    options: ['Ana Gabriela Guevara', 'Soraya Jiménez', 'María del Rosario Espinoza', 'Paola Espinosa'],
-    correctAnswer: 1,
-    category: 'deportes'
-  },
-  {
-    id: 'q9',
-    question: '¿En qué deporte destacó México en Londres 2012?',
-    options: ['Natación', 'Fútbol', 'Atletismo', 'Gimnasia'],
-    correctAnswer: 1,
-    category: 'deportes'
-  },
-  // PREMIOS
-  {
-    id: 'q10',
-    question: '¿Quién ganó el Premio Nobel de la Paz de México?',
-    options: ['Octavio Paz', 'Alfonso García Robles', 'Mario Molina', 'Carlos Fuentes'],
-    correctAnswer: 1,
-    category: 'premios'
-  },
-  {
-    id: 'q11',
-    question: '¿Quién inventó la televisión a color?',
-    options: ['Luis Miramontes', 'Guillermo González Camarena', 'Mario Molina', 'Rodolfo Neri Vela'],
-    correctAnswer: 1,
-    category: 'premios'
-  },
-  {
-    id: 'q12',
-    question: '¿Qué premio es conocido como el "Nobel" de la arquitectura?',
-    options: ['Premio Bellas Artes', 'Premio Pritzker', 'Premio Cervantes', 'Premio Amparo Dávila'],
-    correctAnswer: 1,
-    category: 'premios'
-  },
-  {
-    id: 'q13',
-    question: '¿El Premio Amparo Dávila se otorga en qué categoría?',
-    options: ['Arquitectura', 'Cine', 'Literatura/Cuento', 'Música'],
-    correctAnswer: 2,
-    category: 'premios'
-  },
-  // CULTURA POPULAR
-  {
-    id: 'q14',
-    question: '¿Cuál es la frase famosa de El Chapulín Colorado?',
-    options: ['"Síganme los buenos"', '"No contaban con mi astucia"', '"Se aprovechan de mi nobleza"', 'Todas las anteriores'],
-    correctAnswer: 3,
-    category: 'cultura'
-  },
-  {
-    id: 'q15',
-    question: '¿Quién compuso "El ratón vaquero"?',
-    options: ['Juan Gabriel', 'Chespirito', 'Cri Cri', 'José José'],
-    correctAnswer: 2,
-    category: 'cultura'
-  },
-  {
-    id: 'q16',
-    question: '¿Cuál era el nombre real de Cantinflas?',
-    options: ['Mario Moreno Reyes', 'Roberto Gómez Bolaños', 'Germán Valdés', 'Tin Tan'],
-    correctAnswer: 0,
-    category: 'cultura'
-  },
-  // LITERATURA
-  {
-    id: 'q17',
-    question: '¿Quién es conocida como "La décima musa"?',
-    options: ['Elena Poniatowska', 'Rosario Castellanos', 'Sor Juana Inés de la Cruz', 'Laura Esquivel'],
-    correctAnswer: 2,
-    category: 'literatura'
-  },
-  {
-    id: 'q18',
-    question: '¿Quién escribió "La noche de Tlatelolco"?',
-    options: ['José Emilio Pacheco', 'Elena Poniatowska', 'Carlos Fuentes', 'Octavio Paz'],
-    correctAnswer: 1,
-    category: 'literatura'
-  },
-];
-
-type QuizCategory = 'ALL' | 'cine' | 'deportes' | 'premios' | 'cultura' | 'literatura';
-
-const CATEGORY_CONFIG: Record<QuizCategory, { title: string; emoji: string; bgColor: string }> = {
-  ALL: { title: 'Todas las Categorías', emoji: '🎯', bgColor: 'bg-purple-100' },
-  cine: { title: 'Cine Mexicano', emoji: '🎬', bgColor: 'bg-red-100' },
-  deportes: { title: 'Deportes', emoji: '⚽', bgColor: 'bg-green-100' },
-  premios: { title: 'Premios y Ciencia', emoji: '🏆', bgColor: 'bg-yellow-100' },
-  cultura: { title: 'Cultura Popular', emoji: '🎤', bgColor: 'bg-pink-100' },
-  literatura: { title: 'Literatura', emoji: '📚', bgColor: 'bg-indigo-100' },
+// Generate quiz questions from knowledge base entries
+const generateQuizQuestion = (entry: KnowledgeEntry): QuizQuestion => {
+  const { options, correctIndex } = generateQuizOptions(entry.id, 3);
+  
+  return {
+    id: entry.id,
+    question: entry.question,
+    options,
+    correctAnswer: correctIndex,
+    category: entry.category,
+    subcategory: entry.subcategory,
+    famousQuote: entry.famousQuote?.text
+  };
 };
+
+// Generate all quiz questions from knowledge base
+const generateAllQuestions = (): QuizQuestion[] => {
+  return KNOWLEDGE_BASE
+    .filter(entry => entry.answer.length > 0 && entry.answer.length < 100) // Filter suitable entries
+    .map(generateQuizQuestion);
+};
+
+// Category configuration with colors
+const CATEGORY_CONFIG: Record<Category | 'ALL', { title: string; emoji: string; bgColor: string }> = {
+  ALL: { title: 'Todas las Categorías', emoji: '🎯', bgColor: 'bg-purple-100' },
+  [Category.PREHISPANICO]: { title: CATEGORY_LABELS[Category.PREHISPANICO], emoji: CATEGORY_ICONS[Category.PREHISPANICO], bgColor: 'bg-amber-100' },
+  [Category.CONQUISTA_COLONIA]: { title: CATEGORY_LABELS[Category.CONQUISTA_COLONIA], emoji: CATEGORY_ICONS[Category.CONQUISTA_COLONIA], bgColor: 'bg-orange-100' },
+  [Category.INDEPENDENCIA]: { title: CATEGORY_LABELS[Category.INDEPENDENCIA], emoji: CATEGORY_ICONS[Category.INDEPENDENCIA], bgColor: 'bg-green-100' },
+  [Category.REVOLUCION]: { title: CATEGORY_LABELS[Category.REVOLUCION], emoji: CATEGORY_ICONS[Category.REVOLUCION], bgColor: 'bg-red-100' },
+  [Category.CONTEMPORANEO]: { title: CATEGORY_LABELS[Category.CONTEMPORANEO], emoji: CATEGORY_ICONS[Category.CONTEMPORANEO], bgColor: 'bg-blue-100' },
+  [Category.CIVISMO]: { title: CATEGORY_LABELS[Category.CIVISMO], emoji: CATEGORY_ICONS[Category.CIVISMO], bgColor: 'bg-indigo-100' },
+  [Category.TRADICIONES]: { title: CATEGORY_LABELS[Category.TRADICIONES], emoji: CATEGORY_ICONS[Category.TRADICIONES], bgColor: 'bg-pink-100' },
+  [Category.GASTRONOMIA]: { title: CATEGORY_LABELS[Category.GASTRONOMIA], emoji: CATEGORY_ICONS[Category.GASTRONOMIA], bgColor: 'bg-yellow-100' },
+  [Category.GEOGRAFIA]: { title: CATEGORY_LABELS[Category.GEOGRAFIA], emoji: CATEGORY_ICONS[Category.GEOGRAFIA], bgColor: 'bg-teal-100' },
+  [Category.LITERATURA_MUSICA]: { title: CATEGORY_LABELS[Category.LITERATURA_MUSICA], emoji: CATEGORY_ICONS[Category.LITERATURA_MUSICA], bgColor: 'bg-violet-100' },
+  [Category.PINTURA_CINE]: { title: CATEGORY_LABELS[Category.PINTURA_CINE], emoji: CATEGORY_ICONS[Category.PINTURA_CINE], bgColor: 'bg-rose-100' },
+  [Category.CIENCIA_DEPORTES]: { title: CATEGORY_LABELS[Category.CIENCIA_DEPORTES], emoji: CATEGORY_ICONS[Category.CIENCIA_DEPORTES], bgColor: 'bg-cyan-100' },
+};
+
+type QuizCategorySelection = Category | 'ALL';
 
 interface QuizGameProps {
   onBack?: () => void;
 }
 
 const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
-  const [category, setCategory] = useState<QuizCategory | null>(null);
+  const [category, setCategory] = useState<QuizCategorySelection | null>(null);
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -171,20 +78,23 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
   const [quizComplete, setQuizComplete] = useState(false);
   const [highScores, setHighScores] = useState<Record<string, number>>({});
 
+  // Generate all questions once on component mount
+  const allQuestions = useMemo(() => generateAllQuestions(), []);
+
   useEffect(() => {
     // Load high scores
-    const saved = localStorage.getItem('meso_app_quiz_high_scores');
+    const saved = localStorage.getItem('meso_app_quiz_high_scores_v2');
     if (saved) {
       setHighScores(JSON.parse(saved));
     }
   }, []);
 
-  const initializeQuiz = (cat: QuizCategory) => {
+  const initializeQuiz = (cat: QuizCategorySelection) => {
     setCategory(cat);
 
     let filtered = cat === 'ALL'
-      ? [...QUIZ_QUESTIONS]
-      : QUIZ_QUESTIONS.filter(q => q.category === cat);
+      ? [...allQuestions]
+      : allQuestions.filter(q => q.category === cat);
 
     // Shuffle and take up to 10 questions
     const shuffled = filtered.sort(() => Math.random() - 0.5).slice(0, 10);
@@ -221,7 +131,7 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
         if (percentage > currentHigh) {
           const newHighScores = { ...highScores, [category]: percentage };
           setHighScores(newHighScores);
-          localStorage.setItem('meso_app_quiz_high_scores', JSON.stringify(newHighScores));
+          localStorage.setItem('meso_app_quiz_high_scores_v2', JSON.stringify(newHighScores));
         }
       }
     } else {
@@ -234,8 +144,10 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
 
   // Category selection
   if (!category) {
+    const categoryKeys = ['ALL', ...Object.values(Category)] as QuizCategorySelection[];
+    
     return (
-      <div className="w-full max-w-4xl mx-auto p-6 flex flex-col items-center">
+      <div className="w-full max-w-5xl mx-auto p-6 flex flex-col items-center">
         {/* Back to Menu button */}
         {onBack && (
           <div className="w-full mb-6">
@@ -243,30 +155,41 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
               onClick={onBack}
               className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#4b6f44] dark:hover:text-[#a3cf6d] font-medium"
             >
-              <ArrowLeft size={20} /> Back to Menu
+              <ArrowLeft size={20} /> Volver al Menú
             </button>
           </div>
         )}
 
-        <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-8">Quiz: Datos Históricos</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-8 text-center">Test your knowledge of Mexican history, culture, and famous figures!</p>
+        <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-4">Quiz: Conocimiento General</h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-8 text-center">
+          ¡Pon a prueba tu conocimiento sobre la historia y cultura de México!
+          <br />
+          <span className="text-sm text-gray-400">
+            {allQuestions.length} preguntas disponibles en {Object.keys(Category).length} categorías
+          </span>
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
-          {(Object.keys(CATEGORY_CONFIG) as QuizCategory[]).map(cat => {
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
+          {categoryKeys.map(cat => {
             const config = CATEGORY_CONFIG[cat];
             const highScore = highScores[cat];
+            const questionCount = cat === 'ALL' 
+              ? allQuestions.length 
+              : allQuestions.filter(q => q.category === cat).length;
 
             return (
               <button
                 key={cat}
                 onClick={() => initializeQuiz(cat)}
-                className={`flex flex-col items-center p-6 ${config.bgColor} dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-[#4b6f44] dark:hover:border-[#a3cf6d] hover:-translate-y-1 transition-all group`}
+                disabled={questionCount === 0}
+                className={`flex flex-col items-center p-4 ${config.bgColor} dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-[#4b6f44] dark:hover:border-[#a3cf6d] hover:-translate-y-1 transition-all group disabled:opacity-50 disabled:cursor-not-allowed`}
               >
-                <span className="text-4xl mb-3 group-hover:scale-110 transition-transform">{config.emoji}</span>
-                <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-2 text-center">{config.title}</h3>
+                <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">{config.emoji}</span>
+                <h3 className="text-sm font-bold text-gray-800 dark:text-gray-100 mb-1 text-center line-clamp-2">{config.title}</h3>
+                <span className="text-xs text-gray-500 dark:text-gray-400 mb-2">{questionCount} preguntas</span>
                 {highScore !== undefined && (
-                  <span className="flex items-center gap-1 text-[#4b6f44] dark:text-[#a3cf6d] font-bold text-sm">
-                    <Medal size={14} /> Best: {highScore}%
+                  <span className="flex items-center gap-1 text-[#4b6f44] dark:text-[#a3cf6d] font-bold text-xs">
+                    <Medal size={12} /> {highScore}%
                   </span>
                 )}
               </button>
@@ -290,16 +213,16 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
           className="bg-white dark:bg-[#16213e] rounded-3xl p-8 text-center shadow-2xl border-4 border-[#a3cf6d] w-full"
         >
           <Trophy size={64} className="mx-auto mb-4 text-yellow-500" />
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Quiz Complete!</h3>
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">¡Quiz Completado!</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            You scored <span className="font-bold text-[#4b6f44] dark:text-[#a3cf6d]">{score}</span> out of {questions.length}
+            Acertaste <span className="font-bold text-[#4b6f44] dark:text-[#a3cf6d]">{score}</span> de {questions.length}
           </p>
           <div className="text-4xl font-black text-[#4b6f44] dark:text-[#a3cf6d] mb-4">
             {percentage}%
           </div>
           {isHighScore && (
             <div className="flex items-center justify-center gap-2 text-yellow-600 dark:text-yellow-400 font-bold mb-4">
-              <Medal size={20} /> New High Score!
+              <Medal size={20} /> ¡Nuevo Récord!
             </div>
           )}
           <div className="flex flex-col gap-3 mt-6">
@@ -307,13 +230,13 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
               onClick={() => initializeQuiz(category)}
               className="flex items-center justify-center gap-2 bg-[#4b6f44] text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-[#3a5735] transition-colors"
             >
-              <RefreshCcw size={20} /> Play Again
+              <RefreshCcw size={20} /> Jugar de Nuevo
             </button>
             <button
               onClick={() => setCategory(null)}
               className="text-gray-500 dark:text-gray-400 font-medium hover:text-gray-800 dark:hover:text-gray-200"
             >
-              Choose Different Category
+              Elegir Otra Categoría
             </button>
           </div>
         </motion.div>
@@ -332,15 +255,15 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
           onClick={() => setCategory(null)}
           className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#4b6f44] dark:hover:text-[#a3cf6d] font-medium"
         >
-          <ArrowLeft size={20} /> Exit Quiz
+          <ArrowLeft size={20} /> Salir
         </button>
         <div className="text-center">
-          <span className="text-lg font-bold text-[#4b6f44] dark:text-[#a3cf6d]">
+          <span className="text-sm font-bold text-[#4b6f44] dark:text-[#a3cf6d]">
             {config.emoji} {config.title}
           </span>
         </div>
         <div className="text-right">
-          <span className="text-gray-600 dark:text-gray-400 font-medium">
+          <span className="text-gray-600 dark:text-gray-400 font-medium text-sm">
             {currentIndex + 1} / {questions.length}
           </span>
         </div>
@@ -420,8 +343,21 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
           onClick={nextQuestion}
           className="mt-6 w-full bg-[#4b6f44] text-white py-4 rounded-xl font-bold shadow-lg hover:bg-[#3a5735] transition-colors"
         >
-          {currentIndex + 1 >= questions.length ? 'See Results' : 'Next Question'}
+          {currentIndex + 1 >= questions.length ? 'Ver Resultados' : 'Siguiente Pregunta'}
         </motion.button>
+      )}
+
+      {/* Show famous quote if available */}
+      {showResult && currentQuestion.famousQuote && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mt-4 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800"
+        >
+          <p className="text-amber-800 dark:text-amber-200 text-sm italic">
+            "{currentQuestion.famousQuote}"
+          </p>
+        </motion.div>
       )}
     </div>
   );

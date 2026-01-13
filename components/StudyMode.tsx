@@ -1,18 +1,31 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSRS } from '../hooks/useSRS';
-import { ALL_MODULES } from '../data/content';
-import { SRSCard, Module } from '../types';
+import { ALL_MODULES, getModuleByCategory } from '../data/content';
+import { Category, CATEGORY_LABELS, CATEGORY_ICONS, getSubcategories } from '../data/categories';
+import { SRSCard, Module, SessionSettings } from '../types';
 import StandardCard from './StandardCard';
 import ClozeCard from './ClozeCard';
-import { ArrowLeft, BookOpen, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle, XCircle, ChevronDown, ChevronRight, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { DEFAULT_SESSION_SETTINGS } from '../constants';
 
 interface StudyModeProps {
   onBack: () => void;
 }
 
 const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
-  const { srsState, getDueCards, submitResult } = useSRS();
+  const { 
+    srsState, 
+    getDueCards, 
+    getSessionCards,
+    submitResult,
+    sessionSettings,
+    updateSettings,
+    startSession: startSRSSession,
+    endSession: endSRSSession,
+    getOverallProgress,
+    getCategoryProgress
+  } = useSRS();
 
   // State for session
   const [selectedModule, setSelectedModule] = useState<Module | null>(null);
@@ -23,9 +36,30 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
 
   // Dashboard State
   const [showDashboard, setShowDashboard] = useState(true);
-  const [dailyPace, setDailyPace] = useState(20); // Configurable pace
+  const [dailyPace, setDailyPace] = useState(sessionSettings.maxNewCardsPerSession);
+  
+  // Category expansion state for subcategory selection
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const [showSettings, setShowSettings] = useState(false);
+
+  // Sync dailyPace with sessionSettings
+  useEffect(() => {
+    setDailyPace(sessionSettings.maxNewCardsPerSession);
+  }, [sessionSettings.maxNewCardsPerSession]);
 
   // --- HELPERS ---
+
+  const toggleCategoryExpansion = (categoryId: string) => {
+    setExpandedCategories(prev => {
+      const next = new Set(prev);
+      if (next.has(categoryId)) {
+        next.delete(categoryId);
+      } else {
+        next.add(categoryId);
+      }
+      return next;
+    });
+  };
 
   // Compute due cards for specific module or all
   const getDueCount = (moduleId: string) => {
@@ -70,52 +104,40 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
 
   const startSession = (mod: Module) => {
     const allCards = mod.decks.flatMap(d => d.cards);
-    // Note: Decks structure in types is Module -> Decks -> Cards
-
-    // Let's filter only due cards
-    const due = getDueCards(allCards);
-
-    // If no due cards, maybe review ahead? Or mix in new ones?
-    // For now, if due is empty, let's pull 10 random ones for "practice" 
-    // but in a real app we'd have a "Cram" mode.
-    // Let's just use all cards if nothing is due for testing purposes, 
-    // or strictly respect SRS.
-    // If we want to strictly respect SRS:
-    if (due.length === 0) {
-      // Fallback: If no cards are "technically" due (state issues?), 
-      // take first 10 new cards (never seen).
-      const newCards = allCards.filter(c => !srsState[c.id]);
-      if (newCards.length > 0) {
-        setSessionCards(newCards.slice(0, 10)); // Learn 10 new
-      } else {
-        // All cards seen and nothing due? Just review random 10.
-        const shuffled = [...allCards].sort(() => Math.random() - 0.5).slice(0, 10); // Review random
-        setSessionCards(shuffled);
-      }
+    
+    // Use the new getSessionCards which respects maxNewCardsPerSession
+    const cards = getSessionCards(allCards);
+    
+    // Fallback if no cards ready
+    if (cards.length === 0) {
+      const shuffled = [...allCards].sort(() => Math.random() - 0.5).slice(0, sessionSettings.maxNewCardsPerSession);
+      setSessionCards(shuffled);
     } else {
-      setSessionCards(due.slice(0, 20)); // Limit session to 20 cards
+      setSessionCards(cards);
     }
 
     setSelectedModule(mod);
     setCurrentIndex(0);
     setSessionStats({ correct: 0, incorrect: 0 });
     setIsFlipped(false);
-    setShowDashboard(false); // Hide dashboard when starting
+    setShowDashboard(false);
+    startSRSSession(mod.id);
   };
 
   // Start "Smart Session" (All Modules)
   const startCoachSession = () => {
-    const due = getAllDueCards();
+    const allCards = ALL_MODULES.flatMap(m => m.decks.flatMap(d => d.cards));
+    const cards = getSessionCards(allCards);
+    
     // Shuffle helper
     const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 
-    // If nothing due, grab a mix of new cards from any module
-    if (due.length === 0) {
-      const allCards = ALL_MODULES.flatMap(m => m.decks.flatMap(d => d.cards));
+    if (cards.length === 0) {
+      // Fallback to random new cards
       const newCards = allCards.filter(c => !srsState[c.id]);
-      setSessionCards(shuffle(newCards).slice(0, 20));
+      setSessionCards(shuffle(newCards).slice(0, sessionSettings.maxNewCardsPerSession));
     } else {
-      setSessionCards(shuffle(due).slice(0, 20));
+      setSessionCards(shuffle(cards));
     }
 
     // Create a "Dummy" module object for the context of this unified session
@@ -130,6 +152,13 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
     setSessionStats({ correct: 0, incorrect: 0 });
     setIsFlipped(false);
     setShowDashboard(false);
+    startSRSSession();
+  };
+
+  // Handle pace change and persist to settings
+  const handlePaceChange = (newPace: number) => {
+    setDailyPace(newPace);
+    updateSettings({ maxNewCardsPerSession: newPace });
   };
 
   const handleRating = (isCorrect: boolean) => {
@@ -218,8 +247,10 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
               <input
                 type="number"
                 value={dailyPace}
-                onChange={(e) => setDailyPace(Number(e.target.value))}
+                onChange={(e) => handlePaceChange(Number(e.target.value))}
                 className="w-12 bg-white dark:bg-gray-700 border rounded px-1 font-bold text-center"
+                min={5}
+                max={100}
               />
               <span>tarjetas / día</span>
             </div>

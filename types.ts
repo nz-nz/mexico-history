@@ -106,6 +106,13 @@ export interface SRSCard {
     label: string;
     hidden: boolean; 
   }[];
+  
+  // Date and historical context
+  date?: string;            // Display date string (e.g., "24 feb 1821")
+  dateYear?: number;        // Year for date visualization
+  famousQuote?: string;     // Famous quote associated with the card
+  category?: string;        // Category ID for grouping
+  subcategory?: string;     // Subcategory for finer grouping
 }
 
 export interface SRSState {
@@ -114,6 +121,61 @@ export interface SRSState {
   nextReviewDate: number;   // Timestamp
   interval: number;         // Days until next review
   easeFactor: number;       // For SM-2 (optional, default 2.5)
+}
+
+// ==========================================
+// SUBCATEGORY & SESSION TRACKING
+// ==========================================
+
+export interface SubcategoryProgress {
+  categoryId: string;
+  subcategory: string;
+  totalCards: number;
+  learnedCards: number;       // Box 4-5
+  learningCards: number;      // Box 2-3
+  newCards: number;           // Box 1 or unseen
+  lastStudied?: number;       // Timestamp
+}
+
+export interface CategoryProgress {
+  categoryId: string;
+  subcategories: SubcategoryProgress[];
+  totalCards: number;
+  masteredCards: number;      // Box 5
+  progressPercent: number;
+}
+
+export interface SessionSettings {
+  maxNewCardsPerSession: number;     // Default: 20
+  maxReviewCardsPerSession: number;  // Default: 100
+  showQuotesInContext: boolean;      // Default: true
+  autoPlayAudio: boolean;            // Default: false
+  enableTimer: boolean;              // Default: false
+  timerSeconds: number;              // Default: 30
+}
+
+export interface StudySession {
+  startTime: number;
+  endTime?: number;
+  cardsStudied: number;
+  newCardsStudied: number;
+  reviewCardsStudied: number;
+  correctAnswers: number;
+  incorrectAnswers: number;
+  categoryId?: string;
+  subcategory?: string;
+}
+
+// ==========================================
+// EXTENDED SRS STATE
+// ==========================================
+
+export interface ExtendedSRSState extends SRSState {
+  categoryId?: string;
+  subcategory?: string;
+  lastReviewDate?: number;
+  reviewCount: number;
+  consecutiveCorrect: number;
 }
 
 export interface Deck {
