@@ -277,6 +277,59 @@ npm run build   # Production build
 
 January 2026 - Added date emoji visualization, fixed circular dependency
 
+---
+
+## 🦸 Superpowers Skills System
+
+> Skills from [obra/superpowers](https://github.com/obra/superpowers) - mandatory workflows for quality-first development.
+
+### How to Use Skills
+
+**CRITICAL:** Before starting ANY task, check if a skill applies. If there's even a 1% chance a skill is relevant, **you MUST read and follow it**.
+
+To use a skill:
+1. Read the full `SKILL.md` file at the path below
+2. Follow its instructions exactly
+3. Announce: "I'm using the [skill-name] skill"
+
+### Skills Registry
+
+| Skill | Path | When to Use |
+|-------|------|-------------|
+| **brainstorming** | `skills/skills/brainstorming/SKILL.md` | **MANDATORY** before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. |
+| **test-driven-development** | `skills/skills/test-driven-development/SKILL.md` | When implementing any feature or bugfix, before writing implementation code |
+| **systematic-debugging** | `skills/skills/systematic-debugging/SKILL.md` | When encountering any bug, test failure, or unexpected behavior, before proposing fixes |
+| **writing-plans** | `skills/skills/writing-plans/SKILL.md` | When you have a spec or requirements for a multi-step task, before touching code |
+| **executing-plans** | `skills/skills/executing-plans/SKILL.md` | When you have a written implementation plan to execute in a separate session with review checkpoints |
+| **subagent-driven-development** | `skills/skills/subagent-driven-development/SKILL.md` | When executing implementation plans with independent tasks in the current session |
+| **dispatching-parallel-agents** | `skills/skills/dispatching-parallel-agents/SKILL.md` | When facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
+| **using-git-worktrees** | `skills/skills/using-git-worktrees/SKILL.md` | When starting feature work that needs isolation from current workspace or before executing implementation plans |
+| **finishing-a-development-branch** | `skills/skills/finishing-a-development-branch/SKILL.md` | When implementation is complete, all tests pass, and you need to decide how to integrate the work |
+| **requesting-code-review** | `skills/skills/requesting-code-review/SKILL.md` | When completing tasks, implementing major features, or before merging to verify work meets requirements |
+| **receiving-code-review** | `skills/skills/receiving-code-review/SKILL.md` | When receiving code review feedback, before implementing suggestions, especially if feedback seems unclear |
+| **verification-before-completion** | `skills/skills/verification-before-completion/SKILL.md` | When about to claim work is complete, fixed, or passing, before committing or creating PRs |
+| **writing-skills** | `skills/skills/writing-skills/SKILL.md` | When creating new skills, editing existing skills, or verifying skills work before deployment |
+| **using-superpowers** | `skills/skills/using-superpowers/SKILL.md` | Reference for how the skills system works |
+
+### Typical Workflows
+
+| Situation | Skills to Use (in order) |
+|-----------|--------------------------|
+| New feature | brainstorming → writing-plans → test-driven-development → verification-before-completion |
+| Bug fix | systematic-debugging → test-driven-development → verification-before-completion |
+| Refactoring | test-driven-development (tests for existing behavior first) → verification-before-completion |
+| Multi-step task | writing-plans → executing-plans OR subagent-driven-development |
+| Isolated work | using-git-worktrees → [other skills] → finishing-a-development-branch |
+
+### Iron Laws (Never Violate)
+
+1. **TDD**: No production code without a failing test first
+2. **Debugging**: No fixes without root cause investigation first  
+3. **Verification**: No success claims without evidence (run the commands, show the output)
+4. **Brainstorming**: No creative work without design exploration first
+
+---
+
 ## Landing the Plane (Session Completion)
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
