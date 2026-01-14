@@ -108,8 +108,19 @@ export const useSRS = (options: UseSRSOptions = {}) => {
 
   // Get cards for a study session with limits
   const getSessionCards = useCallback((cards: SRSCard[]): SRSCard[] => {
-    const newCards = getNewCards(cards).slice(0, sessionSettings.maxNewCardsPerSession);
-    const reviewCards = getReviewCards(cards).slice(0, sessionSettings.maxReviewCardsPerSession);
+    // Shuffle helper function using Fisher-Yates algorithm
+    const shuffle = (array: SRSCard[]): SRSCard[] => {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
+    // Get and shuffle cards from each group
+    const newCards = shuffle(getNewCards(cards)).slice(0, sessionSettings.maxNewCardsPerSession);
+    const reviewCards = shuffle(getReviewCards(cards)).slice(0, sessionSettings.maxReviewCardsPerSession);
     
     // Interleave new and review cards for better learning
     const result: SRSCard[] = [];
