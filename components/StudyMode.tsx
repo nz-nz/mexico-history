@@ -184,6 +184,7 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
   // 0. Dashboard View (New Entry Point)
   if (showDashboard && !selectedModule) {
     const globalStats = getGlobalStats();
+    const totalCards = globalStats.total || 1; // Avoid divide by zero
     const allDue = getAllDueCards().length;
     const projection = getProjection(globalStats);
     const percentMastered = Math.round((globalStats.mastered / globalStats.total) * 100);
@@ -259,21 +260,81 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
             </p>
           </div>
 
-          {/* Distribution Card */}
+          {/* Distribution Card - Individual Boxes with Progress Bars */}
           <div className="bg-white dark:bg-[#16213e] p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800">
             <h3 className="text-gray-500 uppercase text-xs font-bold mb-4">Distribución SRS</h3>
             <div className="space-y-3">
-              <div className="flex justify-between text-sm">
-                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-gray-400"></div> Nuevas</span>
-                <span className="font-bold">{globalStats[0]}</span>
+              {/* Nuevas - bar shows % remaining (full = bad) */}
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-2 h-2 rounded-full bg-gray-400 shrink-0"></div>
+                <span className="w-28 shrink-0">Nuevas</span>
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gray-400 transition-all duration-500" 
+                    style={{ width: `${totalCards > 0 ? (globalStats[0] / totalCards) * 100 : 0}%` }}
+                  />
+                </div>
+                <span className="font-bold w-12 text-right">{globalStats[0]}</span>
               </div>
-              <div className="flex justify-between text-sm">
-                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-yellow-400"></div> En Proceso (Cajas 1-3)</span>
-                <span className="font-bold text-yellow-500">{globalStats[1] + globalStats[2] + globalStats[3]}</span>
+              {/* Caja 1 - Red */}
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-2 h-2 rounded-full bg-red-500 shrink-0"></div>
+                <span className="w-28 shrink-0 text-red-600 dark:text-red-400">Caja 1 <span className="text-gray-400 dark:text-gray-500">(1 día)</span></span>
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-red-500 transition-all duration-500" 
+                    style={{ width: `${totalCards > 0 ? (globalStats[1] / totalCards) * 100 : 0}%` }}
+                  />
+                </div>
+                <span className="font-bold w-12 text-right text-red-600 dark:text-red-400">{globalStats[1]}</span>
               </div>
-              <div className="flex justify-between text-sm">
-                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#4b6f44]"></div> Maestras (Cajas 4-5)</span>
-                <span className="font-bold text-[#4b6f44]">{globalStats[4] + globalStats[5]}</span>
+              {/* Caja 2 - Orange */}
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-2 h-2 rounded-full bg-orange-500 shrink-0"></div>
+                <span className="w-28 shrink-0 text-orange-600 dark:text-orange-400">Caja 2 <span className="text-gray-400 dark:text-gray-500">(3 días)</span></span>
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-orange-500 transition-all duration-500" 
+                    style={{ width: `${totalCards > 0 ? (globalStats[2] / totalCards) * 100 : 0}%` }}
+                  />
+                </div>
+                <span className="font-bold w-12 text-right text-orange-600 dark:text-orange-400">{globalStats[2]}</span>
+              </div>
+              {/* Caja 3 - Yellow */}
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-2 h-2 rounded-full bg-yellow-500 shrink-0"></div>
+                <span className="w-28 shrink-0 text-yellow-600 dark:text-yellow-400">Caja 3 <span className="text-gray-400 dark:text-gray-500">(7 días)</span></span>
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-yellow-500 transition-all duration-500" 
+                    style={{ width: `${totalCards > 0 ? (globalStats[3] / totalCards) * 100 : 0}%` }}
+                  />
+                </div>
+                <span className="font-bold w-12 text-right text-yellow-600 dark:text-yellow-400">{globalStats[3]}</span>
+              </div>
+              {/* Caja 4 - Green */}
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-2 h-2 rounded-full bg-green-500 shrink-0"></div>
+                <span className="w-28 shrink-0 text-green-600 dark:text-green-400">Caja 4 <span className="text-gray-400 dark:text-gray-500">(14 días)</span></span>
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-green-500 transition-all duration-500" 
+                    style={{ width: `${totalCards > 0 ? (globalStats[4] / totalCards) * 100 : 0}%` }}
+                  />
+                </div>
+                <span className="font-bold w-12 text-right text-green-600 dark:text-green-400">{globalStats[4]}</span>
+              </div>
+              {/* Caja 5 - Dark Green (Mastered) */}
+              <div className="flex items-center gap-3 text-sm">
+                <div className="w-2 h-2 rounded-full bg-[#4b6f44] shrink-0"></div>
+                <span className="w-28 shrink-0 text-[#4b6f44] dark:text-[#a3cf6d]">Caja 5 <span className="text-gray-400 dark:text-gray-500">(30 días)</span></span>
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-[#4b6f44] transition-all duration-500" 
+                    style={{ width: `${totalCards > 0 ? (globalStats[5] / totalCards) * 100 : 0}%` }}
+                  />
+                </div>
+                <span className="font-bold w-12 text-right text-[#4b6f44] dark:text-[#a3cf6d]">{globalStats[5]}</span>
               </div>
             </div>
           </div>
