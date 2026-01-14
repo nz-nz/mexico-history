@@ -268,12 +268,8 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
                 <span className="font-bold">{globalStats[0]}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-red-400"></div> Difíciles (Caja 1)</span>
-                <span className="font-bold text-red-500">{globalStats[1]}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-yellow-400"></div> En Proceso (Cajas 2-3)</span>
-                <span className="font-bold text-yellow-500">{globalStats[2] + globalStats[3]}</span>
+                <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-yellow-400"></div> En Proceso (Cajas 1-3)</span>
+                <span className="font-bold text-yellow-500">{globalStats[1] + globalStats[2] + globalStats[3]}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#4b6f44]"></div> Maestras (Cajas 4-5)</span>

@@ -237,12 +237,10 @@ export const useSRS = (options: UseSRSOptions = {}) => {
       const state = srsState[card.id];
       if (!state || state.box === 0) {
         newCount++;
-      } else if (state.box <= 2) {
-        learningCount++;
-      } else if (state.box <= 4) {
-        learnedCount++;
+      } else if (state.box <= 3) {
+        learningCount++;  // Box 1-3: In Progress
       } else {
-        masteredCount++;
+        masteredCount++;  // Box 4-5: Mastered
       }
     });
 
@@ -250,9 +248,9 @@ export const useSRS = (options: UseSRSOptions = {}) => {
       total,
       newCount,
       learningCount,
-      learnedCount,
+      learnedCount,  // Kept for API compatibility but not used
       masteredCount,
-      progressPercent: total > 0 ? Math.round(((learnedCount + masteredCount) / total) * 100) : 0
+      progressPercent: total > 0 ? Math.round((masteredCount / total) * 100) : 0
     };
   }, [srsState]);
 

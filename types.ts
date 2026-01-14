@@ -117,7 +117,7 @@ export interface SRSCard {
 
 export interface SRSState {
   cardId: string;
-  box: number;              // 1-5 (Leitner)
+  box: number;              // 0 = new/unseen, 1-3 = learning, 4-5 = mastered
   nextReviewDate: number;   // Timestamp
   interval: number;         // Days until next review
   easeFactor: number;       // For SM-2 (optional, default 2.5)
@@ -132,8 +132,8 @@ export interface SubcategoryProgress {
   subcategory: string;
   totalCards: number;
   learnedCards: number;       // Box 4-5
-  learningCards: number;      // Box 2-3
-  newCards: number;           // Box 1 or unseen
+  learningCards: number;      // Box 1-3 (in progress)
+  newCards: number;           // Box 0 (unseen)
   lastStudied?: number;       // Timestamp
 }
 
