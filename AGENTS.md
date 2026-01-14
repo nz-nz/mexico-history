@@ -279,6 +279,62 @@ January 2026 - Added date emoji visualization, fixed circular dependency
 
 ---
 
+## 📋 Beads Issue Tracker (bd)
+
+> **bd** is a distributed, git-backed issue tracker designed for AI agents. Use it for persistent task tracking across sessions.
+
+### Essential Commands
+
+| Command | Description |
+|---------|-------------|
+| `bd ready` | **Start here!** Shows tasks ready to work on (no blockers) |
+| `bd list` | List all issues |
+| `bd show <id>` | View issue details and history |
+| `bd create "Title"` | Create a new issue |
+| `bd create "Title" -p 0` | Create a P0 (highest priority) issue |
+| `bd update <id> --status in_progress` | Mark issue as in-progress |
+| `bd close <id>` | Close a completed issue |
+| `bd close <id> --reason "reason"` | Close with explanation |
+| `bd sync` | Sync issues with git (auto-runs, but use manually if needed) |
+| `bd doctor` | Check system health |
+
+### Issue IDs
+
+Issues use hash-based IDs with project prefix: `mexico-history-<hash>` (e.g., `mexico-history-a3f2dd`)
+
+### Dependencies
+
+```bash
+bd dep add <child> <parent>     # parent blocks child
+bd dep tree <id>                # visualize dependency tree
+```
+
+### Workflow for Agents
+
+1. **Session Start**: Run `bd ready` to see available work
+2. **Claim Work**: `bd update <id> --status in_progress`
+3. **Discover New Work**: `bd create "New task" -p <priority>`
+4. **Complete Work**: `bd close <id> --reason "description"`
+5. **Session End**: `bd sync` then `git push`
+
+### Priority Levels
+
+| Priority | Use For |
+|----------|---------|
+| P0 | Critical/blocking issues |
+| P1 | High priority |
+| P2 | Normal priority (default) |
+| P3 | Low priority |
+| P4 | Nice to have |
+
+### Storage
+
+- Issues stored in `.beads/` directory (git-tracked)
+- JSONL format for easy merging across branches
+- SQLite local cache for fast queries
+
+---
+
 ## 🦸 Superpowers Skills System
 
 > Skills from [obra/superpowers](https://github.com/obra/superpowers) - mandatory workflows for quality-first development.
@@ -336,22 +392,23 @@ To use a skill:
 
 **MANDATORY WORKFLOW:**
 
-1. **File issues for remaining work** - Create issues for anything that needs follow-up
-2. **Run quality gates** (if code changed) - Tests, linters, builds
-3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
+1. **Check bd for remaining work**: `bd ready` - see what's left
+2. **File issues for discovered work**: `bd create "Task title" -p <priority>`
+3. **Close completed issues**: `bd close <id> --reason "description"`
+4. **Run quality gates** (if code changed) - Tests, linters, builds
+5. **SYNC AND PUSH** - This is MANDATORY:
    ```bash
-   git pull --rebase
    bd sync
+   git pull --rebase
    git push
    git status  # MUST show "up to date with origin"
    ```
-5. **Clean up** - Clear stashes, prune remote branches
-6. **Verify** - All changes committed AND pushed
-7. **Hand off** - Provide context for next session
+6. **Verify**: Run `bd doctor` to confirm no sync issues
+7. **Hand off**: Summarize completed work and remaining `bd ready` items
 
 **CRITICAL RULES:**
 - Work is NOT complete until `git push` succeeds
 - NEVER stop before pushing - that leaves work stranded locally
 - NEVER say "ready to push when you are" - YOU must push
 - If push fails, resolve and retry until it succeeds
+- Always use `bd` to track work - it persists across sessions
