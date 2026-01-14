@@ -96,8 +96,8 @@ const QuizGame: React.FC<QuizGameProps> = ({ onBack }) => {
       ? [...allQuestions]
       : allQuestions.filter(q => q.category === cat);
 
-    // Shuffle and take up to 10 questions
-    const shuffled = filtered.sort(() => Math.random() - 0.5).slice(0, 10);
+    // Shuffle questions - show ALL available questions (removed 10-question limit)
+    const shuffled = filtered.sort(() => Math.random() - 0.5);
     setQuestions(shuffled);
     setCurrentIndex(0);
     setScore(0);
