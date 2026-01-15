@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GameMode } from '../types';
-import { Layers, Trophy, Map, Crosshair, HelpCircle, Sun, Moon, BookOpen } from 'lucide-react';
+import { Layers, Trophy, Map, Crosshair, HelpCircle, Sun, Moon, BookOpen, Compass } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface GameMenuProps {
@@ -73,6 +73,14 @@ const GameMenu: React.FC<GameMenuProps> = ({ onSelectMode }) => {
       icon: <Crosshair size={32} />,
       color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:border-blue-300 dark:hover:border-blue-600',
       progress: 'New!'
+    },
+    {
+      mode: GameMode.EXPLORE,
+      title: 'Explorar',
+      description: 'Browse the knowledge base by category.',
+      icon: <Compass size={32} />,
+      color: 'bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 hover:border-teal-300 dark:hover:border-teal-600',
+      progress: 'Nuevo!'
     }
   ];
 
