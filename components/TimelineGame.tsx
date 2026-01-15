@@ -19,7 +19,8 @@ import {
   PresidentTimelineItem,
   PresidentTimelinePeriod
 } from '../types';
-import { ArrowLeft, RefreshCcw, Trophy, HelpCircle, Medal, BookOpen, X } from 'lucide-react';
+import { RefreshCcw, HelpCircle, BookOpen, X } from 'lucide-react';
+import { GameHeader, GameCompletion, DeckButton, ProgressIndicator } from './shared';
 
 type TimelineDeckType = 'CIVILIZATIONS' | 'WRITERS' | 'PRESIDENTS' | null;
 
@@ -168,74 +169,58 @@ const TimelineGame: React.FC = () => {
         <h2 className="text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-8">Choose a Timeline</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
-          <button
+          <DeckButton
+            emoji="🏛️"
+            title="Civilizaciones"
+            description="Preclásico, Clásico, Posclásico"
+            bgColor="bg-green-100 dark:bg-green-900/40"
+            hoverBorder="hover:border-green-400"
+            isSolved={civSolved}
             onClick={() => initializeGame('CIVILIZATIONS')}
-            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-green-400 hover:-translate-y-1 transition-all group"
-          >
-            <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
-              🏛️
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Civilizaciones</h3>
-            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Preclásico, Clásico, Posclásico</p>
-            {civSolved && (
-              <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-bold bg-green-50 dark:bg-green-900/30 px-3 py-1 rounded-full">
-                <Medal size={16} /> Completed
-              </span>
-            )}
-          </button>
+          />
 
-          <button
+          <DeckButton
+            emoji="📚"
+            title="Escritores"
+            description="Nueva España, Revolución, Actualidad"
+            bgColor="bg-amber-100 dark:bg-amber-900/40"
+            hoverBorder="hover:border-amber-400"
+            isSolved={writersSolved}
             onClick={() => initializeGame('WRITERS')}
-            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-amber-400 hover:-translate-y-1 transition-all group"
-          >
-            <div className="w-20 h-20 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
-              📚
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Escritores</h3>
-            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Nueva España, Revolución, Actualidad</p>
-            {writersSolved && (
-              <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold bg-amber-50 dark:bg-amber-900/30 px-3 py-1 rounded-full">
-                <Medal size={16} /> Completed
-              </span>
-            )}
-          </button>
+          />
 
-          <button
+          <DeckButton
+            emoji="🦅"
+            title="Presidentes"
+            description="Imperios, Porfiriato, Moderno"
+            bgColor="bg-purple-100 dark:bg-purple-900/40"
+            hoverBorder="hover:border-purple-400"
+            isSolved={presidentsSolved}
             onClick={() => initializeGame('PRESIDENTS')}
-            className="flex flex-col items-center p-8 bg-white dark:bg-[#16213e] rounded-2xl shadow-lg border-2 border-transparent dark:border-gray-700 hover:border-purple-400 hover:-translate-y-1 transition-all group"
-          >
-            <div className="w-20 h-20 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center mb-4 text-4xl shadow-inner group-hover:scale-110 transition-transform">
-              🦅
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Presidentes</h3>
-            <p className="text-gray-500 dark:text-gray-400 text-center mb-4">Imperios, Porfiriato, Moderno</p>
-            {presidentsSolved && (
-              <span className="flex items-center gap-1 text-purple-600 dark:text-purple-400 font-bold bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-full">
-                <Medal size={16} /> Completed
-              </span>
-            )}
-          </button>
+          />
         </div>
+        
+        <ProgressIndicator
+          current={(civSolved ? 1 : 0) + (writersSolved ? 1 : 0) + (presidentsSolved ? 1 : 0)}
+          total={3}
+          label="Timelines Completed"
+          className="mt-8"
+        />
       </div>
     );
   }
 
   const title = deckType === 'CIVILIZATIONS' ? 'Civilizaciones' : deckType === 'WRITERS' ? 'Escritores por Era' : 'Presidentes Históricos';
+  const emoji = deckType === 'CIVILIZATIONS' ? '🏛️' : deckType === 'WRITERS' ? '📚' : '🦅';
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4 flex flex-col items-center">
-      <div className="w-full flex justify-between items-center mb-6">
-        <button
-          onClick={() => setDeckType(null)}
-          className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-[#4b6f44] dark:hover:text-[#a3cf6d] font-medium"
-        >
-          <ArrowLeft size={20} /> Change Timeline
-        </button>
-        <div className="text-center flex-1">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#4b6f44] dark:text-[#a3cf6d] mb-2">{title}</h2>
-          <p className="text-gray-600 dark:text-gray-400">Drag or tap items to place them in the correct period.</p>
-        </div>
-        <div className="w-24 flex justify-end">
+      <GameHeader
+        title={title}
+        emoji={emoji}
+        onBack={() => setDeckType(null)}
+        backLabel="Change Timeline"
+        rightContent={
           <button
             onClick={() => setShowReference(true)}
             className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
@@ -243,8 +228,9 @@ const TimelineGame: React.FC = () => {
           >
             <BookOpen size={24} />
           </button>
-        </div>
-      </div>
+        }
+      />
+      <p className="text-gray-600 dark:text-gray-400 mb-4 -mt-4">Drag or tap items to place them in the correct period.</p>
 
       {/* Timeline Zones */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-8 min-h-[400px]">
@@ -344,29 +330,13 @@ const TimelineGame: React.FC = () => {
 
       {/* Winning State */}
       {completed && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-[#16213e] rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-[#a3cf6d]"
-        >
-          <Trophy size={64} className="mx-auto mb-4 text-yellow-500" />
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Timeline Mastered!</h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">You sorted all the {title.toLowerCase()} correctly!</p>
-          <div className="flex flex-col gap-3">
-            <button
-              onClick={() => initializeGame(deckType)}
-              className="flex items-center justify-center gap-2 bg-[#4b6f44] text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-[#3a5735] transition-colors w-full"
-            >
-              <RefreshCcw size={20} /> Play Again
-            </button>
-            <button
-              onClick={() => setDeckType(null)}
-              className="text-gray-500 dark:text-gray-400 font-medium hover:text-gray-800 dark:hover:text-gray-200"
-            >
-              Return to Selection
-            </button>
-          </div>
-        </motion.div>
+        <GameCompletion
+          title="Timeline Mastered!"
+          subtitle={`You sorted all the ${title.toLowerCase()} correctly!`}
+          onPlayAgain={() => initializeGame(deckType)}
+          onBack={() => setDeckType(null)}
+          backLabel="Return to Selection"
+        />
       )}
       {/* Reference Modal */}
       {showReference && (
