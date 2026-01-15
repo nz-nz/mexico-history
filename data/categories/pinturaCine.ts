@@ -136,6 +136,63 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     tags: ['pintura', 'catrina', 'posada', 'muertos'],
   },
 
+  // ===== HITOS DEL CINE MEXICANO =====
+  {
+    id: 'PIN_HIT_001',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Hitos del Cine',
+    question: '¿Cuál fue la primera película filmada en México?',
+    answer: '"El Presidente de la República Paseando a Caballo en el Bosque de Chapultepec" (1896), filmada por los enviados de los hermanos Lumière.',
+    tags: ['cine', 'primera_pelicula', 'lumiere', '1896'],
+    dateYear: 1896,
+  },
+  {
+    id: 'PIN_HIT_002',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Hitos del Cine',
+    question: '¿Cuál fue la primera película sonora mexicana?',
+    answer: '"Santa" (1932), dirigida por Antonio Moreno y protagonizada por Lupita Tovar.',
+    tags: ['cine', 'santa', 'primera_sonora', '1932'],
+    dateYear: 1932,
+  },
+  {
+    id: 'PIN_HIT_003',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Hitos del Cine',
+    question: '¿Qué película marcó el inicio de la Época de Oro del cine mexicano?',
+    answer: '"¡Vámonos con Pancho Villa!" (1936), dirigida por Fernando de Fuentes.',
+    tags: ['cine', 'pancho_villa', 'epoca_oro', '1936'],
+    dateYear: 1936,
+  },
+  {
+    id: 'PIN_HIT_004',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Hitos del Cine',
+    question: '¿Cuál fue la primera película mexicana filmada en color?',
+    answer: '"¡Así se quiere en Jalisco!" (1942), protagonizada por Jorge Negrete.',
+    tags: ['cine', 'primera_color', 'jorge_negrete', '1942'],
+    dateYear: 1942,
+  },
+  {
+    id: 'PIN_HIT_005',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Hitos del Cine',
+    question: '¿Cuál fue la primera película mexicana nominada al Oscar?',
+    answer: '"Macario" (1960), dirigida por Roberto Gavaldón. Nominada a Mejor Película Extranjera.',
+    tags: ['cine', 'macario', 'oscar', '1960'],
+    dateYear: 1960,
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/macario_1960.jpg',
+  },
+  {
+    id: 'PIN_HIT_006',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Hitos del Cine',
+    question: '¿Qué película de Pedro Infante lo consolidó como ídolo del cine mexicano?',
+    answer: '"Pepe el Toro" (1953), parte de la trilogía de "Nosotros los pobres".',
+    tags: ['cine', 'pedro_infante', 'pepe_toro', '1953'],
+    dateYear: 1953,
+  },
+
   // ===== ÉPOCA DE ORO DEL CINE =====
   {
     id: 'PIN_CIN_001',
@@ -311,6 +368,24 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Qué cinematógrafo mexicano ha ganado múltiples Oscars?',
     answer: 'Emmanuel "Chivo" Lubezki (Gravity, Birdman, The Revenant)',
     tags: ['cine', 'lubezki', 'oscar', 'cinematografo'],
+  },
+  {
+    id: 'PIN_CON_009',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Cine Contemporáneo',
+    question: '¿Por qué es importante la película "Birdman" (2014) para el cine mexicano?',
+    answer: 'Dirigida por Alejandro González Iñárritu, ganó 4 Oscars incluyendo Mejor Película y Mejor Director. Filmada como una sola toma continua.',
+    tags: ['cine', 'birdman', 'inarritu', 'oscar', '2014'],
+    dateYear: 2014,
+  },
+  {
+    id: 'PIN_CON_010',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Cine Contemporáneo',
+    question: '¿Por qué es importante la película "Roma" (2018) para el cine mexicano?',
+    answer: 'Dirigida por Alfonso Cuarón, ganó 3 Oscars. Filmada en blanco y negro en español y mixteco, retrata la vida de una trabajadora doméstica en la Ciudad de México.',
+    tags: ['cine', 'roma', 'cuaron', 'oscar', '2018'],
+    dateYear: 2018,
   },
 
   // ===== ACTORES CONTEMPORÁNEOS =====
