@@ -340,8 +340,8 @@ export const CINE_FACTS_MATCHING_PAIRS: MatchItem[] = [
   { id: 'cine1', name: '🏆 Ariel', matchId: 'cine_pair1', type: 'term' },
   { id: 'd_cine1', name: '"Oscar" mexicano, máximo galardón del cine', matchId: 'cine_pair1', type: 'definition' },
 
-  { id: 'cine2', name: '🎬 "Macario"', matchId: 'cine_pair2', type: 'term' },
-  { id: 'd_cine2', name: 'Película basada en un libro extranjero', matchId: 'cine_pair2', type: 'definition' },
+  { id: 'cine2', name: '🎬 "Macario"', matchId: 'cine_pair2', type: 'term', imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/macario_1960.jpg' },
+  { id: 'd_cine2', name: 'Primera película mexicana nominada al Oscar', matchId: 'cine_pair2', type: 'definition' },
 
   { id: 'cine3', name: '🔊 "Santa"', matchId: 'cine_pair3', type: 'term' },
   { id: 'd_cine3', name: 'Primera película sonora mexicana', matchId: 'cine_pair3', type: 'definition' },
