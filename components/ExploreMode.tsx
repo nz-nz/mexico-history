@@ -25,13 +25,11 @@ const CATEGORY_COLORS: Record<Category, string> = {
 
 export default function ExploreMode({ onBack }: ExploreModProps) {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
-  const [expandedEntryId, setExpandedEntryId] = useState<string | null>(null);
 
   const handleBack = () => {
     if (selectedCategory) {
       // Viewing category → go back to picker
       setSelectedCategory(null);
-      setExpandedEntryId(null);
     } else {
       // At picker → go back to menu
       onBack();
@@ -40,12 +38,10 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
 
   const handleCategorySelect = (category: Category) => {
     setSelectedCategory(category);
-    setExpandedEntryId(null);
   };
 
   const handleReturnToPicker = () => {
     setSelectedCategory(null);
-    setExpandedEntryId(null);
   };
 
   return (
@@ -90,8 +86,6 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
         {selectedCategory ? (
           <EntryMasonry
             category={selectedCategory}
-            expandedEntryId={expandedEntryId}
-            onToggleExpand={setExpandedEntryId}
           />
         ) : (
           <CategoryPicker onSelectCategory={handleCategorySelect} />

@@ -5,8 +5,6 @@ import { EntryCard } from './EntryCard';
 
 interface EntryMasonryProps {
   category: Category;
-  expandedEntryId: string | null;
-  onToggleExpand: (id: string | null) => void;
 }
 
 const CATEGORY_COLORS: Record<Category, string> = {
@@ -26,30 +24,11 @@ const CATEGORY_COLORS: Record<Category, string> = {
 
 export const EntryMasonry: React.FC<EntryMasonryProps> = ({
   category,
-  expandedEntryId,
-  onToggleExpand,
 }) => {
   // Filter entries by category
   const entries = useMemo(() => {
     return KNOWLEDGE_BASE.filter(entry => entry.category === category);
   }, [category]);
-
-  // Get related entries for an entry
-  const getRelatedEntries = (entry: KnowledgeEntry): KnowledgeEntry[] => {
-    if (!entry.relatedIds || entry.relatedIds.length === 0) return [];
-    
-    const related = entry.relatedIds
-      .map(id => KNOWLEDGE_BASE.find(e => e.id === id))
-      .filter((e): e is KnowledgeEntry => e !== undefined)
-      .slice(0, 5);
-    
-    return related;
-  };
-
-  // Handle toggle - collapse if already expanded, otherwise expand
-  const handleToggle = (id: string) => {
-    onToggleExpand(expandedEntryId === id ? null : id);
-  };
 
   return (
     <>
@@ -99,9 +78,7 @@ export const EntryMasonry: React.FC<EntryMasonryProps> = ({
           <div key={entry.id} className="masonry-item">
             <EntryCard
               entry={entry}
-              isExpanded={expandedEntryId === entry.id}
-              onToggle={() => handleToggle(entry.id)}
-              allEntries={getRelatedEntries(entry)}
+              allEntries={KNOWLEDGE_BASE}
               categoryColor={CATEGORY_COLORS[entry.category]}
             />
           </div>

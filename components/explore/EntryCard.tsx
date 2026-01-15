@@ -5,8 +5,6 @@ import { X } from 'lucide-react';
 
 interface EntryCardProps {
   entry: KnowledgeEntry;
-  isExpanded: boolean;
-  onToggle: () => void;
   allEntries: KnowledgeEntry[];
   categoryColor: string;
 }
@@ -28,8 +26,6 @@ const CATEGORY_COLORS: Record<Category, string> = {
 
 export const EntryCard: React.FC<EntryCardProps> = ({
   entry,
-  isExpanded,
-  onToggle,
   allEntries,
   categoryColor,
 }) => {
@@ -51,74 +47,26 @@ export const EntryCard: React.FC<EntryCardProps> = ({
 
   return (
     <div
-      className={`masonry-item rounded-2xl overflow-hidden border-2 transition-all duration-300 bg-white dark:bg-[#16213e] ${
-        isExpanded ? 'shadow-xl' : 'shadow-md hover:shadow-lg'
-      } ${!isExpanded && !hasImage ? 'cursor-pointer hover:scale-[1.02]' : ''}`}
+      className="masonry-item rounded-2xl overflow-hidden border-2 transition-all duration-300 bg-white dark:bg-[#16213e] shadow-md hover:shadow-lg"
       style={{ borderColor: categoryColor }}
-      onClick={() => !isExpanded && onToggle()}
     >
-      {/* Image or Icon - Only show if has image OR is expanded */}
-      {(hasImage || isExpanded) && (
-        <div
-          className={`relative overflow-hidden ${
-            isExpanded ? 'h-64 md:h-80' : hasImage ? 'h-48' : 'h-32'
-          }`}
-          style={{ backgroundColor: hasImage ? 'transparent' : categoryColor + '20' }}
-        >
-          {hasImage ? (
-            <img
-              src={entry.imageUrl}
-              alt={entry.question}
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <span className={`${isExpanded ? 'text-8xl' : 'text-6xl'}`} style={{ color: categoryColor }}>
-                {categoryIcon}
-              </span>
-            </div>
-          )}
-        
-        {/* Expand/Collapse Button */}
-        {isExpanded && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggle();
-            }}
-            className="absolute top-3 right-3 p-2 rounded-full bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 transition-colors shadow-lg"
-            aria-label="Collapse card"
-          >
-            <X size={20} className="text-gray-800 dark:text-gray-200" />
-          </button>
-          )}
+      {/* Image - Only show if has image */}
+      {hasImage && (
+        <div className="relative overflow-hidden h-64 md:h-80">
+          <img
+            src={entry.imageUrl}
+            alt={entry.question}
+            loading="lazy"
+            className="w-full h-full object-cover"
+          />
         </div>
       )}
 
       {/* Card Content */}
-      <div
-        onClick={(e) => {
-          if (!isExpanded) {
-            onToggle();
-          }
-        }}
-        className={`p-4 ${!isExpanded ? 'cursor-pointer' : ''}`}
-        role={!isExpanded ? 'button' : undefined}
-        tabIndex={!isExpanded ? 0 : undefined}
-        aria-expanded={isExpanded}
-        onKeyDown={(e) => {
-          if (!isExpanded && (e.key === 'Enter' || e.key === ' ')) {
-            e.preventDefault();
-            onToggle();
-          }
-        }}
-      >
+      <div className="p-4">
         {/* Question */}
         <h3
-          className={`font-bold text-lg mb-2 text-gray-800 dark:text-gray-100 ${
-            !isExpanded ? 'line-clamp-2' : ''
-          }`}
+          className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-100"
         >
           {entry.question}
         </h3>
@@ -130,47 +78,43 @@ export const EntryCard: React.FC<EntryCardProps> = ({
           </p>
         )}
 
-        {/* Answer - Only in Expanded State */}
-        {isExpanded && (
-          <>
-            <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-              {entry.answer}
-            </p>
+        {/* Answer - Always show (cards expanded by default) */}
+        <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+          {entry.answer}
+        </p>
 
-            {/* Famous Quote */}
-            {entry.famousQuote && (
-              <blockquote className="border-l-4 pl-4 py-2 mb-4 italic text-gray-600 dark:text-gray-400"
-                style={{ borderColor: categoryColor }}>
-                <p className="mb-1">"{entry.famousQuote.text}"</p>
-                <footer className="text-sm text-gray-500 dark:text-gray-500">
-                  — {entry.famousQuote.attribution}
-                </footer>
-              </blockquote>
-            )}
+        {/* Famous Quote */}
+        {entry.famousQuote && (
+          <blockquote className="border-l-4 pl-4 py-2 mb-4 italic text-gray-600 dark:text-gray-400"
+            style={{ borderColor: categoryColor }}>
+            <p className="mb-1">"{entry.famousQuote.text}"</p>
+            <footer className="text-sm text-gray-500 dark:text-gray-500">
+              — {entry.famousQuote.attribution}
+            </footer>
+          </blockquote>
+        )}
 
-            {/* Related Entries */}
-            {relatedEntries.length > 0 && (
-              <div className="mt-4">
-                <h4 className="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
-                  Relacionado:
-                </h4>
-                <div className="flex gap-2 overflow-x-auto pb-2">
-                  {relatedEntries.map(related => (
-                    <RelatedThumbnail
-                      key={related.id}
-                      entry={related}
-                      categoryColor={CATEGORY_COLORS[related.category]}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // This will be handled by parent component
-                        // We'll need to pass onSelectRelated callback
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </>
+        {/* Related Entries */}
+        {relatedEntries.length > 0 && (
+          <div className="mt-4">
+            <h4 className="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
+              Relacionado:
+            </h4>
+            <div className="flex gap-2 overflow-x-auto pb-2">
+              {relatedEntries.map(related => (
+                <RelatedThumbnail
+                  key={related.id}
+                  entry={related}
+                  categoryColor={CATEGORY_COLORS[related.category]}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // This will be handled by parent component
+                    // We'll need to pass onSelectRelated callback
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </div>
