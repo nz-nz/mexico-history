@@ -1,8 +1,13 @@
 // =====================================================
 // MATCHING GAME DATA - Visual pairs with images
+// Note: Some matching pairs are generated from knowledge base
+// See kb-matching-pairs.ts for KB-derived pairs
 // =====================================================
 
 import { MatchItem } from '../../types';
+
+// Re-export KB-generated matching pairs
+export { CONSTITUTION_MATCHING_PAIRS } from './kb-matching-pairs';
 
 // Maya Gods - Prehispanic Period
 export const MAYA_MATCHING_PAIRS: MatchItem[] = [
@@ -92,42 +97,6 @@ export const MEXICA_MATCHING_PAIRS: MatchItem[] = [
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/aztec/CENTEOTL.png?v=1'
   },
   { id: 'd_me8', name: 'Dios del Maíz', matchId: 'x_pair8', type: 'definition' },
-];
-
-// Constitution Articles - Civics
-export const CONSTITUTION_MATCHING_PAIRS: MatchItem[] = [
-  { id: 'c1', name: 'Artículo 1', matchId: 'c_pair1', type: 'term' },
-  { id: 'd_c1', name: 'Derechos humanos, prohibida la esclavitud y discriminación', matchId: 'c_pair1', type: 'definition' },
-
-  { id: 'c2', name: 'Artículo 2', matchId: 'c_pair2', type: 'term' },
-  { id: 'd_c2', name: 'Nación pluricultural, derechos indígenas', matchId: 'c_pair2', type: 'definition' },
-
-  { id: 'c3', name: 'Artículo 3', matchId: 'c_pair3', type: 'term' },
-  { id: 'd_c3', name: 'Educación', matchId: 'c_pair3', type: 'definition' },
-
-  { id: 'c5', name: 'Artículo 5', matchId: 'c_pair4', type: 'term' },
-  { id: 'd_c5', name: 'Trabajo (Libertad de profesión)', matchId: 'c_pair4', type: 'definition' },
-
-  { id: 'c6', name: 'Artículo 6', matchId: 'c_pair5', type: 'term' },
-  { id: 'd_c6', name: 'Libertad de expresión', matchId: 'c_pair5', type: 'definition' },
-
-  { id: 'c8', name: 'Artículo 8', matchId: 'c_pair6', type: 'term' },
-  { id: 'd_c8', name: 'Derecho de petición', matchId: 'c_pair6', type: 'definition' },
-
-  { id: 'c11', name: 'Artículo 11', matchId: 'c_pair7', type: 'term' },
-  { id: 'd_c11', name: 'Libertad de tránsito y asilo', matchId: 'c_pair7', type: 'definition' },
-
-  { id: 'c31', name: 'Artículo 31', matchId: 'c_pair8', type: 'term' },
-  { id: 'd_c31', name: 'Obligaciones de los ciudadanos', matchId: 'c_pair8', type: 'definition' },
-
-  { id: 'c33', name: 'Artículo 33', matchId: 'c_pair9', type: 'term' },
-  { id: 'd_c33', name: 'Extranjeros', matchId: 'c_pair9', type: 'definition' },
-
-  { id: 'c35', name: 'Artículo 35', matchId: 'c_pair10', type: 'term' },
-  { id: 'd_c35', name: 'Derechos de los ciudadanos', matchId: 'c_pair10', type: 'definition' },
-
-  { id: 'c37', name: 'Artículo 37', matchId: 'c_pair11', type: 'term' },
-  { id: 'd_c37', name: 'Pérdida de la nacionalidad', matchId: 'c_pair11', type: 'definition' },
 ];
 
 // =====================================================

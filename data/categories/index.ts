@@ -12,7 +12,21 @@ export {
 
 import { Category, type KnowledgeEntry } from './types';
 
-// Import all category data
+// Export all category data (for direct access by generators)
+export { PREHISPANICO_DATA } from './prehispanico';
+export { CONQUISTA_COLONIA_DATA } from './conquistaColonia';
+export { INDEPENDENCIA_DATA } from './independencia';
+export { REVOLUCION_DATA } from './revolucion';
+export { CONTEMPORANEO_DATA } from './contemporaneo';
+export { CIVISMO_DATA } from './civismo';
+export { TRADICIONES_DATA } from './tradiciones';
+export { GASTRONOMIA_DATA } from './gastronomia';
+export { GEOGRAFIA_DATA } from './geografia';
+export { LITERATURA_MUSICA_DATA } from './literaturaMusica';
+export { PINTURA_CINE_DATA } from './pinturaCine';
+export { CIENCIA_DEPORTES_DATA } from './cienciaDeportes';
+
+// Import for local use in combined KNOWLEDGE_BASE
 import { PREHISPANICO_DATA } from './prehispanico';
 import { CONQUISTA_COLONIA_DATA } from './conquistaColonia';
 import { INDEPENDENCIA_DATA } from './independencia';
