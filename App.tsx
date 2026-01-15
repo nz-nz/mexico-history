@@ -6,6 +6,7 @@ import TimelineGame from './components/TimelineGame';
 import MapGame from './components/MapGame';
 import QuizGame from './components/QuizGame';
 import StudyMode from './components/StudyMode';
+import ExploreMode from './components/ExploreMode';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Home } from 'lucide-react';
 
@@ -24,6 +25,8 @@ const App: React.FC = () => {
         return <QuizGame onBack={() => setGameMode(GameMode.MENU)} />;
       case GameMode.STUDY:
         return <StudyMode onBack={() => setGameMode(GameMode.MENU)} />;
+      case GameMode.EXPLORE:
+        return <ExploreMode onBack={() => setGameMode(GameMode.MENU)} />;
       default:
         return <GameMenu onSelectMode={setGameMode} />;
     }
@@ -33,7 +36,7 @@ const App: React.FC = () => {
     <ThemeProvider>
       <div className="min-h-screen bg-[#f3f4f6] dark:bg-[#1a1a2e] flex flex-col transition-colors duration-300">
         {/* Header (only show back button if not in menu, MapGame has its own header) */}
-        {gameMode !== GameMode.MENU && gameMode !== GameMode.MAP && gameMode !== GameMode.QUIZ && (
+        {gameMode !== GameMode.MENU && gameMode !== GameMode.MAP && gameMode !== GameMode.QUIZ && gameMode !== GameMode.EXPLORE && (
           <header className="bg-white dark:bg-[#16213e] shadow-sm p-4 sticky top-0 z-50 transition-colors duration-300">
             <div className="max-w-4xl mx-auto flex items-center">
               <button
