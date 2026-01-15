@@ -279,10 +279,10 @@ export const CINE_FACTS_MATCHING_PAIRS: MatchItem[] = [
   { id: 'cine2', name: '🎬 "Macario"', matchId: 'cine_pair2', type: 'term', imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/macario_1960.jpg' },
   { id: 'd_cine2', name: 'Primera película mexicana nominada al Oscar', matchId: 'cine_pair2', type: 'definition' },
 
-  { id: 'cine3', name: '🔊 "Santa"', matchId: 'cine_pair3', type: 'term' },
+  { id: 'cine3', name: '🔊 "Santa"', matchId: 'cine_pair3', type: 'term', imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/santa_1932.jpg' },
   { id: 'd_cine3', name: 'Primera película sonora mexicana', matchId: 'cine_pair3', type: 'definition' },
 
-  { id: 'cine4', name: '🌈 "Así se quiere en Jalisco"', matchId: 'cine_pair4', type: 'term' },
+  { id: 'cine4', name: '🌈 "Así se quiere en Jalisco"', matchId: 'cine_pair4', type: 'term', imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/asi_se_quiere_jalisco_1942.jpg' },
   { id: 'd_cine4', name: 'Primera película mexicana a color', matchId: 'cine_pair4', type: 'definition' },
 
   { id: 'cine5', name: '🎞️ Primera película mexicana', matchId: 'cine_pair5', type: 'term' },
