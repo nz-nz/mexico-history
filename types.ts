@@ -4,7 +4,8 @@ export enum GameMode {
   TIMELINE = 'TIMELINE',
   MAP = 'MAP',
   QUIZ = 'QUIZ',
-  STUDY = 'STUDY'
+  STUDY = 'STUDY',
+  EXPLORE = 'EXPLORE'
 }
 
 export interface MatchItem {
