@@ -47,34 +47,38 @@ export const EntryCard: React.FC<EntryCardProps> = ({
   const dateDisplay = formatDateWithEmoji(entry.date, entry.dateYear);
   const categoryIcon = CATEGORY_ICONS[entry.category];
 
+  const hasImage = !!entry.imageUrl;
+
   return (
     <div
       className={`masonry-item rounded-2xl overflow-hidden border-2 transition-all duration-300 bg-white dark:bg-[#16213e] ${
-        isExpanded ? 'shadow-xl' : 'shadow-md'
-      }`}
+        isExpanded ? 'shadow-xl' : 'shadow-md hover:shadow-lg'
+      } ${!isExpanded && !hasImage ? 'cursor-pointer hover:scale-[1.02]' : ''}`}
       style={{ borderColor: categoryColor }}
+      onClick={() => !isExpanded && onToggle()}
     >
-      {/* Image or Icon */}
-      <div
-        className={`relative overflow-hidden ${
-          isExpanded ? 'h-64 md:h-80' : 'h-48'
-        }`}
-        style={{ backgroundColor: entry.imageUrl ? 'transparent' : categoryColor + '20' }}
-      >
-        {entry.imageUrl ? (
-          <img
-            src={entry.imageUrl}
-            alt={entry.question}
-            loading="lazy"
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-8xl" style={{ color: categoryColor }}>
-              {categoryIcon}
-            </span>
-          </div>
-        )}
+      {/* Image or Icon - Only show if has image OR is expanded */}
+      {(hasImage || isExpanded) && (
+        <div
+          className={`relative overflow-hidden ${
+            isExpanded ? 'h-64 md:h-80' : hasImage ? 'h-48' : 'h-32'
+          }`}
+          style={{ backgroundColor: hasImage ? 'transparent' : categoryColor + '20' }}
+        >
+          {hasImage ? (
+            <img
+              src={entry.imageUrl}
+              alt={entry.question}
+              loading="lazy"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className={`${isExpanded ? 'text-8xl' : 'text-6xl'}`} style={{ color: categoryColor }}>
+                {categoryIcon}
+              </span>
+            </div>
+          )}
         
         {/* Expand/Collapse Button */}
         {isExpanded && (
@@ -88,12 +92,17 @@ export const EntryCard: React.FC<EntryCardProps> = ({
           >
             <X size={20} className="text-gray-800 dark:text-gray-200" />
           </button>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       {/* Card Content */}
       <div
-        onClick={() => !isExpanded && onToggle()}
+        onClick={(e) => {
+          if (!isExpanded) {
+            onToggle();
+          }
+        }}
         className={`p-4 ${!isExpanded ? 'cursor-pointer' : ''}`}
         role={!isExpanded ? 'button' : undefined}
         tabIndex={!isExpanded ? 0 : undefined}
