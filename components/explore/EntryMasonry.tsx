@@ -1,10 +1,12 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { KnowledgeEntry, Category } from '../../data/categories';
+import { KNOWLEDGE_BASE } from '../../data/categories';
 import { EntryCard } from './EntryCard';
 
 interface EntryMasonryProps {
-  entries: KnowledgeEntry[];
-  selectedCategory: Category | null;
+  category: Category;
+  expandedEntryId: string | null;
+  onToggleExpand: (id: string | null) => void;
 }
 
 const CATEGORY_COLORS: Record<Category, string> = {
@@ -23,23 +25,21 @@ const CATEGORY_COLORS: Record<Category, string> = {
 };
 
 export const EntryMasonry: React.FC<EntryMasonryProps> = ({
-  entries,
-  selectedCategory,
+  category,
+  expandedEntryId,
+  onToggleExpand,
 }) => {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  // Filter entries by selected category
-  const filteredEntries = useMemo(() => {
-    if (!selectedCategory) return entries;
-    return entries.filter(entry => entry.category === selectedCategory);
-  }, [entries, selectedCategory]);
+  // Filter entries by category
+  const entries = useMemo(() => {
+    return KNOWLEDGE_BASE.filter(entry => entry.category === category);
+  }, [category]);
 
   // Get related entries for an entry
   const getRelatedEntries = (entry: KnowledgeEntry): KnowledgeEntry[] => {
     if (!entry.relatedIds || entry.relatedIds.length === 0) return [];
     
     const related = entry.relatedIds
-      .map(id => entries.find(e => e.id === id))
+      .map(id => KNOWLEDGE_BASE.find(e => e.id === id))
       .filter((e): e is KnowledgeEntry => e !== undefined)
       .slice(0, 5);
     
@@ -48,7 +48,7 @@ export const EntryMasonry: React.FC<EntryMasonryProps> = ({
 
   // Handle toggle - collapse if already expanded, otherwise expand
   const handleToggle = (id: string) => {
-    setExpandedId(prev => prev === id ? null : id);
+    onToggleExpand(expandedEntryId === id ? null : id);
   };
 
   return (
@@ -95,11 +95,11 @@ export const EntryMasonry: React.FC<EntryMasonryProps> = ({
       `}</style>
 
       <div className="masonry-grid">
-        {filteredEntries.map(entry => (
+        {entries.map(entry => (
           <div key={entry.id} className="masonry-item">
             <EntryCard
               entry={entry}
-              isExpanded={expandedId === entry.id}
+              isExpanded={expandedEntryId === entry.id}
               onToggle={() => handleToggle(entry.id)}
               allEntries={getRelatedEntries(entry)}
               categoryColor={CATEGORY_COLORS[entry.category]}
@@ -110,3 +110,5 @@ export const EntryMasonry: React.FC<EntryMasonryProps> = ({
     </>
   );
 };
+
+export default EntryMasonry;
