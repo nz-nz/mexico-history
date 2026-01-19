@@ -77,7 +77,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Laberinto de la Soledad',
         year: 1950,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_único_mexicano_con_nobel_de_literatura.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/el_laberinto_de_la_soledad_cover.png',
         examFact: 'Ensayo fundamental sobre la identidad mexicana',
       },
       {
@@ -116,7 +116,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Aura',
         year: 1962,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_aura.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_aura.png',
         examFact: 'Novela corta gótica, clásico de la literatura mexicana',
       },
       {
@@ -153,7 +153,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Como Agua para Chocolate',
         year: 1989,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_realismo_mágico_contemporáneo.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_como_agua_para_chocolate.png',
         examFact: 'Novela de realismo mágico, best-seller internacional',
       },
     ],
@@ -178,7 +178,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Los de Abajo',
         year: 1915,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_novelista_de_la_revolución_mexicana.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_los_de_abajo.png',
         examFact: 'Primera y más importante novela de la Revolución Mexicana',
       },
     ],
@@ -203,7 +203,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Diosero',
         year: 1952,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_cuentista_indigenista.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_diosero.png',
         examFact: 'Cuentos sobre comunidades indígenas de México',
       },
     ],
@@ -228,7 +228,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Periquillo Sarniento',
         year: 1816,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_pensador_mexicano.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_periquillo_sarniento.png',
         examFact: 'Primera novela latinoamericana publicada',
       },
     ],
@@ -250,13 +250,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La Noche de Tlatelolco',
         year: 1971,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_cronista_de_méxico.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_noche_de_tlatelolco.png',
         examFact: 'Crónica testimonial de la masacre de Tlatelolco 1968',
       },
       {
         title: 'Hasta no verte Jesús mío',
         year: 1969,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_hasta_no_verte_jesús_mío.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_hasta_no_verte_jesus_mio.png',
         examFact: 'Novela testimonial sobre una mujer del pueblo',
       },
     ],
