@@ -288,7 +288,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Las Muertas',
         year: 1977,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_las_muertas.jpg',
+        coverUrl: '/writers/cover_las_muertas.png',
         examFact: 'Novela basada en las Poquianchis',
       },
     ],
