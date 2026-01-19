@@ -39,11 +39,8 @@ export const WriterCluster: React.FC<WriterClusterProps> = ({ writer }) => {
     }
   };
 
-  const portraitSize = writer.size === 'large'
-    ? 'w-32 h-40 md:w-40 md:h-52'
-    : writer.size === 'medium'
-    ? 'w-28 h-36 md:w-32 md:h-40'
-    : 'w-24 h-32 md:w-28 md:h-36';
+  // Standardize all portraits to large size for uniform grid
+  const portraitSize = 'w-32 h-40 md:w-40 md:h-52';
 
   const tooltipContent = (
     <div>
@@ -66,51 +63,53 @@ export const WriterCluster: React.FC<WriterClusterProps> = ({ writer }) => {
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Author Portrait */}
-      <WallTooltip content={tooltipContent}>
-        <div
-          className="relative group cursor-pointer transition-all duration-200 hover:scale-[1.03] hover:shadow-xl"
-          onClick={handleImageClick}
-        >
-          <div className={`${portraitSize} rounded-xl overflow-hidden shadow-lg border-2 border-white/30 dark:border-gray-600/50`}>
-            {!imgError ? (
-              <img
-                src={writer.portraitUrl}
-                alt={writer.name}
-                className="w-full h-full object-cover"
-                loading="lazy"
-                onError={() => setImgError(true)}
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
-                <User className="w-12 h-12 text-gray-400" />
+      {/* Author Portrait - Fixed height container for alignment */}
+      <div className="h-40 md:h-52 flex items-end">
+        <WallTooltip content={tooltipContent}>
+          <div
+            className="relative group cursor-pointer transition-all duration-200 hover:scale-[1.03] hover:shadow-xl"
+            onClick={handleImageClick}
+          >
+            <div className={`${portraitSize} rounded-xl overflow-hidden shadow-lg border-2 border-white/30 dark:border-gray-600/50`}>
+              {!imgError ? (
+                <img
+                  src={writer.portraitUrl}
+                  alt={writer.name}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
+                  <User className="w-12 h-12 text-gray-400" />
+                </div>
+              )}
+            </div>
+
+            {/* Zoom indicator */}
+            {!imgError && (
+              <div className="absolute top-2 left-2 p-1.5 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                <ZoomIn className="w-3 h-3" />
               </div>
             )}
-          </div>
 
-          {/* Zoom indicator */}
-          {!imgError && (
-            <div className="absolute top-2 left-2 p-1.5 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-              <ZoomIn className="w-3 h-3" />
+            {/* Category badge */}
+            <div className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-medium text-white ${getCategoryColor(writer.category)}`}>
+              {getCategoryLabel(writer.category)}
             </div>
-          )}
 
-          {/* Category badge */}
-          <div className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-medium text-white ${getCategoryColor(writer.category)}`}>
-            {getCategoryLabel(writer.category)}
-          </div>
-
-          {/* Name overlay */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-xl">
-            <div className="text-white font-bold text-sm md:text-base leading-tight">
-              {writer.name}
-            </div>
-            <div className="text-gray-300 text-[10px] md:text-xs">
-              {writer.birth}–{writer.death || 'presente'}
+            {/* Name overlay */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-xl">
+              <div className="text-white font-bold text-sm md:text-base leading-tight">
+                {writer.name}
+              </div>
+              <div className="text-gray-300 text-[10px] md:text-xs">
+                {writer.birth}–{writer.death || 'presente'}
+              </div>
             </div>
           </div>
-        </div>
-      </WallTooltip>
+        </WallTooltip>
+      </div>
 
       {/* Portrait Modal */}
       {showModal && (

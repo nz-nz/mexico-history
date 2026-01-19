@@ -67,7 +67,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ work, authorName }) => {
               </>
             )}
           </div>
-          <div className="mt-1 text-[10px] md:text-xs text-center text-gray-600 dark:text-gray-400 max-w-20 md:max-w-24 truncate">
+          <div className="mt-1 text-[10px] md:text-xs text-center text-gray-600 dark:text-gray-400 max-w-20 md:max-w-24 line-clamp-3 leading-tight">
             {work.title}
           </div>
         </div>
