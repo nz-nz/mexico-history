@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Category, CATEGORY_LABELS } from '../data/categories';
 import CategoryPicker from './explore/CategoryPicker';
 import EntryMasonry from './explore/EntryMasonry';
+import WritersWall from './explore/WritersWall';
 
 interface ExploreModProps {
   onBack: () => void;
@@ -84,9 +85,11 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {selectedCategory ? (
-          <EntryMasonry
-            category={selectedCategory}
-          />
+          selectedCategory === Category.LITERATURA_MUSICA ? (
+            <WritersWall />
+          ) : (
+            <EntryMasonry category={selectedCategory} />
+          )
         ) : (
           <CategoryPicker onSelectCategory={handleCategorySelect} />
         )}
