@@ -51,7 +51,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Llano en Llamas',
         year: 1953,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_llano_en_llamas_1953.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/el_llano_en_llamas_cover.png',
         examFact: 'Colección de 17 cuentos sobre la vida rural mexicana',
       },
     ],
@@ -110,7 +110,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La Muerte de Artemio Cruz',
         year: 1962,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_figura_central_del_boom_latinoamericano.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_muerte_de_artemio_cruz.jpg',
         examFact: 'Retrato de la Revolución Mexicana y sus consecuencias',
       },
       {
@@ -122,13 +122,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La región más transparente',
         year: 1958,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_región_más_transparente.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_region_mas_transparente.jpg',
         examFact: 'Primera novela, retrato de la Ciudad de México',
       },
       {
         title: 'Gringo viejo',
         year: 1985,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_gringo_viejo.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_gringo_viejo.webp',
         examFact: 'Primera novela mexicana best-seller en EE.UU.',
       },
     ],
