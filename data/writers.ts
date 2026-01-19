@@ -35,7 +35,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_RULFO',
     name: 'Juan Rulfo',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Juan_Rulfo.jpg/440px-Juan_Rulfo.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_rulfo.jpg',
     birth: '1917',
     death: '1986',
     title: 'Padre del realismo mágico mexicano',
@@ -45,13 +45,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Pedro Páramo',
         year: 1955,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9789685208550-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_padre_del_realismo_mágico_mexicano.jpg',
         examFact: 'Novela fundacional del realismo mágico latinoamericano',
       },
       {
         title: 'El Llano en Llamas',
         year: 1953,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9788437604183-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_llano_en_llamas_1953.jpg',
         examFact: 'Colección de 17 cuentos sobre la vida rural mexicana',
       },
     ],
@@ -67,7 +67,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_PAZ',
     name: 'Octavio Paz',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Octavio_Paz_-_1988_Malmö.jpg/440px-Octavio_Paz_-_1988_Malmö.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_paz.jpg',
     birth: '1914',
     death: '1998',
     title: 'Único mexicano con Nobel de Literatura',
@@ -77,12 +77,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Laberinto de la Soledad',
         year: 1950,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9789681603113-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_único_mexicano_con_nobel_de_literatura.jpg',
         examFact: 'Ensayo fundamental sobre la identidad mexicana',
       },
       {
         title: 'Piedra de Sol',
         year: 1957,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_piedra_de_sol.jpg',
         examFact: 'Poema circular de 584 versos, obra maestra poética',
       },
     ],
@@ -99,7 +100,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_FUENTES',
     name: 'Carlos Fuentes',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Carlos_Fuentes%2C_Paris_-_Mar_2009_%283%29.jpg/440px-Carlos_Fuentes%2C_Paris_-_Mar_2009_%283%29.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_fuentes.jpg',
     birth: '1928',
     death: '2012',
     title: 'Figura central del Boom latinoamericano',
@@ -109,23 +110,25 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La Muerte de Artemio Cruz',
         year: 1962,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9788437601762-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_figura_central_del_boom_latinoamericano.jpg',
         examFact: 'Retrato de la Revolución Mexicana y sus consecuencias',
       },
       {
         title: 'Aura',
         year: 1962,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9789684111820-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_aura.jpg',
         examFact: 'Novela corta gótica, clásico de la literatura mexicana',
       },
       {
         title: 'La región más transparente',
         year: 1958,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_región_más_transparente.jpg',
         examFact: 'Primera novela, retrato de la Ciudad de México',
       },
       {
         title: 'Gringo viejo',
         year: 1985,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_gringo_viejo.jpg',
         examFact: 'Primera novela mexicana best-seller en EE.UU.',
       },
     ],
@@ -141,7 +144,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_ESQUIVEL',
     name: 'Laura Esquivel',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Laura_Esquivel.jpg/440px-Laura_Esquivel.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_esquivel.jpg',
     birth: '1950',
     title: 'Realismo mágico contemporáneo',
     category: 'escritor',
@@ -150,7 +153,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Como Agua para Chocolate',
         year: 1989,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9780385721233-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_realismo_mágico_contemporáneo.jpg',
         examFact: 'Novela de realismo mágico, best-seller internacional',
       },
     ],
@@ -165,7 +168,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_AZUELA',
     name: 'Mariano Azuela',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Mariano_Azuela.jpg/440px-Mariano_Azuela.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_azuela.jpg',
     birth: '1873',
     death: '1952',
     title: 'Novelista de la Revolución Mexicana',
@@ -175,7 +178,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Los de Abajo',
         year: 1915,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9789681659097-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_novelista_de_la_revolución_mexicana.jpg',
         examFact: 'Primera y más importante novela de la Revolución Mexicana',
       },
     ],
@@ -190,7 +193,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_ROJAS',
     name: 'Francisco Rojas González',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Francisco_Rojas_Gonz%C3%A1lez.jpg/440px-Francisco_Rojas_Gonz%C3%A1lez.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_rojas.jpg',
     birth: '1904',
     death: '1951',
     title: 'Cuentista indigenista',
@@ -200,6 +203,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Diosero',
         year: 1952,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_cuentista_indigenista.jpg',
         examFact: 'Cuentos sobre comunidades indígenas de México',
       },
     ],
@@ -214,7 +218,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_LIZARDI',
     name: 'José Joaquín Fernández de Lizardi',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Jos%C3%A9_Joaqu%C3%ADn_Fern%C3%A1ndez_de_Lizardi.jpg/440px-Jos%C3%A9_Joaqu%C3%ADn_Fern%C3%A1ndez_de_Lizardi.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_lizardi.png',
     birth: '1776',
     death: '1827',
     title: 'El Pensador Mexicano',
@@ -224,6 +228,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Periquillo Sarniento',
         year: 1816,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_pensador_mexicano.jpg',
         examFact: 'Primera novela latinoamericana publicada',
       },
     ],
@@ -236,7 +241,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_PONIATOWSKA',
     name: 'Elena Poniatowska',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Elena_Poniatowska_-001.jpg/440px-Elena_Poniatowska_-001.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_poniatowska.jpg',
     birth: '1932',
     title: 'Cronista de México',
     category: 'escritor',
@@ -245,12 +250,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La Noche de Tlatelolco',
         year: 1971,
-        coverUrl: 'https://covers.openlibrary.org/b/isbn/9789684111448-M.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_cronista_de_méxico.jpg',
         examFact: 'Crónica testimonial de la masacre de Tlatelolco 1968',
       },
       {
         title: 'Hasta no verte Jesús mío',
         year: 1969,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_hasta_no_verte_jesús_mío.jpg',
         examFact: 'Novela testimonial sobre una mujer del pueblo',
       },
     ],
@@ -266,7 +272,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_IBARGUENGOITIA',
     name: 'Jorge Ibargüengoitia',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/en/2/21/Jorge_Ibarg%C3%BCengoitia.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_ibarguengoitia.jpg',
     birth: '1928',
     death: '1983',
     title: 'Maestro de la sátira mexicana',
@@ -276,11 +282,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Los Relámpagos de Agosto',
         year: 1964,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_maestro_de_la_sátira_mexicana.jpg',
         examFact: 'Sátira de las memorias de generales revolucionarios',
       },
       {
         title: 'Las Muertas',
         year: 1977,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_las_muertas.jpg',
         examFact: 'Novela basada en las Poquianchis',
       },
     ],
@@ -297,7 +305,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_SORJUANA',
     name: 'Sor Juana Inés de la Cruz',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Sor_Juana_by_Miguel_Cabrera_%28cropped%29.jpg/440px-Sor_Juana_by_Miguel_Cabrera_%28cropped%29.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_sorjuana.png',
     birth: '1648',
     death: '1695',
     title: 'La Décima Musa',
@@ -307,10 +315,12 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Primero Sueño',
         year: 1692,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_décima_musa.jpg',
         examFact: 'Poema filosófico, su obra maestra',
       },
       {
         title: 'Hombres necios que acusáis...',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_hombres_necios_que_acusáis.jpg',
         examFact: 'Redondillas feministas del siglo XVII',
       },
     ],
@@ -324,7 +334,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_LOPEZVELARDE',
     name: 'Ramón López Velarde',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Ram%C3%B3n_L%C3%B3pez_Velarde_%28186%29.jpg/440px-Ram%C3%B3n_L%C3%B3pez_Velarde_%28186%29.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_lopezvelarde.jpg',
     birth: '1888',
     death: '1921',
     title: 'Poeta Nacional de México',
@@ -334,11 +344,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Suave Patria',
         year: 1921,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_nacional_de_méxico.jpg',
         examFact: 'Poema nacional de México, visión íntima del país',
       },
       {
         title: 'La sangre devota',
         year: 1916,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_sangre_devota.jpg',
         examFact: 'Primer poemario, tema de la provincia',
       },
     ],
@@ -351,7 +363,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_GOROSTIZA',
     name: 'José Gorostiza',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Jos%C3%A9_Gorostiza.jpg/440px-Jos%C3%A9_Gorostiza.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_gorostiza.jpg',
     birth: '1901',
     death: '1973',
     title: 'Poeta de los Contemporáneos',
@@ -361,6 +373,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Muerte sin fin',
         year: 1939,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_de_los_contemporáneos.jpg',
         examFact: 'Considerado uno de los grandes poemas del siglo XX en español',
       },
     ],
@@ -375,7 +388,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_NERVO',
     name: 'Amado Nervo',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Amado_Nervo_%281918%29.jpg/440px-Amado_Nervo_%281918%29.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_nervo.jpg',
     birth: '1870',
     death: '1919',
     title: 'Poeta modernista',
@@ -385,10 +398,12 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La amada inmóvil',
         year: 1922,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_modernista.jpg',
         examFact: 'Poemas dedicados a su amada fallecida',
       },
       {
         title: 'En paz',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_en_paz.jpg',
         examFact: 'Uno de los poemas más conocidos en español',
       },
     ],
@@ -401,7 +416,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_ACUNA',
     name: 'Manuel Acuña',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Manuel_Acu%C3%B1a.jpg/440px-Manuel_Acu%C3%B1a.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_acuna.jpg',
     birth: '1849',
     death: '1873',
     title: 'Poeta romántico',
@@ -411,6 +426,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Nocturno a Rosario',
         year: 1873,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_romántico.jpg',
         examFact: 'Poema de amor más famoso del romanticismo mexicano',
       },
     ],
@@ -425,7 +441,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_USIGLI',
     name: 'Rodolfo Usigli',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Rodolfo_Usigli.jpg/440px-Rodolfo_Usigli.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_usigli.jpg',
     birth: '1905',
     death: '1979',
     title: 'Padre del teatro mexicano moderno',
@@ -435,6 +451,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Gesticulador',
         year: 1937,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_padre_del_teatro_mexicano_moderno.jpg',
         examFact: 'Obra sobre la identidad y la mentira en la política mexicana',
       },
     ],
@@ -451,7 +468,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_PACHECO',
     name: 'José Emilio Pacheco',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Jos%C3%A9_Emilio_Pacheco_%28Madrid%2C_1993%29_cropped.jpg/440px-Jos%C3%A9_Emilio_Pacheco_%28Madrid%2C_1993%29_cropped.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_pacheco.jpg',
     birth: '1939',
     death: '2014',
     title: 'Poeta y cronista',
@@ -461,16 +478,19 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Las Voces de Tlatelolco',
         year: 1968,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_y_cronista.jpg',
         examFact: 'Poemas sobre la masacre estudiantil de Tlatelolco',
       },
       {
         title: 'Las Batallas en el Desierto',
         year: 1981,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_las_batallas_en_el_desierto.jpg',
         examFact: 'Novela corta sobre la infancia en el México de los 40s',
       },
       {
         title: 'Los elementos de la noche',
         year: 1963,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_los_elementos_de_la_noche.jpg',
         examFact: 'Primer poemario',
       },
     ],
@@ -486,7 +506,7 @@ export const WRITERS: WriterProfile[] = [
   {
     id: 'WRITER_TAIBO',
     name: 'Paco Ignacio Taibo II',
-    portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Paco_Ignacio_Taibo_II_-_Fira_del_Llibre_de_Val%C3%A8ncia_2023_01.jpg/440px-Paco_Ignacio_Taibo_II_-_Fira_del_Llibre_de_Val%C3%A8ncia_2023_01.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/portrait_taibo.jpg',
     birth: '1949',
     title: 'Novelista e historiador',
     category: 'cronista',
@@ -495,11 +515,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Temporada de Zopilotes',
         year: 2009,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_novelista_e_historiador.jpg',
         examFact: 'Novela sobre el asesinato de Madero',
       },
       {
         title: 'Pancho Villa: Una biografía narrativa',
         year: 2006,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_pancho_villa_una_biografía_narrativa.jpg',
         examFact: 'Biografía épica de Villa',
       },
     ],
