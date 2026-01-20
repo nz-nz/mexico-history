@@ -472,6 +472,28 @@ export const INDEPENDENCIA_DATA: KnowledgeEntry[] = [
     date: '10 de noviembre de 1859',
     dateYear: 1859,
   },
+  {
+    id: 'IND_REF_012',
+    category: Category.INDEPENDENCIA,
+    subcategory: 'La Reforma',
+    question: '¿Quién fue el amigo más cercano de Benito Juárez y principal ideólogo de la Reforma?',
+    answer: 'Melchor Ocampo. Consolidaron su amistad durante el exilio en Nueva Orleans, donde compartieron penurias y moldearon las ideas de la Reforma. Su fusilamiento en 1861 fue uno de los golpes emocionales más duros para Juárez.',
+    tags: ['independencia', 'juarez', 'melchor_ocampo', 'reforma', 'person'],
+    dateYear: 1861,
+  },
+  {
+    id: 'IND_REF_013',
+    category: Category.INDEPENDENCIA,
+    subcategory: 'La Reforma',
+    question: '¿Quién salvó la vida de Benito Juárez en Guadalajara en 1858 gritando "¡Los valientes no asesinan!"?',
+    answer: 'Guillermo Prieto. Cuando un pelotón de soldados iba a fusilar a Juárez, Prieto se interpuso con esta famosa frase, impidiendo la ejecución.',
+    tags: ['independencia', 'juarez', 'guillermo_prieto', 'reforma', 'person'],
+    famousQuote: {
+      text: '¡Los valientes no asesinan!',
+      attribution: 'Guillermo Prieto',
+    },
+    dateYear: 1858,
+  },
 
   // ===== INTERVENCIÓN FRANCESA Y SEGUNDO IMPERIO =====
   {
