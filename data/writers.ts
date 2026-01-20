@@ -45,7 +45,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Pedro Páramo',
         year: 1955,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_padre_del_realismo_mágico_mexicano.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_pedro_paramo.jpg',
         examFact: 'Novela fundacional del realismo mágico latinoamericano',
       },
       {
@@ -282,13 +282,13 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Los Relámpagos de Agosto',
         year: 1964,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_maestro_de_la_sátira_mexicana.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_los_relampagos_de_agosto.jpg',
         examFact: 'Sátira de las memorias de generales revolucionarios',
       },
       {
         title: 'Las Muertas',
         year: 1977,
-        coverUrl: '/writers/cover_las_muertas.png',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_las_muertas.png',
         examFact: 'Novela basada en las Poquianchis',
       },
     ],
@@ -315,7 +315,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Primero Sueño',
         year: 1692,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_décima_musa.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_primero_sueno.jpg',
         examFact: 'Poema filosófico, su obra maestra',
       },
       {
@@ -344,7 +344,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Suave Patria',
         year: 1921,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_nacional_de_méxico.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_suave_patria.jpg',
         examFact: 'Poema nacional de México, visión íntima del país',
       },
       {
@@ -373,7 +373,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Muerte sin fin',
         year: 1939,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_de_los_contemporáneos.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_muerte_sin_fin.jpg',
         examFact: 'Considerado uno de los grandes poemas del siglo XX en español',
       },
     ],
@@ -398,7 +398,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'La amada inmóvil',
         year: 1922,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_modernista.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_la_amada_inmovil.jpg',
         examFact: 'Poemas dedicados a su amada fallecida',
       },
       {
@@ -426,7 +426,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Nocturno a Rosario',
         year: 1873,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_romántico.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_nocturno_a_rosario.jpg',
         examFact: 'Poema de amor más famoso del romanticismo mexicano',
       },
     ],
@@ -451,7 +451,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'El Gesticulador',
         year: 1937,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_padre_del_teatro_mexicano_moderno.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_el_gesticulador.jpg',
         examFact: 'Obra sobre la identidad y la mentira en la política mexicana',
       },
     ],
@@ -478,7 +478,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Las Voces de Tlatelolco',
         year: 1968,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_poeta_y_cronista.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_las_voces_de_tlatelolco.jpg',
         examFact: 'Poemas sobre la masacre estudiantil de Tlatelolco',
       },
       {
@@ -515,7 +515,7 @@ export const WRITERS: WriterProfile[] = [
       {
         title: 'Temporada de Zopilotes',
         year: 2009,
-        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_novelista_e_historiador.jpg',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_temporada_de_zopilotes.jpg',
         examFact: 'Novela sobre el asesinato de Madero',
       },
       {
