@@ -352,20 +352,20 @@ To use a skill:
 
 | Skill | Path | When to Use |
 |-------|------|-------------|
-| **brainstorming** | `skills/skills/brainstorming/SKILL.md` | **MANDATORY** before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. |
-| **test-driven-development** | `skills/skills/test-driven-development/SKILL.md` | When implementing any feature or bugfix, before writing implementation code |
-| **systematic-debugging** | `skills/skills/systematic-debugging/SKILL.md` | When encountering any bug, test failure, or unexpected behavior, before proposing fixes |
-| **writing-plans** | `skills/skills/writing-plans/SKILL.md` | When you have a spec or requirements for a multi-step task, before touching code |
-| **executing-plans** | `skills/skills/executing-plans/SKILL.md` | When you have a written implementation plan to execute in a separate session with review checkpoints |
-| **subagent-driven-development** | `skills/skills/subagent-driven-development/SKILL.md` | When executing implementation plans with independent tasks in the current session |
-| **dispatching-parallel-agents** | `skills/skills/dispatching-parallel-agents/SKILL.md` | When facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
-| **using-git-worktrees** | `skills/skills/using-git-worktrees/SKILL.md` | When starting feature work that needs isolation from current workspace or before executing implementation plans |
-| **finishing-a-development-branch** | `skills/skills/finishing-a-development-branch/SKILL.md` | When implementation is complete, all tests pass, and you need to decide how to integrate the work |
-| **requesting-code-review** | `skills/skills/requesting-code-review/SKILL.md` | When completing tasks, implementing major features, or before merging to verify work meets requirements |
-| **receiving-code-review** | `skills/skills/receiving-code-review/SKILL.md` | When receiving code review feedback, before implementing suggestions, especially if feedback seems unclear |
-| **verification-before-completion** | `skills/skills/verification-before-completion/SKILL.md` | When about to claim work is complete, fixed, or passing, before committing or creating PRs |
-| **writing-skills** | `skills/skills/writing-skills/SKILL.md` | When creating new skills, editing existing skills, or verifying skills work before deployment |
-| **using-superpowers** | `skills/skills/using-superpowers/SKILL.md` | Reference for how the skills system works |
+| **brainstorming** | `superpowers/skills/brainstorming/SKILL.md` | **MANDATORY** before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. |
+| **test-driven-development** | `superpowers/skills/test-driven-development/SKILL.md` | When implementing any feature or bugfix, before writing implementation code |
+| **systematic-debugging** | `superpowers/skills/systematic-debugging/SKILL.md` | When encountering any bug, test failure, or unexpected behavior, before proposing fixes |
+| **writing-plans** | `superpowers/skills/writing-plans/SKILL.md` | When you have a spec or requirements for a multi-step task, before touching code |
+| **executing-plans** | `superpowers/skills/executing-plans/SKILL.md` | When you have a written implementation plan to execute in a separate session with review checkpoints |
+| **subagent-driven-development** | `superpowers/skills/subagent-driven-development/SKILL.md` | When executing implementation plans with independent tasks in the current session |
+| **dispatching-parallel-agents** | `superpowers/skills/dispatching-parallel-agents/SKILL.md` | When facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
+| **using-git-worktrees** | `superpowers/skills/using-git-worktrees/SKILL.md` | When starting feature work that needs isolation from current workspace or before executing implementation plans |
+| **finishing-a-development-branch** | `superpowers/skills/finishing-a-development-branch/SKILL.md` | When implementation is complete, all tests pass, and you need to decide how to integrate the work |
+| **requesting-code-review** | `superpowers/skills/requesting-code-review/SKILL.md` | When completing tasks, implementing major features, or before merging to verify work meets requirements |
+| **receiving-code-review** | `superpowers/skills/receiving-code-review/SKILL.md` | When receiving code review feedback, before implementing suggestions, especially if feedback seems unclear |
+| **verification-before-completion** | `superpowers/skills/verification-before-completion/SKILL.md` | When about to claim work is complete, fixed, or passing, before committing or creating PRs |
+| **writing-skills** | `superpowers/skills/writing-skills/SKILL.md` | When creating new skills, editing existing skills, or verifying skills work before deployment |
+| **using-superpowers** | `superpowers/skills/using-superpowers/SKILL.md` | Reference for how the skills system works |
 
 ### Typical Workflows
 
