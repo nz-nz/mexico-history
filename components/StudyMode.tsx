@@ -535,13 +535,13 @@ const StudyMode: React.FC<StudyModeProps> = ({ onBack }) => {
             <ClozeCard
               card={currentCard}
               isFlipped={isFlipped}
-              onFlip={() => !isFlipped && setIsFlipped(true)}
+              onFlip={() => setIsFlipped(!isFlipped)}
             />
           ) : (
             <StandardCard
               card={currentCard}
               isFlipped={isFlipped}
-              onFlip={() => !isFlipped && setIsFlipped(true)}
+              onFlip={() => setIsFlipped(!isFlipped)}
             />
           )}
         </motion.div>
