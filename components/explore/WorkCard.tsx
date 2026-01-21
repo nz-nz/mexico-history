@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Work } from '../../data/writers';
 import { WallTooltip } from './WallTooltip';
 import { ImageModal } from './ImageModal';
-import { BookOpen, ZoomIn } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 interface WorkCardProps {
   work: Work;
@@ -25,20 +25,16 @@ export const WorkCard: React.FC<WorkCardProps> = ({ work, authorName }) => {
 
   const showPlaceholder = !work.coverUrl || imgError;
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleOpenImage = () => {
     if (!showPlaceholder) {
-      e.stopPropagation();
       setShowModal(true);
     }
   };
 
   return (
     <>
-      <WallTooltip content={tooltipContent}>
-        <div
-          className="group cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg"
-          onClick={handleClick}
-        >
+      <WallTooltip content={tooltipContent} onOpenImage={!showPlaceholder ? handleOpenImage : undefined}>
+        <div className="group cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg">
           <div className="relative w-20 h-28 md:w-24 md:h-32 rounded-md overflow-hidden shadow-md border-2 border-white/20 dark:border-gray-700/50 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30">
             {showPlaceholder ? (
               <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center">
@@ -53,18 +49,13 @@ export const WorkCard: React.FC<WorkCardProps> = ({ work, authorName }) => {
                 )}
               </div>
             ) : (
-              <>
-                <img
-                  src={work.coverUrl}
-                  alt={`${work.title} - ${authorName}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  onError={() => setImgError(true)}
-                />
-                <div className="absolute top-1 right-1 p-1 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ZoomIn className="w-2.5 h-2.5" />
-                </div>
-              </>
+              <img
+                src={work.coverUrl}
+                alt={`${work.title} - ${authorName}`}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                onError={() => setImgError(true)}
+              />
             )}
           </div>
           <div className="mt-1 text-[10px] md:text-xs text-center text-gray-600 dark:text-gray-400 max-w-20 md:max-w-24 line-clamp-3 leading-tight">

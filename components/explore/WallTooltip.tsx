@@ -1,29 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ZoomIn } from 'lucide-react';
 
 interface WallTooltipProps {
   content: React.ReactNode;
   children: React.ReactElement;
   delay?: number;
-  longPressDelay?: number;
+  onOpenImage?: () => void;
+  showMagnifier?: boolean;
 }
 
 export const WallTooltip: React.FC<WallTooltipProps> = ({
   content,
   children,
   delay = 200,
-  longPressDelay = 500,
+  onOpenImage,
+  showMagnifier = true,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
+  const [isMobile, setIsMobile] = useState(false);
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
 
-  // Long press detection for mobile
-  const longPressTimerRef = useRef<number | null>(null);
-  const touchStartPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
-  const longPressTriggeredRef = useRef(false);
+  // Track if current interaction is touch-based
+  const isTouchInteractionRef = useRef(false);
 
   const updatePosition = () => {
     if (!triggerRef.current || !tooltipRef.current) return;
@@ -63,6 +65,17 @@ export const WallTooltip: React.FC<WallTooltipProps> = ({
     setIsVisible(false);
   };
 
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(pointer: coarse)').matches);
+    };
+    checkMobile();
+    const mediaQuery = window.matchMedia('(pointer: coarse)');
+    mediaQuery.addEventListener('change', checkMobile);
+    return () => mediaQuery.removeEventListener('change', checkMobile);
+  }, []);
+
   useEffect(() => {
     if (isVisible) {
       updatePosition();
@@ -73,9 +86,6 @@ export const WallTooltip: React.FC<WallTooltipProps> = ({
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
-      }
-      if (longPressTimerRef.current) {
-        clearTimeout(longPressTimerRef.current);
       }
     };
   }, []);
@@ -111,48 +121,45 @@ export const WallTooltip: React.FC<WallTooltipProps> = ({
     }
   };
 
-  // Long press handlers for mobile - show tooltip on long press, allow click through on short tap
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartPosRef.current = {
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY,
-    };
-    longPressTriggeredRef.current = false;
-
-    longPressTimerRef.current = window.setTimeout(() => {
-      longPressTriggeredRef.current = true;
-      setIsVisible(true);
-    }, longPressDelay);
+  // Mobile: tap to toggle tooltip
+  const handleTouchStart = () => {
+    isTouchInteractionRef.current = true;
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    // Cancel long press if finger moved too much
-    const dx = e.touches[0].clientX - touchStartPosRef.current.x;
-    const dy = e.touches[0].clientY - touchStartPosRef.current.y;
-    if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
-      if (longPressTimerRef.current) {
-        clearTimeout(longPressTimerRef.current);
-        longPressTimerRef.current = null;
-      }
-    }
-  };
-
-  const handleTouchEnd = () => {
-    if (longPressTimerRef.current) {
-      clearTimeout(longPressTimerRef.current);
-      longPressTimerRef.current = null;
-    }
-  };
-
-  // Intercept clicks after long press to prevent child click handlers
-  const handleClickCapture = (e: React.MouseEvent) => {
-    if (longPressTriggeredRef.current) {
-      e.stopPropagation();
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isMobile) {
       e.preventDefault();
-      // Reset after a short delay
-      setTimeout(() => {
-        longPressTriggeredRef.current = false;
-      }, 100);
+      setIsVisible((prev) => !prev);
+    }
+  };
+
+  // Desktop: click opens image (mobile handled via magnifier)
+  const handleClick = (e: React.MouseEvent) => {
+    // Skip if this was a touch interaction (handled by touchEnd)
+    if (isTouchInteractionRef.current) {
+      isTouchInteractionRef.current = false;
+      return;
+    }
+    // Desktop: click opens image directly
+    if (!isMobile && onOpenImage) {
+      e.stopPropagation();
+      onOpenImage();
+    }
+  };
+
+  // Magnifier handlers (mobile only) - stop propagation to prevent tooltip toggle
+  const handleMagnifierTouchEnd = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (onOpenImage) {
+      onOpenImage();
+    }
+  };
+
+  const handleMagnifierClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onOpenImage) {
+      onOpenImage();
     }
   };
 
@@ -163,14 +170,25 @@ export const WallTooltip: React.FC<WallTooltipProps> = ({
         onMouseEnter={showTooltip}
         onMouseLeave={hideTooltip}
         onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onClickCapture={handleClickCapture}
+        onClick={handleClick}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className="outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 rounded-lg"
+        className="relative outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 rounded-lg"
       >
         {children}
+
+        {/* Mobile magnifier overlay - appears when tooltip is visible */}
+        {isMobile && isVisible && showMagnifier && onOpenImage && (
+          <button
+            onTouchEnd={handleMagnifierTouchEnd}
+            onClick={handleMagnifierClick}
+            className="absolute top-2 left-2 p-1.5 rounded-full bg-black/60 text-white animate-in fade-in duration-150 hover:bg-black/80 transition-colors z-10"
+            aria-label="View full size image"
+          >
+            <ZoomIn className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       {isVisible &&

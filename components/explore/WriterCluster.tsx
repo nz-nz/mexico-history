@@ -4,7 +4,7 @@ import { WallTooltip } from './WallTooltip';
 import { WorkCard } from './WorkCard';
 import { AchievementBadge } from './AchievementBadge';
 import { ImageModal } from './ImageModal';
-import { User, ZoomIn } from 'lucide-react';
+import { User } from 'lucide-react';
 
 interface WriterClusterProps {
   writer: WriterProfile;
@@ -32,8 +32,7 @@ export const WriterCluster: React.FC<WriterClusterProps> = ({ writer }) => {
   const [imgError, setImgError] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const handleImageClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleOpenImage = () => {
     if (!imgError) {
       setShowModal(true);
     }
@@ -65,11 +64,8 @@ export const WriterCluster: React.FC<WriterClusterProps> = ({ writer }) => {
     <div className="flex flex-col gap-3">
       {/* Author Portrait - Fixed height container for alignment */}
       <div className="h-40 md:h-52 flex items-end">
-        <WallTooltip content={tooltipContent}>
-          <div
-            className="relative group cursor-pointer transition-all duration-200 hover:scale-[1.03] hover:shadow-xl"
-            onClick={handleImageClick}
-          >
+        <WallTooltip content={tooltipContent} onOpenImage={!imgError ? handleOpenImage : undefined}>
+          <div className="relative group cursor-pointer transition-all duration-200 hover:scale-[1.03] hover:shadow-xl">
             <div className={`${portraitSize} rounded-xl overflow-hidden shadow-lg border-2 border-white/30 dark:border-gray-600/50`}>
               {!imgError ? (
                 <img
@@ -85,13 +81,6 @@ export const WriterCluster: React.FC<WriterClusterProps> = ({ writer }) => {
                 </div>
               )}
             </div>
-
-            {/* Zoom indicator */}
-            {!imgError && (
-              <div className="absolute top-2 left-2 p-1.5 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                <ZoomIn className="w-3 h-3" />
-              </div>
-            )}
 
             {/* Category badge */}
             <div className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-medium text-white ${getCategoryColor(writer.category)}`}>
