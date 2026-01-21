@@ -5,18 +5,25 @@ interface WallTooltipProps {
   content: React.ReactNode;
   children: React.ReactElement;
   delay?: number;
+  longPressDelay?: number;
 }
 
 export const WallTooltip: React.FC<WallTooltipProps> = ({
   content,
   children,
   delay = 200,
+  longPressDelay = 500,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
+
+  // Long press detection for mobile
+  const longPressTimerRef = useRef<number | null>(null);
+  const touchStartPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const longPressTriggeredRef = useRef(false);
 
   const updatePosition = () => {
     if (!triggerRef.current || !tooltipRef.current) return;
@@ -67,6 +74,9 @@ export const WallTooltip: React.FC<WallTooltipProps> = ({
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current);
+      }
     };
   }, []);
 
@@ -101,13 +111,61 @@ export const WallTooltip: React.FC<WallTooltipProps> = ({
     }
   };
 
+  // Long press handlers for mobile - show tooltip on long press, allow click through on short tap
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartPosRef.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+    };
+    longPressTriggeredRef.current = false;
+
+    longPressTimerRef.current = window.setTimeout(() => {
+      longPressTriggeredRef.current = true;
+      setIsVisible(true);
+    }, longPressDelay);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    // Cancel long press if finger moved too much
+    const dx = e.touches[0].clientX - touchStartPosRef.current.x;
+    const dy = e.touches[0].clientY - touchStartPosRef.current.y;
+    if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current);
+        longPressTimerRef.current = null;
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+  };
+
+  // Intercept clicks after long press to prevent child click handlers
+  const handleClickCapture = (e: React.MouseEvent) => {
+    if (longPressTriggeredRef.current) {
+      e.stopPropagation();
+      e.preventDefault();
+      // Reset after a short delay
+      setTimeout(() => {
+        longPressTriggeredRef.current = false;
+      }, 100);
+    }
+  };
+
   return (
     <>
       <div
         ref={triggerRef}
         onMouseEnter={showTooltip}
         onMouseLeave={hideTooltip}
-        onTouchStart={() => setIsVisible(!isVisible)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onClickCapture={handleClickCapture}
         onKeyDown={handleKeyDown}
         tabIndex={0}
         className="outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 rounded-lg"
