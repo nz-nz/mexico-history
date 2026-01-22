@@ -20,6 +20,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Dónde se encuentran los murales de Diego Rivera sobre la historia de México?',
     answer: 'En el Palacio Nacional de la Ciudad de México',
     tags: ['pintura', 'diego_rivera', 'palacio_nacional', 'murales'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/rivera_palacio_nacional.jpg',
   },
   {
     id: 'PIN_MUR_003',
@@ -52,6 +53,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Dónde se encuentra el mural "El hombre de fuego" de José Clemente Orozco?',
     answer: 'En el Instituto Cultural Cabañas (Guadalajara)',
     tags: ['pintura', 'orozco', 'hombre_fuego', 'guadalajara'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/orozco_hombre_de_fuego.jpg',
   },
   {
     id: 'PIN_MUR_007',
@@ -60,6 +62,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Cuál es la obra más famosa de Siqueiros?',
     answer: 'La Marcha de la Humanidad (Polyforum Cultural Siqueiros)',
     tags: ['pintura', 'siqueiros', 'marcha_humanidad', 'polyforum'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/siqueiros_marcha_humanidad.jpg',
   },
 
   // ===== PINTORES =====
@@ -78,6 +81,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Cuáles son las obras más famosas de Frida Kahlo?',
     answer: 'Las dos Fridas, Autorretrato con collar de espinas, La columna rota, Diego y yo',
     tags: ['pintura', 'frida_kahlo', 'obras'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/las_dos_fridas.jpg',
   },
   {
     id: 'PIN_PIN_003',
@@ -126,6 +130,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Quién fue José Guadalupe Posada?',
     answer: 'Grabador e ilustrador, creador de "La Catrina" y calaveras populares',
     tags: ['pintura', 'posada', 'catrina', 'grabador'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/la_catrina_posada.jpg',
   },
   {
     id: 'PIN_PIN_009',
@@ -134,6 +139,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Qué es "La Catrina"?',
     answer: 'Representación satírica de un esqueleto elegante, creada por José Guadalupe Posada. Símbolo del Día de Muertos.',
     tags: ['pintura', 'catrina', 'posada', 'muertos'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/la_catrina_posada.jpg',
   },
 
   // ===== HITOS DEL CINE MEXICANO =====
@@ -209,6 +215,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Quién fue María Félix?',
     answer: 'Actriz icónica de la Época de Oro, conocida como "La Doña"',
     tags: ['cine', 'maria_felix', 'actriz', 'epoca_oro'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/maria_felix_portrait.jpg',
   },
   {
     id: 'PIN_CIN_003',
@@ -241,6 +248,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Cuáles son las películas más famosas de Pedro Infante?',
     answer: 'Nosotros los pobres, Ustedes los ricos, Pepe el Toro, A.T.M., Los tres huastecos',
     tags: ['cine', 'pedro_infante', 'peliculas'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/nosotros_los_pobres_1948.jpg',
   },
   {
     id: 'PIN_CIN_007',
@@ -257,6 +265,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     question: '¿Cuáles son las películas más famosas de Cantinflas?',
     answer: 'Ahí está el detalle, El bolero de Raquel, La vuelta al mundo en 80 días, El padrecito',
     tags: ['cine', 'cantinflas', 'peliculas'],
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/cantinflas_ahi_esta_el_detalle.jpg',
   },
   {
     id: 'PIN_CIN_009',
@@ -343,6 +352,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     answer: 'Mejor Película y Mejor Director por "La forma del agua" (2018)',
     tags: ['cine', 'guillermo_del_toro', 'oscar'],
     dateYear: 2018,
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/la_forma_del_agua_2017.jpg',
   },
   {
     id: 'PIN_CON_006',
@@ -377,6 +387,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     answer: 'Dirigida por Alejandro González Iñárritu, ganó 4 Oscars incluyendo Mejor Película y Mejor Director. Filmada como una sola toma continua.',
     tags: ['cine', 'birdman', 'inarritu', 'oscar', '2014'],
     dateYear: 2014,
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/birdman_2014.jpg',
   },
   {
     id: 'PIN_CON_010',
@@ -386,6 +397,7 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     answer: 'Dirigida por Alfonso Cuarón, ganó 3 Oscars. Filmada en blanco y negro en español y mixteco, retrata la vida de una trabajadora doméstica en la Ciudad de México.',
     tags: ['cine', 'roma', 'cuaron', 'oscar', '2018'],
     dateYear: 2018,
+    imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/roma_2018.jpg',
   },
 
   // ===== ACTORES CONTEMPORÁNEOS =====
