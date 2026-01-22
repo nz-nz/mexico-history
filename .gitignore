@@ -27,3 +27,6 @@ dist-ssr
 .worktrees/
 
 tmp/
+
+# OCR trained data
+eng.traineddata
