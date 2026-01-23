@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { GameMode } from './types';
 import GameMenu from './components/GameMenu';
 import MatchingGame from './components/MatchingGame';
@@ -9,9 +9,23 @@ import StudyMode from './components/StudyMode';
 import ExploreMode from './components/ExploreMode';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Home } from 'lucide-react';
+import { useSwipeBack } from './hooks/useSwipeBack';
+import SwipeBackIndicator from './components/SwipeBackIndicator';
 
 const App: React.FC = () => {
   const [gameMode, setGameMode] = useState<GameMode>(GameMode.MENU);
+
+  const handleBack = useCallback(() => {
+    setGameMode(GameMode.MENU);
+  }, []);
+
+  // Enable swipe-back when not on menu
+  const swipeState = useSwipeBack({
+    onBack: handleBack,
+    enabled: gameMode !== GameMode.MENU,
+    edgeWidth: 25,
+    threshold: 100,
+  });
 
   const renderGame = () => {
     switch (gameMode) {
@@ -34,6 +48,13 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider>
+      {/* iOS-style swipe back indicator */}
+      <SwipeBackIndicator
+        isActive={swipeState.isActive}
+        progress={swipeState.progress}
+        currentX={swipeState.currentX}
+      />
+
       <div className="min-h-screen bg-[#f3f4f6] dark:bg-[#1a1a2e] flex flex-col transition-colors duration-300">
         {/* Header (only show back button if not in menu, MapGame has its own header) */}
         {gameMode !== GameMode.MENU && gameMode !== GameMode.MAP && gameMode !== GameMode.QUIZ && gameMode !== GameMode.EXPLORE && (
