@@ -111,7 +111,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_SIQUEIROS',
     name: 'David Alfaro Siqueiros',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_siqueiros.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_siqueiros_new.jpg',
     birth: '1896',
     death: '1974',
     title: 'Muralista revolucionario',
@@ -146,7 +146,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_DRATL',
     name: 'Dr. Atl (Gerardo Murillo)',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_dr_atl.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_dr_atl_new.jpg',
     birth: '1875',
     death: '1964',
     title: 'Precursor del muralismo',
