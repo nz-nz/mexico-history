@@ -17,7 +17,8 @@ const CATEGORY_COLORS: Record<Category, string> = {
   [Category.TRADICIONES]: '#9370DB',
   [Category.GASTRONOMIA]: '#FF6347',
   [Category.GEOGRAFIA]: '#20B2AA',
-  [Category.LITERATURA_MUSICA]: '#FF1493',
+  [Category.LITERATURA]: '#9370DB',
+  [Category.MUSICA]: '#FF1493',
   [Category.PINTURA_CINE]: '#FF69B4',
   [Category.CIENCIA_DEPORTES]: '#00CED1',
 };

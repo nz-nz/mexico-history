@@ -22,7 +22,8 @@ export { CIVISMO_DATA } from './civismo';
 export { TRADICIONES_DATA } from './tradiciones';
 export { GASTRONOMIA_DATA } from './gastronomia';
 export { GEOGRAFIA_DATA } from './geografia';
-export { LITERATURA_MUSICA_DATA } from './literaturaMusica';
+export { LITERATURA_DATA } from './literatura';
+export { MUSICA_DATA } from './musica';
 export { PINTURA_CINE_DATA } from './pinturaCine';
 export { CIENCIA_DEPORTES_DATA } from './cienciaDeportes';
 
@@ -36,7 +37,8 @@ import { CIVISMO_DATA } from './civismo';
 import { TRADICIONES_DATA } from './tradiciones';
 import { GASTRONOMIA_DATA } from './gastronomia';
 import { GEOGRAFIA_DATA } from './geografia';
-import { LITERATURA_MUSICA_DATA } from './literaturaMusica';
+import { LITERATURA_DATA } from './literatura';
+import { MUSICA_DATA } from './musica';
 import { PINTURA_CINE_DATA } from './pinturaCine';
 import { CIENCIA_DEPORTES_DATA } from './cienciaDeportes';
 
@@ -51,7 +53,8 @@ export const KNOWLEDGE_BASE: KnowledgeEntry[] = [
   ...TRADICIONES_DATA,
   ...GASTRONOMIA_DATA,
   ...GEOGRAFIA_DATA,
-  ...LITERATURA_MUSICA_DATA,
+  ...LITERATURA_DATA,
+  ...MUSICA_DATA,
   ...PINTURA_CINE_DATA,
   ...CIENCIA_DEPORTES_DATA,
 ];

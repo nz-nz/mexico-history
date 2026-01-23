@@ -86,7 +86,8 @@ export const MODULE_CIVISMO = generateModule(Category.CIVISMO);
 export const MODULE_TRADICIONES = generateModule(Category.TRADICIONES);
 export const MODULE_GASTRONOMIA = generateModule(Category.GASTRONOMIA);
 export const MODULE_GEOGRAFIA = generateModule(Category.GEOGRAFIA);
-export const MODULE_LITERATURA_MUSICA = generateModule(Category.LITERATURA_MUSICA);
+export const MODULE_LITERATURA = generateModule(Category.LITERATURA);
+export const MODULE_MUSICA = generateModule(Category.MUSICA);
 export const MODULE_PINTURA_CINE = generateModule(Category.PINTURA_CINE);
 export const MODULE_CIENCIA_DEPORTES = generateModule(Category.CIENCIA_DEPORTES);
 
@@ -117,7 +118,8 @@ export const ALL_MODULES: Module[] = [
   MODULE_TRADICIONES,
   MODULE_GASTRONOMIA,
   MODULE_GEOGRAFIA,
-  MODULE_LITERATURA_MUSICA,
+  MODULE_LITERATURA,
+  MODULE_MUSICA,
   MODULE_PINTURA_CINE,
   MODULE_CIENCIA_DEPORTES,
 ];

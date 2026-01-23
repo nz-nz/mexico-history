@@ -11,7 +11,8 @@ export enum Category {
   TRADICIONES = 'TRADICIONES',
   GASTRONOMIA = 'GASTRONOMIA',
   GEOGRAFIA = 'GEOGRAFIA',
-  LITERATURA_MUSICA = 'LITERATURA_MUSICA',
+  LITERATURA = 'LITERATURA',
+  MUSICA = 'MUSICA',
   PINTURA_CINE = 'PINTURA_CINE',
   CIENCIA_DEPORTES = 'CIENCIA_DEPORTES',
 }
@@ -26,7 +27,8 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   [Category.TRADICIONES]: 'Tradiciones y Cultura',
   [Category.GASTRONOMIA]: 'Gastronomía',
   [Category.GEOGRAFIA]: 'Geografía y Población',
-  [Category.LITERATURA_MUSICA]: 'Literatura y Música',
+  [Category.LITERATURA]: 'Literatura',
+  [Category.MUSICA]: 'Música',
   [Category.PINTURA_CINE]: 'Pintura y Cine',
   [Category.CIENCIA_DEPORTES]: 'Ciencia y Deportes',
 };
@@ -41,7 +43,8 @@ export const CATEGORY_ICONS: Record<Category, string> = {
   [Category.TRADICIONES]: '🎭',
   [Category.GASTRONOMIA]: '🌮',
   [Category.GEOGRAFIA]: '🗺️',
-  [Category.LITERATURA_MUSICA]: '📚',
+  [Category.LITERATURA]: '📚',
+  [Category.MUSICA]: '🎵',
   [Category.PINTURA_CINE]: '🎨',
   [Category.CIENCIA_DEPORTES]: '🔬',
 };

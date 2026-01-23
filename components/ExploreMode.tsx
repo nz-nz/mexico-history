@@ -4,6 +4,7 @@ import { Category, CATEGORY_LABELS } from '../data/categories';
 import CategoryPicker from './explore/CategoryPicker';
 import EntryMasonry from './explore/EntryMasonry';
 import WritersWall from './explore/WritersWall';
+import ArtistsWall from './explore/ArtistsWall';
 
 interface ExploreModProps {
   onBack: () => void;
@@ -19,7 +20,8 @@ const CATEGORY_COLORS: Record<Category, string> = {
   [Category.TRADICIONES]: '#FF69B4',
   [Category.GASTRONOMIA]: '#FF6347',
   [Category.GEOGRAFIA]: '#32CD32',
-  [Category.LITERATURA_MUSICA]: '#9370DB',
+  [Category.LITERATURA]: '#9370DB',
+  [Category.MUSICA]: '#FF1493',
   [Category.PINTURA_CINE]: '#FF8C00',
   [Category.CIENCIA_DEPORTES]: '#1E90FF',
 };
@@ -85,8 +87,10 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {selectedCategory ? (
-          selectedCategory === Category.LITERATURA_MUSICA ? (
+          selectedCategory === Category.LITERATURA ? (
             <WritersWall />
+          ) : selectedCategory === Category.PINTURA_CINE ? (
+            <ArtistsWall />
           ) : (
             <EntryMasonry category={selectedCategory} />
           )

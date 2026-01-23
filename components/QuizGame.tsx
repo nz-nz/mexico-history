@@ -72,7 +72,8 @@ const CATEGORY_CONFIG: Record<Category | 'ALL', { title: string; emoji: string; 
   [Category.TRADICIONES]: { title: CATEGORY_LABELS[Category.TRADICIONES], emoji: CATEGORY_ICONS[Category.TRADICIONES], bgColor: 'bg-pink-100' },
   [Category.GASTRONOMIA]: { title: CATEGORY_LABELS[Category.GASTRONOMIA], emoji: CATEGORY_ICONS[Category.GASTRONOMIA], bgColor: 'bg-yellow-100' },
   [Category.GEOGRAFIA]: { title: CATEGORY_LABELS[Category.GEOGRAFIA], emoji: CATEGORY_ICONS[Category.GEOGRAFIA], bgColor: 'bg-teal-100' },
-  [Category.LITERATURA_MUSICA]: { title: CATEGORY_LABELS[Category.LITERATURA_MUSICA], emoji: CATEGORY_ICONS[Category.LITERATURA_MUSICA], bgColor: 'bg-violet-100' },
+  [Category.LITERATURA]: { title: CATEGORY_LABELS[Category.LITERATURA], emoji: CATEGORY_ICONS[Category.LITERATURA], bgColor: 'bg-violet-100' },
+  [Category.MUSICA]: { title: CATEGORY_LABELS[Category.MUSICA], emoji: CATEGORY_ICONS[Category.MUSICA], bgColor: 'bg-fuchsia-100' },
   [Category.PINTURA_CINE]: { title: CATEGORY_LABELS[Category.PINTURA_CINE], emoji: CATEGORY_ICONS[Category.PINTURA_CINE], bgColor: 'bg-rose-100' },
   [Category.CIENCIA_DEPORTES]: { title: CATEGORY_LABELS[Category.CIENCIA_DEPORTES], emoji: CATEGORY_ICONS[Category.CIENCIA_DEPORTES], bgColor: 'bg-cyan-100' },
 };
