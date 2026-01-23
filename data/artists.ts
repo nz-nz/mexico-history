@@ -323,7 +323,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_MARIA_FELIX',
     name: 'María Félix',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/maria_felix_portrait.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_maria_felix_new.jpg',
     birth: '1914',
     death: '2002',
     title: 'La Doña',
@@ -358,7 +358,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_PEDRO_INFANTE',
     name: 'Pedro Infante',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_pedro_infante.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_pedro_infante_new.jpg',
     birth: '1917',
     death: '1957',
     title: 'Ídolo del pueblo',
@@ -399,7 +399,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_CANTINFLAS',
     name: 'Cantinflas (Mario Moreno)',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_cantinflas.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_cantinflas_new.jpg',
     birth: '1911',
     death: '1993',
     title: 'El mimo de México',
@@ -441,7 +441,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_NEGRETE',
     name: 'Jorge Negrete',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_jorge_negrete.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_negrete_new.jpg',
     birth: '1911',
     death: '1953',
     title: 'El Charro Cantor',
@@ -474,7 +474,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_DOLORES_DEL_RIO',
     name: 'Dolores del Río',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_dolores_del_rio.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_delrio_new.jpg',
     birth: '1904',
     death: '1983',
     title: 'Primera estrella latina de Hollywood',
@@ -508,7 +508,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_TIN_TAN',
     name: 'Tin Tan (Germán Valdés)',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_tin_tan.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_tintan_new.jpg',
     birth: '1915',
     death: '1973',
     title: 'El pachuco de oro',
@@ -541,7 +541,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_INDIO_FERNANDEZ',
     name: 'Emilio "El Indio" Fernández',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_indio_fernandez.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_indio_fernandez_new.jpg',
     birth: '1904',
     death: '1986',
     title: 'Director emblemático de la Época de Oro',
@@ -583,7 +583,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_FIGUEROA',
     name: 'Gabriel Figueroa',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_gabriel_figueroa.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_figueroa_new.jpg',
     birth: '1907',
     death: '1997',
     title: 'El mejor cinematógrafo del mundo',
@@ -620,7 +620,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_CUARON',
     name: 'Alfonso Cuarón',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_alfonso_cuaron.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_cuaron_new.jpg',
     birth: '1961',
     title: 'Director ganador de múltiples Oscars',
     category: 'cine_contemporaneo',
@@ -661,7 +661,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_DEL_TORO',
     name: 'Guillermo del Toro',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_guillermo_del_toro.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_deltoro_new.jpg',
     birth: '1964',
     title: 'Maestro del cine fantástico',
     category: 'cine_contemporaneo',
@@ -702,7 +702,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_INARRITU',
     name: 'Alejandro González Iñárritu',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_inarritu.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_inarritu_new.jpg',
     birth: '1963',
     title: 'Director de narrativas fragmentadas',
     category: 'cine_contemporaneo',
@@ -743,7 +743,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_LUBEZKI',
     name: 'Emmanuel "Chivo" Lubezki',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_lubezki.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_lubezki_new.jpg',
     birth: '1964',
     title: 'Cinematógrafo con más Oscars consecutivos',
     nickname: 'El Chivo',
@@ -786,7 +786,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_GAEL',
     name: 'Gael García Bernal',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_gael_garcia.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_gael_new.jpg',
     birth: '1978',
     title: 'Actor mexicano reconocido internacionalmente',
     category: 'cine_contemporaneo',
@@ -826,7 +826,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_DIEGO_LUNA',
     name: 'Diego Luna',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_diego_luna.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_diego_luna_new.jpg',
     birth: '1979',
     title: 'Actor y director mexicano',
     category: 'cine_contemporaneo',
@@ -864,7 +864,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_SALMA',
     name: 'Salma Hayek',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_salma_hayek.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_salma_new.jpg',
     birth: '1966',
     title: 'Actriz y productora mexicana en Hollywood',
     category: 'cine_contemporaneo',
@@ -897,7 +897,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_CHESPIRITO',
     name: 'Roberto Gómez Bolaños "Chespirito"',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_chespirito.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_chespirito_new.jpg',
     birth: '1929',
     death: '2014',
     title: 'El comediante más querido de Latinoamérica',
