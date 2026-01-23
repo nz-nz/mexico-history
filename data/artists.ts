@@ -174,7 +174,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_FRIDA',
     name: 'Frida Kahlo',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_frida_kahlo.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_frida_kahlo_new.jpg',
     birth: '1907',
     death: '1954',
     title: 'Pintora surrealista mexicana',
@@ -213,7 +213,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_TAMAYO',
     name: 'Rufino Tamayo',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_tamayo.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_tamayo_new.jpg',
     birth: '1899',
     death: '1991',
     title: 'Pintor oaxaqueño moderno',
@@ -246,7 +246,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_POSADA',
     name: 'José Guadalupe Posada',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_posada.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_posada_new.jpg',
     birth: '1852',
     death: '1913',
     title: 'Creador de La Catrina',
@@ -271,7 +271,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_VARO',
     name: 'Remedios Varo',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_varo.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_varo_new.jpg',
     birth: '1908',
     death: '1963',
     title: 'Pintora surrealista',
@@ -296,7 +296,7 @@ export const ARTISTS: ArtistProfile[] = [
   {
     id: 'ARTIST_OGORMAN',
     name: 'Juan O\'Gorman',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_ogorman.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_ogorman_new.jpg',
     birth: '1905',
     death: '1982',
     title: 'Arquitecto y muralista',
