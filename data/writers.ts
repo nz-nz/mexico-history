@@ -131,6 +131,12 @@ export const WRITERS: WriterProfile[] = [
         coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_gringo_viejo.webp',
         examFact: 'Primera novela mexicana best-seller en EE.UU.',
       },
+      {
+        title: 'Los Cinco Soles de México',
+        year: 2000,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/writers/cover_los_cinco_soles_de_mexico.jpg',
+        examFact: 'Ensayo sobre la memoria histórica de México desde los aztecas',
+      },
     ],
     achievements: [
       { label: 'Premio Cervantes', year: 1987 },
