@@ -30,3 +30,7 @@ tmp/
 
 # OCR trained data
 eng.traineddata
+
+# External repos / tools
+custom-skills/
+superpowers/

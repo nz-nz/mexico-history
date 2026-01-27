@@ -6,6 +6,7 @@ import EntryMasonry from './explore/EntryMasonry';
 import WritersWall from './explore/WritersWall';
 import ArtistsWall from './explore/ArtistsWall';
 import MusiciansWall from './explore/MusiciansWall';
+import CienciaDeportesWall from './explore/CienciaDeportesWall';
 
 interface ExploreModProps {
   onBack: () => void;
@@ -94,6 +95,8 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
             <ArtistsWall />
           ) : selectedCategory === Category.MUSICA ? (
             <MusiciansWall />
+          ) : selectedCategory === Category.CIENCIA_DEPORTES ? (
+            <CienciaDeportesWall />
           ) : (
             <EntryMasonry category={selectedCategory} />
           )
