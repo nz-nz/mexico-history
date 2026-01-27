@@ -24,6 +24,7 @@ const groupedScientists = {
   inventores: SCIENTISTS.filter(s => s.category === 'inventor'),
   medicos: SCIENTISTS.filter(s => s.category === 'medico'),
   investigadores: SCIENTISTS.filter(s => s.category === 'investigador'),
+  astronautas: SCIENTISTS.filter(s => s.category === 'astronauta'),
 };
 
 // Group athletes by category
@@ -111,6 +112,23 @@ export const CienciaDeportesWall: React.FC<CienciaDeportesWallProps> = () => {
           </h2>
           <div className="grid grid-cols-12 gap-4 md:gap-6 px-4">
             {groupedScientists.investigadores.map((scientist) => (
+              <div key={scientist.id} className={getGridClasses(scientist.size)}>
+                <ScientistCluster scientist={scientist} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Astronauts */}
+      {groupedScientists.astronautas.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6 px-4 flex items-center gap-3">
+            <span className="w-2 h-8 bg-indigo-500 rounded-full"></span>
+            Astronautas
+          </h2>
+          <div className="grid grid-cols-12 gap-4 md:gap-6 px-4">
+            {groupedScientists.astronautas.map((scientist) => (
               <div key={scientist.id} className={getGridClasses(scientist.size)}>
                 <ScientistCluster scientist={scientist} />
               </div>

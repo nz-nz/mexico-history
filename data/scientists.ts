@@ -14,7 +14,7 @@ export interface ScientistAchievement {
   examFact?: string;
 }
 
-export type ScientistCategory = 'nobel' | 'inventor' | 'medico' | 'investigador';
+export type ScientistCategory = 'nobel' | 'inventor' | 'medico' | 'investigador' | 'astronauta';
 
 export interface ScientistProfile {
   id: string;
@@ -233,6 +233,60 @@ export const SCIENTISTS: ScientistProfile[] = [
       'Pionero en el estudio de rayos cósmicos',
       'Profesor en el MIT',
       'Maestro de generaciones de físicos mexicanos',
+    ],
+  },
+
+  // ===== ASTRONAUTAS =====
+  {
+    id: 'SCI_RODOLFO_NERI_VELA',
+    name: 'Rodolfo Neri Vela',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/scientists/portrait_neri_vela.jpg',
+    birth: '1952',
+    title: 'Primer astronauta mexicano',
+    category: 'astronauta',
+    field: 'Ingeniería / Exploración Espacial',
+    size: 'large',
+    discoveries: [
+      {
+        title: 'Misión STS-61-B del Transbordador Espacial Atlantis',
+        year: 1985,
+        examFact: 'Primer mexicano en viajar al espacio',
+      },
+    ],
+    achievements: [
+      { label: 'Primer astronauta mexicano', year: 1985, examFact: 'Viajó en el transbordador Atlantis' },
+      { label: 'Especialista de carga en la NASA', year: 1985 },
+    ],
+    examFacts: [
+      'Primer mexicano en viajar al espacio (1985)',
+      'Voló en el transbordador espacial Atlantis',
+      'Ingeniero y científico mexicano',
+    ],
+  },
+  {
+    id: 'SCI_KATYA_ECHAZARRETA',
+    name: 'Katya Echazarreta',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/scientists/portrait_katya_echazarreta.jpg',
+    birth: '1996',
+    title: 'Primera mujer mexicana en el espacio',
+    category: 'astronauta',
+    field: 'Ingeniería Eléctrica / Exploración Espacial',
+    size: 'large',
+    discoveries: [
+      {
+        title: 'Vuelo espacial Blue Origin NS-21',
+        year: 2022,
+        examFact: 'Primera mujer nacida en México en viajar al espacio',
+      },
+    ],
+    achievements: [
+      { label: 'Primera mujer mexicana en el espacio', year: 2022, examFact: 'Viajó con Blue Origin' },
+      { label: 'Ingeniera en el JPL de la NASA', year: 2019 },
+    ],
+    examFacts: [
+      'Primera mujer nacida en México en viajar al espacio (2022)',
+      'Viajó en la misión Blue Origin NS-21',
+      'Ingeniera en el Jet Propulsion Laboratory de la NASA',
     ],
   },
 ];

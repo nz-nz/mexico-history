@@ -98,6 +98,37 @@ export const ATHLETES: AthleteProfile[] = [
       'Defensa central de clase mundial',
     ],
   },
+  {
+    id: 'ATH_CHICHARITO',
+    name: 'Javier Hernández',
+    nickname: 'Chicharito',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/portrait_chicharito.jpg',
+    birth: '1988',
+    title: 'Máximo goleador histórico de la selección mexicana',
+    category: 'futbol',
+    sport: 'Fútbol',
+    size: 'large',
+    achievements: [
+      {
+        title: 'Máximo goleador de la selección mexicana',
+        year: 2017,
+        examFact: '52 goles con la selección mexicana',
+      },
+      {
+        title: 'Campeón de Premier League',
+        year: 2011,
+        examFact: 'Campeón con Manchester United',
+      },
+    ],
+    awards: [
+      { label: 'Campeón de la Liga MX', year: 2024 },
+    ],
+    examFacts: [
+      'Máximo goleador histórico de la selección mexicana',
+      'Jugó en Manchester United, Real Madrid y otros',
+      'Conocido mundialmente como "Chicharito"',
+    ],
+  },
 
   // ===== BOXEO =====
   {
@@ -214,11 +245,84 @@ export const ATHLETES: AthleteProfile[] = [
       'Rival histórico de Marco Antonio Barrera',
     ],
   },
+  {
+    id: 'ATH_RUBEN_OLIVARES',
+    name: 'Rubén Olivares',
+    nickname: 'El Púas',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/portrait_ruben_olivares.jpg',
+    birth: '1947',
+    title: 'Leyenda del boxeo mexicano',
+    category: 'boxeo',
+    sport: 'Boxeo',
+    size: 'medium',
+    achievements: [
+      {
+        title: 'Campeón mundial en peso gallo y pluma',
+        examFact: 'Uno de los mejores noqueadores en la historia del boxeo',
+      },
+    ],
+    awards: [
+      { label: 'Salón de la Fama del Boxeo', year: 1991 },
+    ],
+    examFacts: [
+      'Leyenda del boxeo mexicano',
+      'Campeón mundial en peso gallo y pluma',
+      'Conocido por su poder de nocaut',
+    ],
+  },
+  {
+    id: 'ATH_ANA_MARIA_TORRES',
+    name: 'Ana María Torres Ramírez',
+    nickname: 'La Guerrera',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/portrait_ana_maria_torres.jpg',
+    birth: '1980',
+    title: 'Campeona mundial WBC',
+    category: 'boxeo',
+    sport: 'Boxeo Femenil',
+    size: 'medium',
+    achievements: [
+      {
+        title: 'Campeona mundial WBC',
+        examFact: 'Campeona mundial del Consejo Mundial de Boxeo',
+      },
+    ],
+    awards: [],
+    examFacts: [
+      'Campeona mundial WBC en boxeo femenil',
+      'Conocida como "La Guerrera"',
+      'Pionera del boxeo femenino en México',
+    ],
+  },
+  {
+    id: 'ATH_YAZMIN_RIVAS',
+    name: 'Yazmín Rivas Hernández',
+    nickname: 'La Rusita',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/portrait_yazmin_rivas.jpg',
+    birth: '1987',
+    title: 'Boxeadora del Año IBF',
+    category: 'boxeo',
+    sport: 'Boxeo Femenil',
+    size: 'medium',
+    achievements: [
+      {
+        title: 'IBF Female Boxer of the Year',
+        examFact: 'Reconocida como la mejor boxeadora del año por la IBF',
+      },
+    ],
+    awards: [
+      { label: 'IBF Female Boxer of the Year' },
+    ],
+    examFacts: [
+      'IBF Female Boxer of the Year',
+      'Conocida como "La Rusita"',
+      'Destacada boxeadora mexicana',
+    ],
+  },
 
   // ===== OLÍMPICOS =====
   {
     id: 'ATH_ANA_GUEVARA',
-    name: 'Ana Guevara',
+    name: 'Ana Gabriela Guevara Espinoza',
     portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/portrait_ana_guevara.jpg',
     birth: '1977',
     title: 'Medallista olímpica de plata',
@@ -233,6 +337,11 @@ export const ATHLETES: AthleteProfile[] = [
         examFact: 'Plata en 400 metros en Atenas 2004',
       },
       {
+        title: 'Récord mundial de 300m',
+        year: 2003,
+        examFact: 'Récord mundial de 300 metros planos (35.30 segundos)',
+      },
+      {
         title: 'Campeona Mundial',
         year: 2003,
         examFact: 'Campeona mundial en París 2003',
@@ -242,9 +351,35 @@ export const ATHLETES: AthleteProfile[] = [
       { label: 'Mejor atleta de América', year: 2003 },
     ],
     examFacts: [
-      'Medalla de plata en Atenas 2004',
+      'Medalla de plata en Atenas 2004 (400m)',
+      'Récord mundial de 300m planos (35.30 segundos) en 2003',
       'Campeona mundial de 400m en 2003',
-      'Una de las mejores atletas mexicanas',
+    ],
+  },
+  {
+    id: 'ATH_SORAYA_JIMENEZ',
+    name: 'Soraya Jiménez Mendívil',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/portrait_soraya_jimenez.jpg',
+    birth: '1977',
+    death: '2013',
+    title: 'Primera mujer mexicana medallista de oro olímpica',
+    category: 'olimpico',
+    sport: 'Halterofilia',
+    size: 'large',
+    achievements: [
+      {
+        title: 'Medalla de oro olímpica',
+        year: 2000,
+        examFact: 'Oro en halterofilia en Sydney 2000',
+      },
+    ],
+    awards: [
+      { label: 'Premio Nacional del Deporte', year: 2000 },
+    ],
+    examFacts: [
+      'Primera mujer mexicana en ganar oro olímpico (Sydney 2000)',
+      'Medalla de oro en halterofilia (58 kg)',
+      'Leyenda del deporte mexicano',
     ],
   },
   {
