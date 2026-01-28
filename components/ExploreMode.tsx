@@ -9,6 +9,7 @@ import MusiciansWall from './explore/MusiciansWall';
 import CienciaDeportesWall from './explore/CienciaDeportesWall';
 import GastronomiaWall from './explore/GastronomiaWall';
 import TradicionesWall from './explore/TradicionesWall';
+import CivismoWall from './explore/CivismoWall';
 
 interface ExploreModProps {
   onBack: () => void;
@@ -103,6 +104,8 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
             <GastronomiaWall />
           ) : selectedCategory === Category.TRADICIONES ? (
             <TradicionesWall />
+          ) : selectedCategory === Category.CIVISMO ? (
+            <CivismoWall />
           ) : (
             <EntryMasonry category={selectedCategory} />
           )
