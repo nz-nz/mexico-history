@@ -12,6 +12,7 @@ import TradicionesWall from './explore/TradicionesWall';
 import CivismoWall from './explore/CivismoWall';
 import ContemporaneoWall from './explore/ContemporaneoWall';
 import GeografiaWall from './explore/GeografiaWall';
+import RevolucionWall from './explore/RevolucionWall';
 
 interface ExploreModProps {
   onBack: () => void;
@@ -112,6 +113,8 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
             <ContemporaneoWall />
           ) : selectedCategory === Category.GEOGRAFIA ? (
             <GeografiaWall />
+          ) : selectedCategory === Category.REVOLUCION ? (
+            <RevolucionWall />
           ) : (
             <EntryMasonry category={selectedCategory} />
           )
