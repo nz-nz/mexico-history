@@ -98,7 +98,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_TAMALES',
     name: 'Tamales',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tamale_-_Mexico.png',
+    imageUrl: 'https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nacional',
     description: 'Masa de maíz rellena envuelta en hoja de maíz o plátano',
     category: 'plato_tipico',
@@ -138,7 +138,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_BIRRIA',
     name: 'Birria',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Birria.JPG',
+    imageUrl: 'https://images.pexels.com/photos/3338510/pexels-photo-3338510.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Jalisco',
     description: 'Carne de borrego o chivo cocida en caldo condimentado',
     category: 'plato_tipico',
@@ -157,7 +157,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_GARNACHAS',
     name: 'Garnachas',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sopes_Toluquena.jpg',
+    imageUrl: 'https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nacional',
     description: 'Antojitos mexicanos a base de masa de maíz',
     category: 'plato_tipico',
@@ -171,7 +171,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_PAMBAZO',
     name: 'Pambazo',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pambazo_closeup_%282%29.jpg',
+    imageUrl: 'https://images.pexels.com/photos/5737453/pexels-photo-5737453.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Ciudad de México',
     description: 'Torta de pan sumergido en salsa roja de chiles',
     category: 'plato_tipico',
@@ -189,7 +189,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_GUAJOLOTE',
     name: 'Guajolote (Pavo)',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pollo_guisado_del_Istmo.jpg',
+    imageUrl: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nacional',
     description: 'Ave domesticada en México prehispánico',
     category: 'plato_tipico',
@@ -205,7 +205,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_COCHINITA_PIBIL',
     name: 'Cochinita Pibil',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Cochinita_pibil.JPG',
+    imageUrl: 'https://images.pexels.com/photos/3338510/pexels-photo-3338510.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Yucatán',
     description: 'Cerdo marinado en achiote cocido bajo tierra',
     category: 'plato_regional',
@@ -225,7 +225,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_TLAYUDAS',
     name: 'Tlayudas',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tlayudas_mexicanas.jpg',
+    imageUrl: 'https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Oaxaca',
     description: 'Tortilla grande y crujiente con asiento, frijoles y quesillo',
     category: 'plato_regional',
@@ -245,7 +245,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_MACHACA',
     name: 'Machaca',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Huevos_con_Machaca.jpg',
+    imageUrl: 'https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nuevo León / Monterrey',
     description: 'Carne seca deshebrada típica del norte',
     category: 'plato_regional',
@@ -259,7 +259,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_CABRITO',
     name: 'Cabrito',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Cabrito_a_la_norten%CC%83a.jpg',
+    imageUrl: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nuevo León',
     description: 'Cabra joven asada al carbón',
     category: 'plato_regional',
@@ -273,7 +273,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_PAPADZULES',
     name: 'Papadzules',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Papadzules_2.jpg',
+    imageUrl: 'https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Yucatán',
     description: 'Tortillas rellenas de huevo bañadas en salsa de pepita',
     category: 'plato_regional',
@@ -287,7 +287,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_HUEVOS_MOTULENOS',
     name: 'Huevos Motuleños',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Huevos_motulen%CC%83os.jpg',
+    imageUrl: 'https://images.pexels.com/photos/3441399/pexels-photo-3441399.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Yucatán',
     description: 'Huevos sobre tortilla con frijoles y salsa de tomate',
     category: 'plato_regional',
@@ -301,7 +301,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_SALBUTES',
     name: 'Salbutes',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Salbutes_10.jpg',
+    imageUrl: 'https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Yucatán',
     description: 'Tortilla inflada frita con pollo y verduras encurtidas',
     category: 'plato_regional',
@@ -315,7 +315,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_TORTA_AHOGADA',
     name: 'Torta Ahogada',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Torta_ahogada_%281%29.jpg',
+    imageUrl: 'https://images.pexels.com/photos/5737453/pexels-photo-5737453.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Jalisco',
     description: 'Torta de carnitas sumergida en salsa de chile de árbol',
     category: 'plato_regional',
@@ -329,7 +329,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_PESCADO_ZARANDEADO',
     name: 'Pescado Zarandeado',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Whole_grilled_fish_with_lime.jpg',
+    imageUrl: 'https://images.pexels.com/photos/3441398/pexels-photo-3441398.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nayarit / Sinaloa',
     description: 'Pescado abierto marinado y asado a las brasas',
     category: 'plato_regional',
@@ -343,7 +343,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_PAN_MUERTO',
     name: 'Pan de Muerto',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pan_de_muerto_%28cropped%29.jpg',
+    imageUrl: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Ciudad de México',
     description: 'Pan dulce tradicional del Día de Muertos',
     category: 'plato_regional',
@@ -385,7 +385,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_MEZCAL',
     name: 'Mezcal',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mezcal.jpg',
+    imageUrl: 'https://images.pexels.com/photos/3407681/pexels-photo-3407681.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Oaxaca',
     description: 'Destilado de maguey/agave con proceso artesanal',
     category: 'bebida',
@@ -403,7 +403,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_PULQUE',
     name: 'Pulque',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Mexico_%2831024919492%29.jpg',
+    imageUrl: 'https://images.pexels.com/photos/3407681/pexels-photo-3407681.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Hidalgo / Tlaxcala',
     description: 'Bebida fermentada de aguamiel de maguey',
     category: 'bebida',
@@ -421,7 +421,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_CHAMPURRADO',
     name: 'Champurrado',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Champurrado2.jpg',
+    imageUrl: 'https://images.pexels.com/photos/5632648/pexels-photo-5632648.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Nacional',
     description: 'Atole de chocolate caliente',
     category: 'bebida',
@@ -441,7 +441,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_AGUA_JAMAICA',
     name: 'Agua de Jamaica',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Agua-de-Jamaica.jpg',
+    imageUrl: 'https://images.pexels.com/photos/5408676/pexels-photo-5408676.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Guerrero / Oaxaca',
     description: 'Bebida refrescante de flor de jamaica',
     category: 'bebida',
@@ -455,7 +455,7 @@ export const GASTRONOMIA: GastronomyProfile[] = [
   {
     id: 'GAS_TEJUINO',
     name: 'Tejuino',
-    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tejuino.jpg',
+    imageUrl: 'https://images.pexels.com/photos/5408676/pexels-photo-5408676.jpeg?auto=compress&cs=tinysrgb&w=400',
     region: 'Jalisco',
     description: 'Bebida fermentada de maíz',
     category: 'bebida',
