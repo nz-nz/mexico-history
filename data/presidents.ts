@@ -34,7 +34,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_ITURBIDE',
     name: 'Agustín de Iturbide',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/agustin_iturbide.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/agustin_iturbide_2026.jpg',
     period: '1822-1823',
     title: 'Primer Emperador de México (Agustín I)',
     category: 'imperio',
@@ -71,7 +71,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_VICTORIA',
     name: 'Guadalupe Victoria',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/guadalupe_victoria.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/guadalupe_victoria_2026.jpg',
     period: '1824-1829',
     title: 'Primer Presidente de México',
     category: 'imperio',
@@ -96,7 +96,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_SANTA_ANNA',
     name: 'Antonio López de Santa Anna',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/santa_anna.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/santa_anna_2026.jpg',
     period: '11 veces (primera mitad del s. XIX)',
     title: 'El Presidente de las 11 Ocasiones',
     category: 'imperio',
@@ -140,7 +140,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_JUAREZ',
     name: 'Benito Juárez',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/benito_juarez.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/benito_juarez_2026.jpg',
     period: '1857-1872',
     title: 'Benemérito de las Américas',
     category: 'reforma',
@@ -178,7 +178,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_MAXIMILIANO',
     name: 'Maximiliano de Habsburgo',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/maximiliano.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/maximiliano_2026.jpg',
     period: '1864-1867',
     title: 'Emperador del Segundo Imperio',
     category: 'reforma',
@@ -209,7 +209,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_LERDO',
     name: 'Sebastián Lerdo de Tejada',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lerdo_tejada.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lerdo_tejada_2026.jpg',
     period: '1872-1876',
     title: 'Sucesor de Juárez',
     category: 'reforma',
@@ -241,7 +241,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_PORFIRIO',
     name: 'Porfirio Díaz',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/porfirio_diaz.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/porfirio_diaz_2026.jpg',
     period: '1876-1910',
     title: 'El Porfiriato',
     category: 'porfiriato',
@@ -300,7 +300,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_MANUEL_GONZALEZ',
     name: 'Manuel del Refugio González',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/manuel_gonzalez.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/manuel_gonzalez_2026.jpg',
     period: '1880-1884',
     title: 'Presidente durante el Porfiriato',
     category: 'porfiriato',
@@ -318,7 +318,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_MADERO',
     name: 'Francisco I. Madero',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/madero.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/madero_2026.jpg',
     period: '1911-1913',
     title: 'Apóstol de la Democracia',
     category: 'revolucion',
@@ -350,7 +350,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_CARRANZA',
     name: 'Venustiano Carranza',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/carranza.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/carranza_2026.jpg',
     period: '1917-1920',
     title: 'Varón de Cuatro Ciénegas',
     category: 'revolucion',
@@ -380,7 +380,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_OBREGON',
     name: 'Álvaro Obregón',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/obregon.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/obregon_2026.jpg',
     period: '1920-1924',
     title: 'El Manco de Celaya',
     category: 'revolucion',
@@ -407,7 +407,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_CALLES',
     name: 'Plutarco Elías Calles',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/calles.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/calles_2026.jpg',
     period: '1924-1928',
     title: 'El Jefe Máximo',
     category: 'moderno',
@@ -449,7 +449,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_PORTES_GIL',
     name: 'Emilio Portes Gil',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/portes_gil.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/portes_gil_2026.jpg',
     period: '1928-1930',
     title: 'Presidente Interino',
     category: 'moderno',
@@ -465,7 +465,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_ORTIZ_RUBIO',
     name: 'Pascual Ortiz Rubio',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/ortiz_rubio.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/ortiz_rubio_2026.jpg',
     period: '1930-1932',
     title: 'Presidente durante el Maximato',
     category: 'moderno',
@@ -481,7 +481,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_ABELARDO',
     name: 'Abelardo L. Rodríguez',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/abelardo_rodriguez.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/abelardo_rodriguez_2026.jpg',
     period: '1932-1934',
     title: 'Último del Maximato',
     category: 'moderno',
@@ -510,7 +510,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_CARDENAS',
     name: 'Lázaro Cárdenas',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lazaro_cardenas.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lazaro_cardenas_2026.jpg',
     period: '1934-1940',
     title: 'Tata Cárdenas',
     category: 'moderno',
@@ -558,7 +558,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_AVILA_CAMACHO',
     name: 'Manuel Ávila Camacho',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/avila_camacho.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/avila_camacho_2026.jpg',
     period: '1940-1946',
     title: 'El Presidente Caballero',
     category: 'moderno',
@@ -595,7 +595,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_ALEMAN',
     name: 'Miguel Alemán Valdés',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/aleman_valdes.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/aleman_valdes_2026.jpg',
     period: '1946-1952',
     title: 'El Cachorro de la Revolución',
     category: 'moderno',
@@ -614,7 +614,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_RUIZ_CORTINES',
     name: 'Adolfo Ruiz Cortines',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/ruiz_cortines.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/ruiz_cortines_2026.jpg',
     period: '1952-1958',
     title: 'El Presidente Austero',
     category: 'moderno',
@@ -649,7 +649,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_LOPEZ_MATEOS',
     name: 'Adolfo López Mateos',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lopez_mateos.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lopez_mateos_2026.jpg',
     period: '1958-1964',
     title: 'El Presidente Viajero',
     category: 'moderno',
@@ -674,7 +674,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_DIAZ_ORDAZ',
     name: 'Gustavo Díaz Ordaz',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/diaz_ordaz.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/diaz_ordaz_2026.jpg',
     period: '1964-1970',
     title: 'Presidente durante Tlatelolco',
     category: 'moderno',
@@ -710,7 +710,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_ECHEVERRIA',
     name: 'Luis Echeverría Álvarez',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/echeverria.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/echeverria_2026.jpg',
     period: '1970-1976',
     title: 'Presidente 1970-1976',
     category: 'moderno',
@@ -734,7 +734,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_LOPEZ_PORTILLO',
     name: 'José López Portillo',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lopez_portillo.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/lopez_portillo_2026.jpg',
     period: '1976-1982',
     title: 'El Presidente del Boom Petrolero',
     category: 'moderno',
@@ -764,7 +764,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_DE_LA_MADRID',
     name: 'Miguel de la Madrid',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/de_la_madrid.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/de_la_madrid_2026.jpg',
     period: '1982-1988',
     title: 'Presidente de la Crisis',
     category: 'moderno',
@@ -794,7 +794,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_SALINAS',
     name: 'Carlos Salinas de Gortari',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/salinas.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/salinas_2026.jpg',
     period: '1988-1994',
     title: 'El Presidente del TLC',
     category: 'moderno',
@@ -824,7 +824,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_ZEDILLO',
     name: 'Ernesto Zedillo',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/zedillo.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/zedillo_2026.jpg',
     period: '1994-2000',
     title: 'El Presidente de la Transición',
     category: 'moderno',
@@ -843,7 +843,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_FOX',
     name: 'Vicente Fox Quesada',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/fox.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/fox_2026.jpg',
     period: '2000-2006',
     title: 'Primer Presidente del PAN',
     category: 'moderno',
@@ -862,7 +862,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_CALDERON',
     name: 'Felipe Calderón Hinojosa',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/calderon.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/calderon_2026.jpg',
     period: '2006-2012',
     title: 'Presidente de la Guerra contra el Narco',
     category: 'moderno',
@@ -880,7 +880,7 @@ export const PRESIDENTS: PresidentProfile[] = [
   {
     id: 'PRES_PENA',
     name: 'Enrique Peña Nieto',
-    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/pena_nieto.jpg',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/presidents/pena_nieto_2026.jpg',
     period: '2012-2018',
     title: 'Regreso del PRI',
     category: 'moderno',
