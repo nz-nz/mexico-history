@@ -19,7 +19,7 @@ import {
   PresidentTimelineItem,
   PresidentTimelinePeriod
 } from '../types';
-import { RefreshCcw, HelpCircle, BookOpen, X } from 'lucide-react';
+import { RefreshCcw, HelpCircle, BookOpen, X, Trophy } from 'lucide-react';
 import { GameHeader, GameCompletion, DeckButton, ProgressIndicator } from './shared';
 
 type TimelineDeckType = 'CIVILIZATIONS' | 'WRITERS' | 'PRESIDENTS' | null;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Category, CATEGORY_LABELS, CATEGORY_ICONS } from '../../data/categories';
 import { KNOWLEDGE_BASE } from '../../data/categories';
+import { PRESIDENTS } from '../../data/presidents';
 
 interface CategoryPickerProps {
   onSelectCategory: (category: Category) => void;
@@ -12,6 +13,7 @@ const CATEGORY_COLORS: Record<Category, string> = {
   [Category.INDEPENDENCIA]: '#008000',
   [Category.REVOLUCION]: '#FF4500',
   [Category.CONTEMPORANEO]: '#4169E1',
+  [Category.PRESIDENTES]: '#2F4F4F',
   [Category.CIVISMO]: '#FFD700',
   [Category.TRADICIONES]: '#9370DB',
   [Category.GASTRONOMIA]: '#FF6347',
@@ -24,6 +26,10 @@ const CATEGORY_COLORS: Record<Category, string> = {
 
 export const CategoryPicker: React.FC<CategoryPickerProps> = ({ onSelectCategory }) => {
   const getCategoryCount = (category: Category): number => {
+    // Special handling for categories with dedicated data files
+    if (category === Category.PRESIDENTES) {
+      return PRESIDENTS.length;
+    }
     return KNOWLEDGE_BASE.filter(e => e.category === category).length;
   };
 

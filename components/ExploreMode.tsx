@@ -16,6 +16,7 @@ import RevolucionWall from './explore/RevolucionWall';
 import IndependenciaWall from './explore/IndependenciaWall';
 import ConquistaWall from './explore/ConquistaWall';
 import PrehispanicoWall from './explore/PrehispanicoWall';
+import PresidentsWall from './explore/PresidentsWall';
 
 interface ExploreModProps {
   onBack: () => void;
@@ -27,6 +28,7 @@ const CATEGORY_COLORS: Record<Category, string> = {
   [Category.INDEPENDENCIA]: '#006847',
   [Category.REVOLUCION]: '#CE1126',
   [Category.CONTEMPORANEO]: '#4169E1',
+  [Category.PRESIDENTES]: '#2F4F4F',
   [Category.CIVISMO]: '#FFD700',
   [Category.TRADICIONES]: '#FF69B4',
   [Category.GASTRONOMIA]: '#FF6347',
@@ -114,6 +116,8 @@ export default function ExploreMode({ onBack }: ExploreModProps) {
             <CivismoWall />
           ) : selectedCategory === Category.CONTEMPORANEO ? (
             <ContemporaneoWall />
+          ) : selectedCategory === Category.PRESIDENTES ? (
+            <PresidentsWall />
           ) : selectedCategory === Category.GEOGRAFIA ? (
             <GeografiaWall />
           ) : selectedCategory === Category.REVOLUCION ? (
