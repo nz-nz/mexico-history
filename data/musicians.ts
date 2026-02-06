@@ -45,11 +45,13 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Huapango',
         year: 1941,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_huapango_jose_pablo_moncayo.jpg',
         examFact: 'Obra sinfónica más representativa de México',
       },
       {
         title: 'La Mulata de Córdoba',
         year: 1948,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_la_mulata_de_cordoba_jose_pablo_moncayo.jpg',
         examFact: 'Ópera basada en leyenda veracruzana',
       },
     ],
@@ -75,11 +77,13 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Estrellita',
         year: 1912,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_estrellita_manuel_m_ponce.jpg',
         examFact: 'Canción mexicana más interpretada internacionalmente',
       },
       {
         title: 'Concierto del Sur',
         year: 1941,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_concierto_del_sur_manuel_m_ponce.jpg',
         examFact: 'Concierto para guitarra dedicado a Andrés Segovia',
       },
     ],
@@ -105,6 +109,7 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Sobre las Olas',
         year: 1888,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_sobre_las_olas_juventino_rosas.jpg',
         examFact: 'Vals mexicano más famoso en el mundo, confundido con vals vienés',
       },
     ],
@@ -128,11 +133,13 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Sensemayá',
         year: 1938,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_sensemaya_silvestre_revueltas.jpg',
         examFact: 'Basada en poema de Nicolás Guillén sobre ritual afrocubano',
       },
       {
         title: 'La Noche de los Mayas',
         year: 1939,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_la_noche_de_los_mayas_silvestre_revueltas.jpg',
         examFact: 'Música para la película del mismo nombre',
       },
     ],
@@ -156,6 +163,7 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Sinfonía India',
         year: 1936,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_sinfonia_india_carlos_chavez.jpg',
         examFact: 'Usa instrumentos y melodías indígenas mexicanas',
       },
     ],
@@ -183,20 +191,24 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'El Rey',
         year: 1971,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_el_rey_jose_alfredo_jimenez.jpg',
         examFact: 'Canción símbolo de la música ranchera mexicana',
       },
       {
         title: 'Camino de Guanajuato',
         year: 1960,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_camino_de_guanajuato_jose_alfredo_jimenez.jpg',
         examFact: 'Himno no oficial de Guanajuato',
       },
       {
         title: 'Si nos dejan',
         year: 1971,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_si_nos_dejan_jose_alfredo_jimenez.jpg',
         examFact: 'Una de las canciones más versionadas del repertorio mexicano',
       },
       {
         title: 'Ella',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_ella_jose_alfredo_jimenez.jpg',
         examFact: 'Canción emblemática de desamor',
       },
     ],
@@ -221,21 +233,25 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'María Bonita',
         year: 1946,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_maria_bonita_agustin_lara.jpg',
         examFact: 'Compuesta para María Félix en Acapulco',
       },
       {
         title: 'Granada',
         year: 1932,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_granada_agustin_lara.jpg',
         examFact: 'Canción sobre ciudad que nunca visitó al componerla',
       },
       {
         title: 'Solamente una vez',
         year: 1941,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_solamente_una_vez_agustin_lara.jpg',
         examFact: 'Bolero clásico interpretado mundialmente',
       },
       {
         title: 'Veracruz',
         year: 1936,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_veracruz_agustin_lara.jpg',
         examFact: 'Himno no oficial de Veracruz',
       },
     ],
@@ -262,21 +278,25 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Somos novios',
         year: 1968,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_somos_novios_armando_manzanero.jpg',
         examFact: 'Adaptada al inglés como "It\'s Impossible" por Perry Como',
       },
       {
         title: 'Esta tarde vi llover',
         year: 1967,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_esta_tarde_vi_llover_armando_manzanero.jpg',
         examFact: 'Una de las baladas más versionadas en español',
       },
       {
         title: 'Contigo aprendí',
         year: 1967,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_contigo_aprendi_armando_manzanero.jpg',
         examFact: 'Canción popularizada por Luis Miguel',
       },
       {
         title: 'Adoro',
         year: 1967,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_adoro_armando_manzanero.jpg',
         examFact: 'Éxito internacional del bolero romántico',
       },
     ],
@@ -303,6 +323,7 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Bésame Mucho',
         year: 1940,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_besame_mucho_consuelo_velazquez.jpg',
         examFact: 'Canción mexicana más grabada de la historia, interpretada por The Beatles',
       },
     ],
@@ -328,6 +349,7 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'México Lindo y Querido',
         year: 1921,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_mexico_lindo_y_querido_chucho_monge.jpg',
         examFact: 'Canción símbolo de la mexicanidad, himno de los migrantes',
       },
     ],
@@ -350,6 +372,7 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Guadalajara',
         year: 1937,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_guadalajara_pepe_guizar.jpg',
         examFact: 'Himno no oficial de Jalisco, símbolo del mariachi',
       },
     ],
@@ -372,6 +395,7 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Cielito Lindo',
         year: 1882,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_cielito_lindo_quirino_mendoza_y_cortes.jpg',
         examFact: 'Segunda canción mexicana más conocida mundialmente, himno deportivo de México',
       },
     ],
@@ -396,21 +420,25 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Amor Eterno',
         year: 1984,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_amor_eterno_juan_gabriel.jpg',
         examFact: 'Canción dedicada a su madre, himno del Día de Muertos',
       },
       {
         title: 'Querida',
         year: 1984,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_querida_juan_gabriel.jpg',
         examFact: 'Una de las baladas más populares de los 80s',
       },
       {
         title: 'Hasta que te conocí',
         year: 1986,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_hasta_que_te_conoci_juan_gabriel.jpg',
         examFact: 'Éxito internacional de la música mexicana',
       },
       {
         title: 'No tengo dinero',
         year: 1971,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_no_tengo_dinero_juan_gabriel.jpg',
         examFact: 'Su primer gran éxito, lo lanzó a la fama',
       },
     ],
@@ -438,16 +466,19 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Volver, Volver',
         year: 1972,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_volver_volver_vicente_fernandez.jpg',
         examFact: 'Canción que cierra sus conciertos, himno ranchero',
       },
       {
         title: 'Por tu maldito amor',
         year: 1989,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_por_tu_maldito_amor_vicente_fernandez.jpg',
         examFact: 'De las canciones más populares de su repertorio',
       },
       {
         title: 'Lástima que seas ajena',
         year: 1993,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_lastima_que_seas_ajena_vicente_fernandez.jpg',
         examFact: 'Éxito que revitalizó su carrera en los 90s',
       },
     ],
@@ -475,15 +506,18 @@ export const MUSICIANS: MusicianProfile[] = [
       {
         title: 'Amorcito Corazón',
         year: 1948,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_amorcito_corazon_pedro_infante.jpg',
         examFact: 'De la película "Nosotros los pobres", su canción más famosa',
       },
       {
         title: 'Cien años',
         year: 1954,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_cien_anos_pedro_infante.jpg',
         examFact: 'Canción de José Alfredo Jiménez que inmortalizó',
       },
       {
         title: 'Corazón, Corazón',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_corazon_corazon_pedro_infante.jpg',
         examFact: 'Clásico del bolero ranchero',
       },
     ],
@@ -507,11 +541,13 @@ export const MUSICIANS: MusicianProfile[] = [
     songs: [
       {
         title: 'México Lindo y Querido',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_mexico_lindo_y_querido_jorge_negrete.jpg',
         examFact: 'Versión definitiva de esta canción patriótica',
       },
       {
         title: 'Ay Jalisco no te rajes',
         year: 1941,
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_ay_jalisco_no_te_rajes_jorge_negrete.jpg',
         examFact: 'Himno del orgullo jalisciense',
       },
     ],
@@ -537,10 +573,12 @@ export const MUSICIANS: MusicianProfile[] = [
     songs: [
       {
         title: 'Sombras',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_sombras_javier_solis.jpg',
         examFact: 'Bolero emblemático de su repertorio',
       },
       {
         title: 'En mi viejo San Juan',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_en_mi_viejo_san_juan_javier_solis.jpg',
         examFact: 'Canción puertorriqueña que popularizó en México',
       },
     ],
@@ -563,14 +601,17 @@ export const MUSICIANS: MusicianProfile[] = [
     songs: [
       {
         title: 'La Llorona',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_la_llorona_chavela_vargas.jpg',
         examFact: 'Versión definitiva de esta canción tradicional oaxaqueña',
       },
       {
         title: 'Paloma Negra',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_paloma_negra_chavela_vargas.jpg',
         examFact: 'Canción de José Alfredo Jiménez que inmortalizó',
       },
       {
         title: 'Luz de Luna',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_luz_de_luna_chavela_vargas.jpg',
         examFact: 'Una de sus interpretaciones más emotivas',
       },
     ],
@@ -596,6 +637,7 @@ export const MUSICIANS: MusicianProfile[] = [
     songs: [
       {
         title: 'La Tequilera',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_la_tequilera_lucha_reyes.jpg',
         examFact: 'Canción que definió el estilo bravío femenino',
       },
     ],
@@ -618,10 +660,12 @@ export const MUSICIANS: MusicianProfile[] = [
     songs: [
       {
         title: 'Cucurrucucú Paloma',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_cucurrucucu_paloma_lola_beltran.jpg',
         examFact: 'Huapango de Tomás Méndez que la hizo famosa',
       },
       {
         title: 'Paloma Negra',
+        coverUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/musicians/cover_paloma_negra_lola_beltran.jpg',
         examFact: 'Otra versión icónica de este clásico',
       },
     ],
