@@ -54,6 +54,7 @@ export const ATHLETES: AthleteProfile[] = [
       {
         title: 'Campeón con Real Madrid',
         year: 1988,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_real_madrid_titles.jpg',
         examFact: 'Ganó 5 ligas consecutivas con el Real Madrid',
       },
     ],
@@ -150,6 +151,7 @@ export const ATHLETES: AthleteProfile[] = [
       },
       {
         title: 'Campeón mundial en 3 divisiones',
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_chavez_three_divisions.jpg',
         examFact: 'Superpluma, ligero y superligero',
       },
     ],
@@ -182,6 +184,7 @@ export const ATHLETES: AthleteProfile[] = [
       },
       {
         title: 'Campeón mundial en 4 divisiones',
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_canelo_four_divisions.jpg',
         examFact: 'Superwelter, mediano, supermediano, semipesado',
       },
     ],
@@ -339,11 +342,13 @@ export const ATHLETES: AthleteProfile[] = [
       {
         title: 'Récord mundial de 300m',
         year: 2003,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_guevara_300m_record.jpg',
         examFact: 'Récord mundial de 300 metros planos (35.30 segundos)',
       },
       {
         title: 'Campeona Mundial',
         year: 2003,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_guevara_world_champion.jpg',
         examFact: 'Campeona mundial en París 2003',
       },
     ],
@@ -370,6 +375,7 @@ export const ATHLETES: AthleteProfile[] = [
       {
         title: 'Medalla de oro olímpica',
         year: 2000,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_soraya_gold_sydney.jpg',
         examFact: 'Oro en halterofilia en Sydney 2000',
       },
     ],
@@ -395,11 +401,13 @@ export const ATHLETES: AthleteProfile[] = [
       {
         title: 'Medalla de bronce olímpica',
         year: 2008,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_paola_beijing_bronze.jpg',
         examFact: 'Bronce en plataforma sincronizada, Beijing 2008',
       },
       {
         title: 'Medalla de plata olímpica',
         year: 2012,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_paola_london_silver.jpg',
         examFact: 'Plata en plataforma sincronizada, Londres 2012',
       },
     ],
@@ -455,6 +463,7 @@ export const ATHLETES: AthleteProfile[] = [
       {
         title: 'Piloto de Red Bull Racing',
         year: 2021,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_checo_red_bull.jpg',
         examFact: 'Compañero de Max Verstappen en el equipo campeón',
       },
     ],
@@ -487,6 +496,7 @@ export const ATHLETES: AthleteProfile[] = [
       },
       {
         title: '27 victorias en LPGA Tour',
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_ochoa_lpga_wins.jpg',
         examFact: 'Incluyendo 2 majors',
       },
     ],
@@ -523,6 +533,7 @@ export const ATHLETES: AthleteProfile[] = [
       {
         title: 'Campeón de Serie Mundial',
         year: 1981,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/athletes/achievement_valenzuela_world_series.jpg',
         examFact: 'Ganó la Serie Mundial con los Dodgers',
       },
     ],

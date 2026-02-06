@@ -250,6 +250,7 @@ export const SCIENTISTS: ScientistProfile[] = [
       {
         title: 'Misión STS-61-B del Transbordador Espacial Atlantis',
         year: 1985,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/scientists/discovery_atlantis_mission.jpg',
         examFact: 'Primer mexicano en viajar al espacio',
       },
     ],
@@ -276,6 +277,7 @@ export const SCIENTISTS: ScientistProfile[] = [
       {
         title: 'Vuelo espacial Blue Origin NS-21',
         year: 2022,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/scientists/discovery_blue_origin_ns21.jpg',
         examFact: 'Primera mujer nacida en México en viajar al espacio',
       },
     ],
