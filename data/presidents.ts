@@ -660,15 +660,22 @@ export const PRESIDENTS: PresidentProfile[] = [
         title: 'Museo de Antropología',
         examFact: 'Inauguró el Museo Nacional de Antropología',
       },
+      {
+        title: 'Fundación del ISSSTE',
+        date: '30 de diciembre de 1959',
+        examFact: 'Creó el ISSSTE por decreto presidencial',
+      },
     ],
     achievements: [
       { label: 'Museo de Antropología', year: 1964 },
       { label: 'Nacionalizó electricidad', year: 1960 },
+      { label: 'Fundó el ISSSTE', year: 1959 },
     ],
     examFacts: [
       'Inauguró el Museo Nacional de Antropología',
       'Nacionalizó la industria eléctrica',
       'Conocido como "El Presidente Viajero"',
+      'Fundó el ISSSTE el 30 de diciembre de 1959',
     ],
   },
   {
