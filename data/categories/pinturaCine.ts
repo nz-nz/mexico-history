@@ -435,6 +435,15 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     dateYear: 2022,
   },
 
+  {
+    id: 'PIN_ACT_005',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Actores',
+    question: '¿De qué personaje es la frase "No contaban con mi astucia"?',
+    answer: 'El Chapulín Colorado, personaje creado por Roberto Gómez Bolaños "Chespirito".',
+    tags: ['cine', 'chapulin_colorado', 'chespirito', 'frase', 'comedia'],
+  },
+
   // ===== COMEDIA =====
   {
     id: 'PIN_COM_001',

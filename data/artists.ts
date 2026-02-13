@@ -925,6 +925,7 @@ export const ARTISTS: ArtistProfile[] = [
       'Creador de El Chavo del 8 y El Chapulín Colorado',
       'Programa visto por más de 350 millones de personas',
       '"Chespirito" significa "pequeño Shakespeare"',
+      'Frase célebre del Chapulín Colorado: "No contaban con mi astucia"',
     ],
   },
 ];
