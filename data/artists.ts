@@ -6,7 +6,7 @@ export interface ArtWork {
   year?: number;
   imageUrl?: string;
   examFact: string;
-  type: 'painting' | 'mural' | 'film' | 'tv_show';
+  type: 'painting' | 'mural' | 'sculpture' | 'film' | 'tv_show';
 }
 
 export interface Achievement {
@@ -16,7 +16,7 @@ export interface Achievement {
   type?: 'oscar' | 'ariel' | 'cannes' | 'other';
 }
 
-export type ArtistCategory = 'muralista' | 'pintor' | 'epoca_oro' | 'cine_contemporaneo';
+export type ArtistCategory = 'muralista' | 'pintor' | 'escultor' | 'epoca_oro' | 'cine_contemporaneo';
 
 export interface ArtistProfile {
   id: string;
@@ -316,6 +316,106 @@ export const ARTISTS: ArtistProfile[] = [
       'Diseñó la Biblioteca Central de la UNAM',
       'Arquitecto funcionalista y muralista',
       'El mural de la UNAM es el más grande en mosaico',
+    ],
+  },
+  {
+    id: 'ARTIST_CUETO',
+    name: 'Germán Cueto',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_cueto_2026.jpg',
+    birth: '1893',
+    death: '1975',
+    title: 'Artista plástico estridentista',
+    category: 'escultor',
+    size: 'small',
+    works: [
+      {
+        title: 'Hombre Corriendo',
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/cueto_hombre_corriendo_2026.jpg',
+        examFact: 'Escultura emblemática del movimiento estridentista',
+        type: 'sculpture',
+      },
+    ],
+    achievements: [],
+    examFacts: [
+      'Titiritero y artista plástico mexicano',
+      'Miembro del movimiento estridentista',
+      'Autor de la escultura "Hombre Corriendo"',
+    ],
+  },
+  {
+    id: 'ARTIST_CARBAJAL',
+    name: 'Enrique Carbajal "Sebastián"',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_sebastian_2026.jpg',
+    birth: '1947',
+    title: 'Escultor mexicano',
+    nickname: 'Sebastián',
+    category: 'escultor',
+    size: 'medium',
+    works: [
+      {
+        title: 'El Caballito',
+        year: 1992,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/sebastian_el_caballito_2026.jpg',
+        examFact: 'Escultura icónica ubicada en Paseo de la Reforma, Ciudad de México',
+        type: 'sculpture',
+      },
+      {
+        title: 'Coyote en Ayuno',
+        year: 2008,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/sebastian_coyote_en_ayuno_2026.jpg',
+        examFact: 'Escultura monumental',
+        type: 'sculpture',
+      },
+      {
+        title: 'Puerta de Torreón',
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/sebastian_puerta_torreon_2026.jpg',
+        examFact: 'Escultura monumental en Torreón, Coahuila',
+        type: 'sculpture',
+      },
+      {
+        title: 'Ángel Custodio',
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/sebastian_angel_custodio_2026.jpg',
+        examFact: 'Escultura monumental',
+        type: 'sculpture',
+      },
+    ],
+    achievements: [],
+    examFacts: [
+      'Escultor mexicano conocido como "Sebastián"',
+      'Autor de El Caballito en Paseo de la Reforma',
+      'Creador de esculturas monumentales en todo México',
+    ],
+  },
+  {
+    id: 'ARTIST_VELASCO',
+    name: 'José María Velasco',
+    portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/portrait_velasco_2026.jpg',
+    birth: '1840',
+    death: '1912',
+    title: 'El gran paisajista de México',
+    category: 'pintor',
+    size: 'medium',
+    works: [
+      {
+        title: 'El Valle de México desde el cerro de Santa Isabel',
+        year: 1882,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/velasco_valle_santa_isabel_2026.jpg',
+        examFact: 'Obra maestra del paisajismo mexicano del siglo XIX',
+        type: 'painting',
+      },
+      {
+        title: 'El Valle de México desde el cerro del Tepeyac',
+        year: 1894,
+        imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/velasco_valle_tepeyac_2026.jpg',
+        examFact: 'Una de sus vistas más célebres del Valle de México',
+        type: 'painting',
+      },
+    ],
+    achievements: [],
+    examFacts: [
+      'Considerado el más grande paisajista de México',
+      'Famoso por sus pinturas del Valle de México',
+      'Pintor del siglo XIX, precursor del arte moderno mexicano',
     ],
   },
 

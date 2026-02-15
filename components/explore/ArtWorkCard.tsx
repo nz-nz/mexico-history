@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArtWork } from '../../data/artists';
 import { WallTooltip } from './WallTooltip';
 import { ImageModal } from './ImageModal';
-import { Palette, Film, Tv, Brush } from 'lucide-react';
+import { Palette, Film, Tv, Brush, Box } from 'lucide-react';
 
 interface ArtWorkCardProps {
   work: ArtWork;
@@ -15,6 +15,8 @@ const getWorkIcon = (type: ArtWork['type']) => {
       return <Palette className="w-6 h-6" />;
     case 'mural':
       return <Brush className="w-6 h-6" />;
+    case 'sculpture':
+      return <Box className="w-6 h-6" />;
     case 'film':
       return <Film className="w-6 h-6" />;
     case 'tv_show':
@@ -30,6 +32,8 @@ const getWorkGradient = (type: ArtWork['type']) => {
       return 'from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30';
     case 'mural':
       return 'from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30';
+    case 'sculpture':
+      return 'from-amber-100 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30';
     case 'film':
       return 'from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30';
     case 'tv_show':
@@ -45,6 +49,8 @@ const getIconColor = (type: ArtWork['type']) => {
       return 'text-purple-700 dark:text-purple-400';
     case 'mural':
       return 'text-red-700 dark:text-red-400';
+    case 'sculpture':
+      return 'text-amber-700 dark:text-amber-400';
     case 'film':
       return 'text-blue-700 dark:text-blue-400';
     case 'tv_show':
@@ -60,6 +66,8 @@ const getTextColor = (type: ArtWork['type']) => {
       return 'text-purple-900 dark:text-purple-200';
     case 'mural':
       return 'text-red-900 dark:text-red-200';
+    case 'sculpture':
+      return 'text-amber-900 dark:text-amber-200';
     case 'film':
       return 'text-blue-900 dark:text-blue-200';
     case 'tv_show':

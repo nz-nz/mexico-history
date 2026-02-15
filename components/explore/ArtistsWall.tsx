@@ -23,6 +23,7 @@ const getGridClasses = (artist: ArtistProfile, index: number): string => {
 const groupedArtists = {
   muralistas: ARTISTS.filter(a => a.category === 'muralista'),
   pintores: ARTISTS.filter(a => a.category === 'pintor'),
+  escultores: ARTISTS.filter(a => a.category === 'escultor'),
   epoca_oro: ARTISTS.filter(a => a.category === 'epoca_oro'),
   cine_contemporaneo: ARTISTS.filter(a => a.category === 'cine_contemporaneo'),
 };
@@ -59,6 +60,23 @@ export const ArtistsWall: React.FC<ArtistsWallProps> = () => {
           ))}
         </div>
       </section>
+
+      {/* Escultores Section */}
+      {groupedArtists.escultores.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6 px-4 flex items-center gap-3">
+            <span className="w-2 h-8 bg-amber-500 rounded-full"></span>
+            Escultores
+          </h2>
+          <div className="grid grid-cols-12 gap-4 md:gap-6 px-4">
+            {groupedArtists.escultores.map((artist, index) => (
+              <div key={artist.id} className={getGridClasses(artist, index)}>
+                <ArtistCluster artist={artist} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Época de Oro Section */}
       <section className="mb-12">

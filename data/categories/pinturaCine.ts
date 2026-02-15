@@ -141,6 +141,30 @@ export const PINTURA_CINE_DATA: KnowledgeEntry[] = [
     tags: ['pintura', 'catrina', 'posada', 'muertos'],
     imageUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/art/la_catrina_posada_new.jpg',
   },
+  {
+    id: 'PIN_PIN_010',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Pintores',
+    question: '¿Quién fue Germán Cueto?',
+    answer: 'Titiritero y artista plástico mexicano del movimiento estridentista, autor de la escultura "Hombre Corriendo".',
+    tags: ['pintura', 'german_cueto', 'estridentismo', 'escultura', 'hombre_corriendo'],
+  },
+  {
+    id: 'PIN_PIN_012',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Pintores',
+    question: '¿Quién es el escultor mexicano conocido como "Sebastián", autor de El Caballito?',
+    answer: 'Enrique Carbajal "Sebastián", escultor mexicano autor de obras como El Caballito (1992), Coyote en Ayuno (2008), Puerta de Torreón y Ángel Custodio.',
+    tags: ['escultura', 'sebastian', 'enrique_carbajal', 'caballito', 'coyote_ayuno'],
+  },
+  {
+    id: 'PIN_PIN_011',
+    category: Category.PINTURA_CINE,
+    subcategory: 'Pintores',
+    question: '¿Quién fue José María Velasco?',
+    answer: 'Pintor paisajista mexicano del siglo XIX, considerado uno de los más grandes paisajistas de América. Famoso por sus pinturas del Valle de México.',
+    tags: ['pintura', 'jose_maria_velasco', 'paisajista', 'valle_de_mexico', 'siglo_xix'],
+  },
 
   // ===== HITOS DEL CINE MEXICANO =====
   {
