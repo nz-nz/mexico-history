@@ -498,7 +498,7 @@ export const ARTISTS: ArtistProfile[] = [
   },
   {
     id: 'ARTIST_CANTINFLAS',
-    name: 'Cantinflas (Mario Moreno)',
+    name: 'Cantinflas (Mario Fortino Alfonso Moreno Reyes)',
     portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_cantinflas_new.jpg',
     birth: '1911',
     death: '1993',
@@ -540,7 +540,7 @@ export const ARTISTS: ArtistProfile[] = [
   },
   {
     id: 'ARTIST_NEGRETE',
-    name: 'Jorge Negrete',
+    name: 'Jorge Alberto Negrete Moreno',
     portraitUrl: 'https://storage.googleapis.com/ai-chat-assets-0942035858/assets/cinema/portrait_negrete_new.jpg',
     birth: '1911',
     death: '1953',
