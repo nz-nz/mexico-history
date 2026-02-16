@@ -274,9 +274,9 @@ export const PRESIDENTS: PresidentProfile[] = [
         examFact: 'Inauguración del Ángel de la Independencia',
       },
       {
-        title: 'UNAM',
+        title: 'Fundación de la Universidad Nacional de México (UNAM)',
         date: '22 de septiembre de 1910',
-        examFact: 'Creación de la UNAM. Lema: "Por mi raza hablará el espíritu"',
+        examFact: 'Justo Sierra, secretario de Instrucción Pública, fundó la Universidad Nacional de México. Lema: "Por mi raza hablará el espíritu" (propuesto por José Vasconcelos en 1921). Obtuvo autonomía en 1929 con Emilio Portes Gil.',
       },
       {
         title: 'Renuncia',
@@ -285,13 +285,14 @@ export const PRESIDENTS: PresidentProfile[] = [
       },
     ],
     achievements: [
-      { label: 'Fundó la UNAM', year: 1910 },
+      { label: 'UNAM fundada por Justo Sierra', year: 1910, examFact: '22 de septiembre de 1910' },
       { label: 'Inauguró el Ángel', year: 1910 },
       { label: 'Inició Bellas Artes', year: 1904 },
     ],
     examFacts: [
       'Gobernó México de 1876 a 1910 (34 años)',
-      'Creó la UNAM en 1910',
+      'Justo Sierra fundó la Universidad Nacional de México (UNAM) el 22 de septiembre de 1910',
+      'Lema UNAM: "Por mi raza hablará el espíritu" (José Vasconcelos, 1921)',
       'Inauguró el Ángel de la Independencia',
       'Inició la construcción del Palacio de Bellas Artes',
       'El Porfiriato: período de modernización y dictadura',
@@ -455,11 +456,20 @@ export const PRESIDENTS: PresidentProfile[] = [
     category: 'moderno',
     size: 'small',
     emoji: '⚖️',
-    events: [],
-    achievements: [],
+    events: [
+      {
+        title: 'Autonomía de la UNAM',
+        date: '22 de mayo de 1929',
+        examFact: 'Emilio Portes Gil decreta la autonomía de la universidad, convirtiéndose en la Universidad Nacional Autónoma de México',
+      },
+    ],
+    achievements: [
+      { label: 'Autonomía de la UNAM', year: 1929 },
+    ],
     examFacts: [
       'Presidente interino tras asesinato de Obregón',
       'Parte del Maximato',
+      'Decretó la autonomía de la UNAM el 22 de mayo de 1929',
     ],
   },
   {
