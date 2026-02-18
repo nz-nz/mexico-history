@@ -713,15 +713,22 @@ export const PRESIDENTS: PresidentProfile[] = [
         date: '12-27 de octubre de 1968',
         examFact: 'Primeros Juegos Olímpicos en Latinoamérica',
       },
+      {
+        title: 'Inauguración del Metro de CDMX',
+        date: '4 de septiembre de 1969',
+        examFact: 'Inauguración del Sistema de Transporte Colectivo Metro de la Ciudad de México',
+      },
     ],
     achievements: [
       { label: 'Juegos Olímpicos 1968', year: 1968 },
       { label: 'Tratado de Tlatelolco', year: 1967 },
+      { label: 'Metro de CDMX', year: 1969, examFact: '4 de septiembre de 1969' },
     ],
     examFacts: [
       'Presidente durante la matanza de Tlatelolco',
       'Juegos Olímpicos de 1968 en México',
       'Firmó el Tratado de Tlatelolco',
+      'Inauguró el Metro de la Ciudad de México el 4 de septiembre de 1969',
     ],
   },
   {
