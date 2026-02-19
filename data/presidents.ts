@@ -286,14 +286,14 @@ export const PRESIDENTS: PresidentProfile[] = [
     ],
     achievements: [
       { label: 'UNAM fundada por Justo Sierra', year: 1910, examFact: '22 de septiembre de 1910' },
-      { label: 'Inauguró el Ángel', year: 1910 },
+      { label: 'Inauguró el Ángel de la Independencia', year: 1910, examFact: '16 de septiembre de 1910' },
       { label: 'Inició Bellas Artes', year: 1904 },
     ],
     examFacts: [
       'Gobernó México de 1876 a 1910 (34 años)',
       'Justo Sierra fundó la Universidad Nacional de México (UNAM) el 22 de septiembre de 1910',
       'Lema UNAM: "Por mi raza hablará el espíritu" (José Vasconcelos, 1921)',
-      'Inauguró el Ángel de la Independencia',
+      'Inauguró el Ángel de la Independencia el 16 de septiembre de 1910',
       'Inició la construcción del Palacio de Bellas Artes',
       'El Porfiriato: período de modernización y dictadura',
     ],
